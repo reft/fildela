@@ -1,0 +1,25 @@
+﻿@section Header{
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div class="container">
+    <h2 style="margin-top:0px;">@Resource.Error</h2>
+    <hr />
+    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12" style="padding: 0px;">
+        <p class="error-text" style="margin-bottom: 20px; text-decoration: underline;">404 Not Found</p>
+        <p class="error-text" style="margin-bottom: 20px; line-height: 1.75;">
+            @Resource.An_unexpected_error_has_occured_Please_try_again_later
+            <br />
+            @Resource.If_the_problem_persists_Contact_system_administrator
+        </p>
+        <p style="color: #428bca;">
+            <a href="/Home/Index" class="error-link-title">@Resource.Back_to_start</a>
+            <span style="font-size:16px;">|</span>
+            <a href="/Contact/Index" class="error-link-title">@Resource.Contact_us</a>
+        </p>
+    </div>
+</div>
+
+@section Footer{
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}

@@ -1,0 +1,15 @@
+﻿@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div class="container" style="padding:0px;">
+    @Html.Partial("~/Views/Account/Partials/_Header.cshtml")
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <p class="account-no-permissions-found-message">@Resource.No_permissions_was_found_Please_contact_account_owner</p>
+    </div>
+</div>
+
+@section Footer {
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}

@@ -1,0 +1,21 @@
+﻿@section Header{
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+@Html.Partial("~/Views/Home/Index.cshtml")
+
+@section Footer{
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}
+
+@section Modals {
+    @Html.Partial("~/Views/Home/Modals/_UserAgreementModal.cshtml")
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#modal-information-useragreement').modal('show');
+        });
+    </script>
+}

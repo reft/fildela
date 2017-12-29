@@ -1,0 +1,224 @@
+﻿@model Fildela.Web.Models.AccountModels.GuestAccountsViewModel
+
+@using Fildela.Web.Helpers;
+
+<div class="container" style="padding:0px;">
+    @Html.Partial("~/Views/Account/Partials/_Header.cshtml")
+
+    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+        <div class="list-group">
+            @if (Model != null && Model.GuestAccounts != null && Model.GuestAccounts.Count > 1)
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+            else
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" disabled data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="disabled account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9 hidden-sm hidden-xs" style="overflow-x: auto;">
+
+        <span class="account-selected-name pull-left"></span>
+
+        <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-guestaccounts-create" style="margin-bottom:6px; margin-right:4px;" role="button"><i class="fa fa-users fa-fw account-tablemenu-icon" style="margin-right:3px;"></i>@Resource.Create</a>
+        <a class="btn btn-default noselect pull-left account-tablemenu-single" data-toggle="modal" data-target="#modal-account-guestaccounts-rights" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-pencil fa-fw account-tablemenu-icon"></i>@Resource.Rights</a>
+        <a class="btn btn-default noselect pull-left account-tablemenu-single" data-toggle="modal" data-target="#modal-account-guestaccounts-expirationdate" style="margin-bottom:6px;" role="button"><i class="fa fa-pencil fa-fw account-tablemenu-icon"></i>@Resource.Expiration_date</a>
+        @if (Model != null && Model.GuestAccounts != null && Model.GuestAccounts.Count > 0)
+        {
+            <a class="btn btn-default noselect hidden-sm hidden-xs pull-right" data-toggle="modal" data-target="#modal-account-guestaccounts-empty" style="margin-bottom:6px;" role="button"><i class="fa fa-trash-o fa-fw account-tablemenu-icon" style="margin-right: 1px;"></i>@Resource.Empty</a>
+        }
+        <a class="btn btn-default noselect hidden-sm hidden-xs pull-right account-tablemenu-multiple" data-toggle="modal" data-target="#modal-account-guestaccounts-remove" style="margin-bottom:6px; margin-right:4px;" role="button"><i class="fa fa-times fa-fw account-tablemenu-icon" style="margin-right:-1px;"></i>@Resource.Remove</a>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="clear:both;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+            <div class="list-group" style="margin-bottom:0px;">
+                <a href="/Account/Files" class="list-group-item">
+                    <span class="fa fa-file-o fa-fw" style="margin-right: 5px;"></span>@Resource.Files<span class="badge account-badge">@Model.FileCount</span>
+                </a>
+                <a href="/Account/Links" class="list-group-item">
+                    <span class="fa fa-link fa-fw" style="margin-right:5px;"></span>@Resource.Links<span class="badge account-badge">@Model.LinkCount</span>
+                </a>
+                <a href="/Account/Guestaccounts" class="list-group-item active noselect">
+                    <span class="fa fa-users fa-fw" style="margin-right: 5px; font-size: 14px;"></span>@Resource.Guest_accounts<span class="badge account-badge">@Model.GuestAccountCount</span>
+                </a>
+                <a href="/Account/Logs" class="list-group-item">
+                    <span class="fa fa-file-text-o fa-fw" style="margin-right: 5px;"></span>@Resource.Log<span class="badge account-badge">@Model.LogCount</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs" style="padding:20px 0px 0px 0px;">
+            <span class="label label-default label-account-usage-sm">
+                @Resource.Guest_accounts
+            </span>
+
+            <div class="progress progress-account-sm" style="margin-bottom:0px;">
+                <div class="progress-bar progress-bar-account-sm @((double)Model.GuestAccountCount / (double)Model.AllowedGuestAccountCount < 0.75 ? "progress-bar-success" : "progress-bar-danger")" style="width: @UnitConverterExtensions.ConvertToPercentageString(Model.GuestAccountCount, 10);">
+                    @UnitConverterExtensions.ConvertToPercentageString(Model.GuestAccountCount, Model.AllowedGuestAccountCount)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-xs-12 hidden-lg hidden-md" style="margin-top:20px;">
+        <div class="list-group" style="margin-bottom:0px;">
+            @if (Model != null && Model.GuestAccounts != null && Model.GuestAccounts.Count > 1)
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+            else
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" disabled data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="hidden-lg hidden-md col-sm-12 col-xs-12" style="overflow-x: auto; margin-top:20px; margin-bottom:14px;">
+
+        <span class="account-selected-name pull-left"></span>
+
+        <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-guestaccounts-create" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-users fa-fw account-tablemenu-icon" style="margin-right:3px;"></i>@Resource.Create</a>
+        <a class="btn btn-default noselect pull-left account-tablemenu-single" data-toggle="modal" data-target="#modal-account-guestaccounts-rights" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-pencil fa-fw account-tablemenu-icon"></i>@Resource.Rights</a>
+        <a class="btn btn-default noselect pull-left account-tablemenu-single" data-toggle="modal" data-target="#modal-account-guestaccounts-expirationdate" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-pencil fa-fw account-tablemenu-icon"></i>@Resource.Expiration_date</a>
+        <a class="btn btn-default noselect pull-left account-tablemenu-multiple" data-toggle="modal" data-target="#modal-account-guestaccounts-remove" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-times fa-fw account-tablemenu-icon"></i>@Resource.Remove</a>
+        @if (Model != null && Model.GuestAccounts != null && Model.GuestAccounts.Count > 0)
+        {
+            <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-guestaccounts-empty" style="margin-bottom: 6px;" role="button"><i class="fa fa-trash-o fa-fw account-tablemenu-icon" style="margin-right:1px;"></i>@Resource.Empty</a>
+        }
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 account-table-container" style="overflow-x:auto; margin:0px; padding:0px;">
+            <table class="order-table sorted noselect table table-condensed table-bordered table-hover" style="border-color: #428bca; margin:0px;">
+                <thead class="noselect">
+                    <tr style="color:#fff;">
+                        @if (Model != null && Model.GuestAccounts != null && Model.GuestAccounts.Count > 1)
+                        {
+                            <th id="account-guestaccounts-header-email" class="sortedplus account-table-header" style="border-left:1px;">@Resource.Email <i class="fa fa-caret-down"></i></th>
+                        }
+                        else
+                        {
+                            <th id="account-guestaccounts-header-email" class="sortedplus account-table-header" style="border-left:1px;">@Resource.Email <i></i></th>
+                        }
+                        <th id="account-guestaccounts-header-rights" class="account-table-header">@Resource.Rights <i></i></th>
+
+                        <th id="account-guestaccounts-header-datecreated" class="account-table-header">@Resource.Created <i></i></th>
+                        <th id="account-guestaccounts-header-datestart" class="account-table-header">@Resource.Starts <i></i></th>
+                        <th id="account-guestaccounts-header-dateend" class="account-table-header" style="border-right:1px;">@Resource.Ends <i></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.GuestAccounts != null && Model.GuestAccounts.Count > 0)
+                    {
+                        foreach (var item in Model.GuestAccounts)
+                        {
+                            <tr class="account-table-tr" style="display: table-row;" data-guestid="@item.UserID" data-name="@item.Email" data-nameshorten="@item.Email" data-type="@Resource.Guest_accounts2">
+                                <td headers="account-guestaccounts-header-email" class="account-guestaccounts-contextmenu">@item.Email</td>
+                                <td headers="account-guestaccounts-header-rights" class="account-guestaccounts-contextmenu">
+                                    @if (item.PermissionNames != null && item.PermissionNames.Count > 0)
+                                    {
+                                        foreach (var permissionToString in item.PermissionNames)
+                                        {
+                                            @(Html.GetStringFromView<Resource>(permissionToString))
+
+                                            if (permissionToString != item.PermissionNames.Last())
+                                            {<text>, </text>}
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @Resource.No_rights;
+                                    }
+                                </td>
+                                <td headers="account-guestaccounts-header-datecreated" class="account-guestaccounts-contextmenu">@item.DateRegistered.ToString("yyyy/MM/dd HH:mm tt")</td>
+                                <td headers="account-guestaccounts-header-datestart" class="account-guestaccounts-contextmenu">@item.DateStart.ToString("yyyy/MM/dd HH:mm tt")</td>
+                                <td headers="account-guestaccounts-header-dateend" class="account-guestaccounts-contextmenu">@item.DateExpires.ToString("yyyy/MM/dd HH:mm tt")</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr style="display: table-row; cursor: default;">
+                            <td style="border-right:0px;">
+                                @Resource.No_guest_accounts_was_found
+                            </td>
+                            <td style="border-left:0px; border-right:0px;"></td>
+                            <td style="border-left:0px; border-right:0px;"></td>
+                            <td style="border-left:0px; border-right:0px;"></td>
+                            <td style="border-left:0px;"></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="account-search-message-container" style="overflow-x:auto; margin:0px; padding:0px; display:none;">
+            <p class="account-search-message"></p>
+        </div>
+
+        @if (Model != null && Model.PendingGuestAccounts != null && Model.PendingGuestAccounts.Count > 0)
+        {
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 account-table-container account-search-hidden" style="overflow-x:auto; margin: 0px; padding:0px;">
+                <hr />
+
+                <table class="noselect table table-condensed table-bordered table-hover" style="border-color: #e74c3c; margin: 0px;">
+                    <thead class="noselect">
+                        <tr style="color:#fff;">
+                            <th style="border-left:0px; border-right:0px;" class="account-table-header account-table-header-danger">@Resource.Waiting_for_answer<i></i></th>
+                            <th style="padding: 0px; border-left: 0px; border-right: 1px;" class="account-table-header account-table-header-danger"><i></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.PendingGuestAccounts)
+                        {
+                            <tr>
+                                <td style="border-right:0px;">@item.GuestEmail</td>
+                                <td style="border-left: 0px; padding: 0px; padding: 0px;">
+                                    <a class="account-guestaccounts-pending-remove" data-name="@item.GuestEmail">
+                                        <i class="glyphicon glyphicon-remove pull-right" style="color: #e74c3c; padding:12px;"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>
+
+<div id="account-guestaccounts-contextmenu" class="dropdown clearfix" style="color: #555;">
+    <ul class="dropdown-menu account-dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; margin-bottom: 5px;">
+        <li><a tabindex="-1" style="padding-bottom:4px;" data-toggle="modal" data-target="#modal-account-guestaccounts-rights"><i class="fa fa-pencil fa-fw" style="margin-right: 5px; pointer-events: none; line-height: inherit;"></i>@Resource.Rights</a></li>
+        <li><a tabindex="-1" data-toggle="modal" data-target="#modal-account-guestaccounts-expirationdate"><i class="fa fa-pencil fa-fw" style="margin-right: 5px; pointer-events: none; line-height: inherit;"></i>@Resource.Expiration_date</a></li>
+        <li style="pointer-events:none;" class="divider"></li>
+        <li><a tabindex="-1" data-toggle="modal" data-target="#modal-account-guestaccounts-remove"><i class="fa fa-times fa-fw" style="margin-right: 5px; pointer-events: none; line-height: inherit;"></i>@Resource.Remove</a></li>
+    </ul>
+</div>

@@ -1,0 +1,106 @@
+﻿#administration-list-group-users.list-group-item.administration-list-group-item {
+    border-right: 1px solid #dddddd;
+}
+
+#administration-list-group-logs.list-group-item.administration-list-group-item {
+    border-left: 0px;
+}
+
+#administration-list-group-email.list-group-item.administration-list-group-item {
+    border-right: 0px;
+}
+
+.administration-list-group-item {
+    width: 100%;
+    float: left;
+    padding-bottom: 9px;
+}
+
+@media (min-width: 768px) {
+    #administration-list-group-users.list-group-item.administration-list-group-item {
+        border-right: 0px solid #dddddd !important;
+    }
+}
+
+@media (max-width: 767px) {
+    #administration-list-group-users.list-group-item.active.administration-list-group-item {
+        border-right: 1px solid #428bca !important;
+    }
+
+    #administration-list-group-news {
+        border-left: 1px solid #dddddd !important;
+        border-right: 1px solid #dddddd !important;
+        margin-top: -1px;
+    }
+
+    #administration-list-group-email {
+        border-left: 1px solid #dddddd !important;
+        border-right: 1px solid #dddddd !important;
+        margin-top: -1px;
+    }
+
+    #administration-list-group-logs {
+        border-left: 1px solid #dddddd !important;
+        border-right: 1px solid #dddddd !important;
+        margin-top: -1px;
+    }
+
+        #administration-list-group-news.list-group-item.active.administration-list-group-item,
+        #administration-list-group-email.list-group-item.active.administration-list-group-item,
+        #administration-list-group-logs.list-group-item.active.administration-list-group-item {
+            border-left: 0px !important;
+            border-right: 0px !important;
+        }
+
+    #administration-list-group-logs-container {
+        border-left: 0px !important;
+    }
+}
+
+.administration-users-contextmenu, administration-news-contextmenu, administration-logs-contextmenu {
+    color: #333;
+    white-space: nowrap;
+}
+
+.administration-users-table-header, .administration-news-table-header, .administration-logs-table-header {
+    cursor: pointer;
+    border-top: solid 0px;
+    border-bottom: solid 1px;
+    font-weight: normal;
+    background-color: #428bca;
+    border-bottom-color: #428bca;
+}
+
+.administration-users-table-header, .administration-news-table-header, .administration-logs-table-header {
+    white-space: nowrap;
+}
+
+.administration-users-table-header, .administration-news-table-header, .administration-logs-table-header {
+    border-bottom: 0px !important;
+    padding-bottom: 11px !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .administration-users-table-header, .administration-news-table-header, .administration-logs-table-header {
+        border-bottom: 1px solid #428bca !important;
+        padding-bottom: 10px !important;
+    }
+}
+
+.administration-users-table-tr > td, .administration-news-table-tr > td, .administration-logs-table-tr > td {
+    vertical-align: middle !important;
+}
+
+#modal-news-file-input-wrapper {
+    text-align: left;
+    font-size: 15px;
+    opacity: 1 !important;
+}
+
+.form-group.form-group-container.has-feedback.has-error > .file-input-wrapper {
+    border: 1px solid #a94442;
+}
+
+.form-group.form-group-container.has-feedback.has-success > .file-input-wrapper {
+    border: 1px solid #3c763d;
+}

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <META charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>@(ViewBag.Title == null ? System.Web.Configuration.WebConfigurationManager.AppSettings["ProductNameWithDomain"] + " - " + Resource.Swedens_fastest_file_sharing_website : ViewBag.Title)</title>
+    <META NAME="description" content="@Resource.Welcome_to_Swedens_fastest_file_sharing_site_With_us_you_can_save_and_share_files_in_a_fast_and_easy_way_for_free" />
+    <meta name="google-site-verification" content="YiTxu24aXdMWDPusrkmqDgrASXfGEVDLZ9Yd9bEXSB0" />
+    <link rel="icon" href="@Url.Content("~/Content/favicon.ico")" />
+    <link rel="canonical" href="@System.Web.Configuration.WebConfigurationManager.AppSettings["BaseAddress"]" />
+
+    @Styles.Render("~/Content/Styles")
+
+    @Scripts.Render("~/bundles/Modernizr")
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div id="fb-root"></div>
+
+    @RenderSection("Header", required: false)
+
+    @RenderBody()
+
+    @RenderSection("Footer", required: false)
+
+    @Html.Partial("~/Views/Shared/_Modals.cshtml")
+
+    @RenderSection("Modals", required: false)
+
+    <form id="__AjaxAntiForgeryForm" action="#" method="post">@Html.AntiForgeryToken()</form>
+
+    @Scripts.Render("~/bundles/Scripts")
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

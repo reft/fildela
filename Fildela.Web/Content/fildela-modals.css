@@ -1,0 +1,357 @@
+﻿.modal {
+    overflow-y: scroll;
+    word-wrap: break-word;
+}
+
+.modal-open .modal {
+    overflow-y: scroll;
+}
+
+.modal-backdrop {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.sign-in-account-disabled-link {
+    color: #fff !important;
+    text-decoration: underline;
+}
+
+#modal-direct-upload-send-email-btn {
+    height: 34px;
+}
+
+#modal-direct-upload-send-email-spin {
+    margin-right: 9px;
+}
+
+.btn-w-links {
+    margin-bottom: 2px;
+}
+
+.close {
+    outline: none;
+    color: #000;
+    line-height: inherit;
+    opacity: 1;
+}
+
+#modal-direct-upload-title {
+    margin-top: 0px;
+}
+
+@media(max-width:991px) {
+    html.touch .modal-footer {
+        padding: 0px !important;
+    }
+
+    html.touch #modal-useragreement-footer {
+        padding: 15px !important;
+    }
+
+    html.touch #modal-account-settings-reset-footer {
+        padding: 15px !important;
+    }
+
+    html.touch #modal-account-settings-delete-footer {
+        padding: 15px !important;
+    }
+
+    html.touch #modal-upload-directly-footer {
+        padding: 15px !important;
+    }
+
+    html.touch #modal-upload-directly-complete-footer {
+        padding: 0px !important;
+    }
+
+    html.touch #modal-sign-in-account-links-footer {
+        padding: 15px !important;
+    }
+
+    html.touch #modal-account-files-upload-footer {
+        padding: 15px !important;
+    }
+}
+
+html.touch #modal-account-settings-remove-authentication-provider-form > .modal-footer {
+    padding: 15px !important;
+}
+
+#modal-register-agreement-text-container {
+    margin: 0px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#modal-register-checkbox {
+    margin-left: 0px;
+}
+
+#modal-register-agreement-container {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 27px;
+}
+
+@media(max-width:767px) {
+    #modal-register-agreement-container {
+        width: 175px;
+    }
+}
+
+@media(max-width:335px) {
+    #modal-register-agreement-text-innercontainer {
+        width: 200px;
+    }
+}
+
+#modal-useragreement-back {
+    cursor: pointer;
+    color: #2a6496;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+#modal-register-agreement-text {
+    color: #2a6496;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 3px 0px;
+}
+
+.modal-title {
+    font-size: 18px;
+    color: #000;
+    word-wrap: break-word;
+    font-family: 'Source Sans Pro';
+}
+
+.information-title, .modal-useragreement-title {
+    font-size: 15px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 7px 8px 7px 8px;
+    margin-right: 10px;
+    font-weight: 400;
+}
+
+.modal-content-text {
+    color: #000;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+#modal-register-agreement-text-container > label > .form-control-feedback {
+    font-size: 14px;
+    min-height: initial;
+    margin-top: 7px;
+}
+
+#modal-register-agreement-text-container > label > .glyphicon-ok {
+    line-height: 32px;
+    height: 32px;
+}
+
+#modal-register-agreement-text-container > label > .glyphicon-remove {
+    line-height: 32px;
+    height: 32px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { /*CHROME*/
+    #modal-register-agreement-text-container > label > .glyphicon-ok {
+        line-height: 28px;
+        height: 28px;
+    }
+
+    #modal-register-agreement-text-container > label > .glyphicon-remove {
+        line-height: 30px;
+        height: 30px;
+    }
+
+    ::i-block-chrome, #modal-register-agreement-text-container > label > .glyphicon-ok /*SAFARI*/ {
+        line-height: 30px;
+        height: 30px;
+    }
+
+    ::i-block-chrome, #modal-register-agreement-text-container > label > .glyphicon-remove { /*SAFARI*/
+        line-height: 30px;
+        height: 30px;
+    }
+}
+
+@-moz-document url-prefix() { /*FIREFOX*/
+    #modal-register-agreement-text-container > label > .glyphicon-ok {
+        line-height: 32px;
+        height: 32px;
+    }
+
+    #modal-register-agreement-text-container > label > .glyphicon-remove {
+        line-height: 32px;
+        height: 32px;
+    }
+}
+
+.modal-form-message-container {
+    padding: 15px;
+}
+
+#modal-sign-in-error-container, #modal-sign-in-page-load-error-container {
+    padding: 0px 15px 30px 15px;
+}
+
+@media (max-width: 767px) {
+    .modal-form-message-container > .alert > .glyphicon, .col-xs-12 > .alert > .glyphicon {
+        display: none;
+    }
+
+    #modal-sign-in-google-btn {
+        margin-bottom: 15px;
+    }
+}
+
+#modal-sign-in-google-btn:hover {
+    color: #fff;
+}
+
+#modal-sign-in-facebook-btn:hover {
+    color: #fff;
+}
+
+#modals-register-form-group-checkbox > .help-block {
+    margin-top: -6px;
+}
+
+#modal-upload-directly-container-working {
+    padding-top: 9px;
+}
+
+#modal-sign-in-account-links-container {
+    padding-top: 6px;
+}
+
+#modal-direct-upload-send-email-form > .form-group > .form-control-feedback {
+    display: none !important;
+}
+
+#modal-account-files-upload-container-working {
+    margin-top: 9px;
+}
+
+#modal-account-files-empty-btn, #modal-account-links-remove-btn, #modal-account-links-empty-btn,
+#modal-account-guestaccounts-remove-btn, #modal-account-guestaccounts-empty-btn, #modal-account-logs-remove-btn, #modal-account-logs-empty-btn,
+#modal-account-logs-remove-remove-btn, #modal-account-logs-empty-empty-btn {
+    margin-top: 20px;
+}
+
+.modal-account-files-upload-usage {
+    font-size: 14px;
+    margin: 0px;
+}
+
+.modal-header > button {
+    padding-left: 25px;
+    padding-right: 8px;
+}
+
+.modal-header .close {
+    padding-bottom: 5px;
+    font-size: 20px;
+    margin-top: 0px;
+}
+
+#modal-account-files-empty-success-container,
+#modal-account-links-remove-success-container,
+#modal-account-links-empty-success-container,
+#modal-account-pending-guestaccounts-remove-success-container,
+#modal-account-guestaccounts-empty-success-container,
+#modal-account-guestaccounts-remove-success-container,
+#modal-account-logs-remove-success-container,
+#modal-account-logs-empty-success-container {
+    padding-bottom: 0px;
+    margin-bottom: 30px;
+}
+
+#modal-sign-in-account-links-success-container, #modal-sign-in-account-links-error-container {
+    margin-bottom: 9px;
+}
+
+#modal-account-pending-guestaccounts-remove-error-container {
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+
+#modal-account-files-remove-error-container {
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+
+#modal-account-files-remove-success-container {
+    margin-bottom: 30px;
+    padding-bottom: 0px;
+}
+
+#modal-account-files-empty-error-container, #modal-account-links-remove-error-container, #modal-account-links-empty-error-container,
+#modal-account-guestaccounts-remove-error-container, #modal-account-guestaccounts-empty-error-container,
+#modal-account-logs-remove-error-container, #modal-account-logs-empty-error-container {
+    padding-bottom: 0px;
+    margin-bottom: -10px;
+}
+
+#modal-upload-directly-error-container {
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+}
+
+#modal-account-files-upload-pretext {
+    margin-bottom: 30px;
+}
+
+#modal-account-files-upload-cancel-upload-btn {
+    margin-top: 0px;
+}
+
+#modal-account-files-upload-error-container, #modal-account-files-upload-success-container {
+    padding-bottom: 0px;
+    margin-bottom: 30px;
+}
+
+#modal-upload-directly-file-input-wrapper {
+    margin-top: 15px;
+}
+
+#modal-upload-directly-cancel-upload-btn {
+}
+
+#modal-account-files-remove-content-text {
+    padding: 5px 0px 20px 0px;
+    margin: 0px;
+}
+
+#modal-account-pending-guestaccounts-remove-text {
+    padding: 5px 0px 30px 0px;
+    margin: 0px;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+    font-size: 16px;
+}
+
+#modal-sign-in-page-load-default-error-container {
+    padding: 15px 15px 30px 15px;
+}
+
+.modal-label {
+    font-weight: normal;
+    font-size: 16px;
+}

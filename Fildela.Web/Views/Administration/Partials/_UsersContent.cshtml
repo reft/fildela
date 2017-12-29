@@ -1,0 +1,87 @@
+﻿@model Fildela.Web.Models.AdministrationModels.AdministrationAccountsViewModel
+
+<div class="container">
+    <h2 style="margin-top:0px; margin-bottom:0px; margin-left:-1px;">
+        @Resource.Administration
+    </h2>
+    <hr />
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin-bottom:20px;">
+        <div class="list-group" style="margin-bottom:0px;">
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="col-sm-3" style="padding:0px;">
+                    <a href="/Administration/Users" class="list-group-item active noselect administration-list-group-item" id="administration-list-group-users">
+                        <span class="fa fa-users fa-fw" style="margin-right:5px; font-size:14px;"></span>@Resource.Users<span class="badge administration-badge">@Model.UserCount</span>
+                    </a>
+                </div>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("Publisher"))
+            {
+                <div class="col-sm-3" style="padding:0px;">
+                    <a href="/Administration/News" class="list-group-item administration-list-group-item" id="administration-list-group-news" style="border-right:0px; border-left:0px;">
+                        <span class="fa fa-newspaper-o fa-fw" style="margin-right:5px;"></span>@Resource.News<span class="badge administration-badge">@Model.NewsCount</span>
+                    </a>
+                </div>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("Support"))
+            {
+                <div class="col-sm-3" style="padding:0px;">
+                    <a href="/Administration/Emails" class="list-group-item administration-list-group-item" id="administration-list-group-email">
+                        <span class="fa fa-envelope-o fa-fw" style="margin-right:5px;"></span>@Resource.Email<span class="badge administration-badge">@Model.EmailCount</span>
+                    </a>
+                </div>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("Support"))
+            {
+                <div class="col-sm-3" id="administration-list-group-logs-container" style="padding:0px; border-left:1px solid #ddd;">
+                    <a href="/Administration/Logs" class="list-group-item administration-list-group-item" id="administration-list-group-logs">
+                        <span class="fa fa-file-text-o fa-fw" style="margin-right:5px;"></span>@Resource.Log<span class="badge administration-badge">@Model.EmailCount</span>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 administration-users-table-container" style="overflow-x:auto; padding:0px;">
+        <table class="order-table sorted table table-condensed table-bordered table-hover" style="border-color: #428bca; margin:0px;">
+            <thead class="noselect">
+                <tr style="color:#fff;">
+                    <th id="administration-users-header-id" class="sortedplus administration-users-table-header" style="border-left:1px;">@Resource.ID <i></i></th>
+                    <th id="administration-users-header-email" class="sortedplus administration-users-table-header" style="border-left:1px;">@Resource.Email <i class="fa fa-caret-down"></i></th>
+                    <th id="administration-users-header-usertype" class="administration-users-table-header">@Resource.UserRoles <i></i></th>
+                    <th id="administration-users-header-premium" class="administration-users-table-header">@Resource.Premium <i></i></th>
+                    <th id="administration-users-header-deleted" class="administration-users-table-header">@Resource.Deleted <i></i></th>
+                    <th id="administration-users-header-registered" class="administration-users-table-header" style="border-right:1px;">@Resource.Registered <i></i></th>
+                    <th id="administration-users-header-registered" class="administration-users-table-header" style="border-right:1px;">@Resource.Last_active <i></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Accounts.Count() > 0)
+                {
+                    foreach (var item in Model.Accounts)
+                    {
+                        <tr class="administration-users-table-tr" style="display: table-row;">
+                            <td headers="administration-users-header-id" class="administration-users-contextmenu">@item.AccountID</td>
+                            <td headers="administration-users-header-email" class="administration-users-contextmenu">@item.Email</td>
+                            <td headers="administration-users-header-usertype" class="administration-users-contextmenu">@item.UserRolesToString</td>
+                            <td headers="administration-users-header-premium" class="administration-users-contextmenu">@(item.IsPremium ? "1" : "0")</td>
+                            <td headers="administration-users-header-deleted" class="administration-users-contextmenu">@(item.IsDeleted ? "1" : "0")</td>
+                            <td headers="administration-users-header-registered" class="administration-users-contextmenu">@item.DateRegistered.ToString("yyyy/MM/dd HH:mm tt")</td>
+                            <td headers="administration-users-header-registered" class="administration-users-contextmenu">@item.DateLastActive.ToString("yyyy/MM/dd HH:mm tt")</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr style="display: table-row;">
+                        <td colspan="7">@Resource.No_users_was_found</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+    </div>
+</div>

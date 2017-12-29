@@ -1,0 +1,63 @@
+﻿@model Fildela.Web.Models.AdministrationModels.AdministrationEmailViewModel
+
+<div class="container">
+    <h2 style="margin-top:0px; margin-bottom:0px; margin-left:-1px;">
+        @Resource.Administration
+    </h2>
+    <hr />
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px; margin-bottom:20px;">
+        <div class="list-group" style="margin-bottom:0px;">
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="col-sm-3" style="padding:0px;">
+                    <a href="/Administration/Users" class="list-group-item noselect administration-list-group-item" id="administration-list-group-users" style="border-right:1px solid #ddd;">
+                        <span class="fa fa-users fa-fw" style="margin-right:5px; font-size:14px;"></span>@Resource.Users<span class="badge administration-badge">@Model.UserCount</span>
+                    </a>
+                </div>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("Publisher"))
+            {
+                <div class="col-sm-3" style="padding:0px;">
+                    <a href="/Administration/News" class="list-group-item administration-list-group-item" id="administration-list-group-news" style="border-right:0px;">
+                        <span class="fa fa-newspaper-o fa-fw" style="margin-right:5px;"></span>@Resource.News<span class="badge administration-badge">@Model.NewsCount</span>
+                    </a>
+                </div>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("Support"))
+            {
+                <div class="col-sm-3" style="padding:0px;">
+                    <a href="/Administration/Emails" class="list-group-item active administration-list-group-item" id="administration-list-group-email">
+                        <span class="fa fa-envelope-o fa-fw" style="margin-right:5px;"></span>@Resource.Email<span class="badge administration-badge">@Model.EmailCount</span>
+                    </a>
+                </div>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("Support"))
+            {
+                <div class="col-sm-3" style="padding:0px;">
+                    <a href="/Administration/Logs" class="list-group-item administration-list-group-item" id="administration-list-group-logs">
+                        <span class="fa fa-file-text-o fa-fw" style="margin-right:5px;"></span>@Resource.Log<span class="badge administration-badge">@Model.EmailCount</span>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 administration-news-table-container" style="overflow-x:auto; padding:0px;">
+        <table class="order-table sorted table table-condensed table-bordered table-hover" style="border-color: #428bca; margin:0px;">
+            <thead class="noselect">
+                <tr style="color:#fff;">
+                    <th id="administration-news-header-title" class="administration-news-table-header" style="border-left:1px;">@Resource.Title <i></i></th>
+                    <th id="administration-news-header-published" class="sortedplus administration-news-table-header">@Resource.Sender <i></i></th>
+                    <th id="administration-news-header-date" class="administration-news-table-header" style="border-left:1px;">@Resource.Date <i class="fa fa-caret-down"></i></th>
+                    <th id="administration-news-header-category" class="administration-news-table-header" style="border-left:1px; border-right:1px;">@Resource.Category <i></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="display: table-row;">
+                    <td colspan="4">@Resource.No_emails_was_found</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

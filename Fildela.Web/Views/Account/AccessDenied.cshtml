@@ -1,0 +1,69 @@
+﻿@model Fildela.Web.Models.AccountModels.AccountViewModel
+
+@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div class="container" style="padding:0px;">
+    @Html.Partial("~/Views/Account/Partials/_Header.cshtml")
+
+    @if (Model.FileEdit || Model.FileRead || Model.FileWrite || Model.LinkEdit || Model.LinkRead || Model.LinkWrite)
+    {
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            <div class="list-group">
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" disabled data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="disabled account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-imes"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="col-lg-9 col-md-9 hidden-sm hidden-xs">
+        <p class="account-no-permissions-found-message" style="line-height:34px;"><i class="fa fa-exclamation-triangle" style="color: #a94442; font-size:11px; margin-right:3px;"></i> @Resource.You_do_not_have_permission_to_visit_this_page_Please_contact_the_owner_of_the_account</p>
+    </div>
+    <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
+        <p class="account-no-permissions-found-message" style="margin-bottom: 20px;"><i class="fa fa-exclamation-triangle" style="color: #a94442; font-size: 11px; margin-right:3px;"></i> @Resource.You_do_not_have_permission_to_visit_this_page_Please_contact_the_owner_of_the_account</p>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="clear:both;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+            <div class="list-group" style="margin-bottom:0px;">
+                @if (User.IsInRole("AccountOwner") || Model.FileEdit || Model.FileRead || Model.FileWrite)
+                {
+                    <a href="/Account/Files" class="list-group-item noselect">
+                        <span class="fa fa-file-o fa-fw" style="margin-right:5px; font-size:14px;"></span>@Resource.Files<span class="badge" style="padding: 4px 7px;">@Model.FileCount</span>
+                    </a>
+                }
+                @if (User.IsInRole("AccountOwner") || Model.LinkEdit || Model.LinkRead || Model.LinkWrite)
+                {
+                    <a href="/Account/Links" class="list-group-item">
+                        <span class="fa fa-link fa-fw" style="margin-right:5px;"></span>@Resource.Links<span class="badge" style="padding: 4px 7px;">@Model.LinkCount</span>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+    @if (Model.FileEdit || Model.FileRead || Model.FileWrite || Model.LinkEdit || Model.LinkRead || Model.LinkWrite)
+    {
+        <div class="col-sm-12 col-xs-12 hidden-lg hidden-md" style="margin-top:20px;">
+            <div class="list-group" style="margin-bottom:0px;">
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" disabled data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Footer {
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}

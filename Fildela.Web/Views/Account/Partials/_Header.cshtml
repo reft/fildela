@@ -1,0 +1,73 @@
+﻿@model Fildela.Web.Models.AccountModels.AccountViewModel
+
+<div class="col-lg-6 col-md-6 col-sm-6 hidden-xs">
+    <h2 style="margin-top: 0px; margin-bottom: 0px; text-indent: -1px;">
+        @if (User.IsInRole("Guest"))
+        {
+            @Fildela.Web.Helpers.ClaimsIdentityExtensions.GetAccountOwnerEmailShort()<text>'s </text>@Resource.Account
+
+            <span style="color: #e74c3c;">
+                (@Resource.Guest)
+            </span>
+        }
+        else
+        {
+            @Resource.My_account
+        }
+    </h2>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 hidden-xs account-user-menu-status" style="padding-top:4px; margin-bottom:-5px;">
+    <div class="dropdown-toggle noselect account-user-menu-container pull-right" data-toggle="dropdown" aria-expanded="false" style="display:inline-block; cursor:pointer;">
+        <i class="fa fa-sort-desc pull-right account-user-menu-icon" style="font-size: 14px; margin: 0; padding-left: 3px; border-bottom: 0px; line-height: inherit; color: #2895f1; "></i>
+
+        <span class="account-user-menu-text pull-right" style="color: #2895f1;">
+            @Fildela.Web.Helpers.StringExtensions.FirstCharToUpper(User.Identity.Name)
+        </span>
+    </div>
+
+    <ul class="dropdown-menu pull-right account-dropdown-menu" style="margin-right:15px;" role="menu">
+        <li><a href="/Account/Settings" class="account-user-menu-settings"><i class="fa fa-wrench fa-fw account-user-menu-settings" style="margin-right:5px;"></i>@Resource.Settings</a></li>
+        @if (User.IsInRole("AccountOwner"))
+        {
+            <li><a href="/Account/Usage" class="account-user-menu-usage"><i class="fa fa-bar-chart fa-fw" style="margin-right:5px;"></i>@Resource.Usage</a></li>
+            <li style="opacity: .65;" class="account-user-menu-upgrade"><a style="cursor:default; color:#333; margin:0px; padding: 3px 9px; background-color:#fff;"><i class="fa fa-arrow-circle-o-up fa-fw" style="margin-right:5px;"></i>@Resource.Upgrade</a></li>
+        }
+    </ul>
+</div>
+
+<div class="hidden-lg hidden-md hidden-sm col-xs-12 account-user-menu-status">
+    <h2 style="margin-top:0px; margin-bottom:13px;">
+        @if (User.IsInRole("Guest"))
+        {
+            @Fildela.Web.Helpers.ClaimsIdentityExtensions.GetAccountOwnerEmailShort()<text>'s </text>@Resource.Account
+
+            <span style="color: #e74c3c;">
+                (@Resource.Guest)
+            </span>
+        }
+        else
+        {
+            @Resource.My_account
+        }
+    </h2>
+
+    <div class="dropdown-toggle noselect account-user-menu-container" data-toggle="dropdown" aria-expanded="false" style="float:left; display:inline-block; cursor:pointer;">
+        <span class="account-user-menu-text pull-left">@Fildela.Web.Helpers.StringExtensions.FirstCharToUpper(User.Identity.Name)</span>
+
+        <i class="fa fa-sort-desc pull-left account-user-menu-icon" style="padding-left: 3px; margin: 0; border-bottom: 0px; font-size: 14px; line-height: inherit; color: #2895f1; "></i>
+    </div>
+
+    <ul class="dropdown-menu account-dropdown-menu" style="position:static !important; float: left; clear:both;" role="menu">
+        <li><a href="/Account/Settings" class="account-user-menu-settings"><i class="fa fa-wrench fa-fw account-user-menu-settings" style="margin-right:5px;"></i>@Resource.Settings</a></li>
+        @if (User.IsInRole("AccountOwner"))
+        {
+            <li><a href="/Account/Usage" class="account-user-menu-usage"><i class="fa fa-bar-chart fa-fw" style="margin-right:5px;"></i>@Resource.Usage</a></li>
+            <li style="opacity: .65;" class="account-user-menu-upgrade"><a style="cursor:default; color:#333; margin:0px; padding: 3px 9px; background-color:#fff;"><i class="fa fa-arrow-circle-o-up fa-fw" style="margin-right:5px;"></i>@Resource.Upgrade</a></li>
+        }
+    </ul>
+</div>
+
+<div class="col-xs-12">
+    <hr />
+</div>

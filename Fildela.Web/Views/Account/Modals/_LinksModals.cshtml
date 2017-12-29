@@ -1,0 +1,215 @@
+﻿<!-- Modal account, links, create -->
+<div class="modal" id="modal-account-links-file-create" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Create_link_to_file</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-links-file-create-success-container" style="display:none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-links-file-create-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+
+                <div class="col-xs-12" style="padding-top:15px;">
+                    <form id="modal-account-links-file-create-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group form-group-container" id="account-links-create-form-group-container-file">
+                            <input type="hidden" id="account-links-create-file" class="modal-account-links-file-create-input" data-placeholder="@Resource.Select_a_file" style="width: 100%;">
+                            <input id="account-links-create-file-json" name="File" type="hidden" />
+                        </div>
+                        <br />
+
+                        <div class="form-group form-group-container form-group-date-picker">
+                            <div class='input-group date' id='account-links-create-startdate'>
+                                <input id="account-links-create-startdate-text" readonly type='text' name="DateStart" placeholder="@Resource.Start_date" class="form-control modal-account-links-file-create-input" />
+                                <span class="input-group-addon input-group-addon-datepicker">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-container form-group-date-picker last-form-group">
+                            <div class='input-group date' id='account-links-create-enddate'>
+                                <input id="account-links-create-enddate-text" readonly type='text' name="DateExpires" placeholder="@Resource.End_date" class="form-control modal-account-links-file-create-input" />
+                                <span class="input-group-addon input-group-addon-datepicker">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <br />
+
+                        <input type="hidden" id="account-links-create-currenttime" name="CurrentTime" />
+
+                        <div class="form-group form-group-container">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block modal-account-links-file-create-input modal-btn-spin" id="modal-account-links-file-create-submitbtn">
+                                <span>@Resource.Create</span>
+                                <span id="modal-account-links-file-create-submit-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, links, folder create -->
+<div class="modal modal-account-from-dropdown" id="modal-account-links-folder-create" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Create_link_to_folder</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, links, url -->
+<div class="modal modal-account-from-dropdown" id="modal-account-links-url" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Copy_link</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group form-group-container">
+                    <p class="modal-content-text" style="margin-bottom:15px;">
+                        @Resource.Right_click_on_the_link_below_and_choose_Copy_to_copy_this_link_to_the_clipboard
+                    </p>
+                </div>
+
+                <div class="form-group form-group-container">
+                    <input type="text" id="modal-account-links-url-input" data-loading="@Resource.Retrieving_link" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again" class="form-control input-lg" readonly style="margin-top:15px; background-color:#fff!important;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, links, expirationdate -->
+<div class="modal modal-account-from-dropdown" id="modal-account-links-expirationdate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Edit_expirationdate_for_link</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, links, remove -->
+<div class="modal modal-account-from-dropdown" id="modal-account-links-remove" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title" id="modal-account-links-remove-title" data-text1="@Resource.Remove_link" data-text2="@Resource.Remove_links">@Resource.Remove_links</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-links-remove-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-links-remove-success-container" style="display: none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div id="modal-account-links-remove-container-before">
+                        <form id="modal-account-links-remove-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            <p class="modal-content-text" id="modal-account-links-remove-text" style="padding:5px 0px 0px 0px; margin-bottom:4px;" data-text1="@Resource.Are_you_sure_you_want_to_remove" data-text2="@Resource.Links2" data-text3="@Resource.Are_you_sure_you_want_to_delete_the_selected_links">
+                                @Resource.Are_you_sure_you_want_to_delete_the_selected_links
+                            </p>
+
+                            <div class="form-group form-group-container">
+                                <button id="modal-account-links-remove-btn" type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                                    <p style="display:inline-block; margin-bottom:0px;">@Resource.Remove</p>
+                                    <span id="modal-account-links-remove-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="modal-account-links-remove-container-after" style="display:none; padding:0px;">
+                        <div class="form-group form-group-container" style="padding:0px;">
+                            <button type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin" data-dismiss="modal">
+                                <p style="display:inline-block; margin-bottom:0px;" id="modal-account-links-remove-closing-btn" data-message="@Resource.Closing">@Resource.Closing 5</p>
+                                <span id="modal-account-links-remove-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, links, empty -->
+<div class="modal" id="modal-account-links-empty" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Empty_links</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-links-empty-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-links-empty-success-container" style="display: none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div id="modal-account-links-empty-container-before">
+                        <form id="modal-account-links-empty-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            <p class="modal-content-text" id="modal-account-links-empty-text" style="padding:5px 0px 0px 0px; margin-bottom:4px;">
+                                @Resource.Are_you_sure_you_want_to_remove_all_your_links
+                            </p>
+
+                            <div class="form-group form-group-container">
+                                <button id="modal-account-links-empty-btn" type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                                    <p style="display:inline-block; margin-bottom:0px;">@Resource.Remove</p>
+                                    <span id="modal-account-links-empty-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="modal-account-links-empty-container-after" style="display:none; padding:0px;">
+                        <div class="form-group form-group-container" style="padding:0px;">
+                            <button type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin" data-dismiss="modal">
+                                <p style="display:inline-block; margin-bottom:0px;" id="modal-account-links-empty-closing-btn" data-message="@Resource.Closing">@Resource.Closing 5</p>
+                                <span id="modal-account-links-empty-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>

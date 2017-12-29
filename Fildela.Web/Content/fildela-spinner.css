@@ -1,0 +1,200 @@
+﻿@-webkit-keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-modal {
+    display: inline-block;
+    overflow: hidden;
+    float: right;
+    font-size: 5px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-left: 1.1em solid #ffffff;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+    margin-top: -2px;
+    margin-right: -8px;
+}
+
+    .spinner-modal,
+    .spinner-modal:after {
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+    }
+
+.modal-btn-spin {
+    height: 43px;
+}
+
+.spinner-modal-sm {
+    width: 21px;
+    height: 21px;
+    font-size: 4px;
+    margin-top: -1px;
+    margin-right: -7px;
+}
+
+.input-group-spinner {
+    display: inline-block;
+    overflow: hidden;
+    float: right;
+    font-size: 4px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(66, 139, 202, 0.2);
+    border-right: 1.1em solid rgba(66, 139, 202, 0.2);
+    border-bottom: 1.1em solid rgba(66, 139, 202, 0.2);
+    border-left: 1.1em solid #428bca;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    margin-left: 2px;
+    margin-right: 1px;
+    margin-top: -1px;
+}
+
+    .input-group-spinner,
+    .input-group-spinner:after {
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+    }
+
+.spinner-button {
+    display: inline-block;
+    overflow: hidden;
+    float: right;
+    font-size: 4px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(66, 139, 202, 0.2);
+    border-right: 1.1em solid rgba(66, 139, 202, 0.2);
+    border-bottom: 1.1em solid rgba(66, 139, 202, 0.2);
+    border-left: 1.1em solid #428bca;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    margin-left: 2px;
+    margin-right: 1px;
+}
+
+    .spinner-button,
+    .spinner-button:after {
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+    }
+
+.spinner-button-w-text {
+    display: inline-block;
+    overflow: hidden;
+    float: right;
+    font-size: 3px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-left: 1.1em solid #ffffff;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    margin-left: 2px;
+    margin-right: 1px;
+    color: black !important;
+    float: left;
+    margin-left: -5px;
+    margin-right: 5px;
+}
+
+    .spinner-button-w-text,
+    .spinner-button-w-text:after {
+        border-radius: 50%;
+        width: 17px;
+        height: 17px;
+    }
+
+
+.spinner-button-default {
+    display: inline-block;
+    overflow: hidden;
+    float: right;
+    font-size: 4px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+    border-left: 1.1em solid #ffffff;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    margin-left: 2px;
+    margin-top: -1px;
+    margin-right: 10px;
+}
+
+.spinner-button-default,
+.spinner-button:after {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.spinner-table {
+    display: inline-block;
+    overflow: hidden;
+    float: right;
+    font-size: 4px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(66, 139, 202, 0.2);
+    border-right: 1.1em solid rgba(66, 139, 202, 0.2);
+    border-bottom: 1.1em solid rgba(66, 139, 202, 0.2);
+    border-left: 1.1em solid #428bca;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    margin-left: 0px;
+    margin-right: 6px;
+    float:left;
+}
+
+    .spinner-table,
+    .spinner-table:after {
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+    }

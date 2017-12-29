@@ -1,0 +1,435 @@
+﻿<!-- Modal direct upload -->
+<div class="modal" id="modal-direct-upload" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title" id="modal-direct-upload-title" data-idle="@Resource.Upload_directly" data-working="@Resource.Uploading">@Resource.Upload_directly</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-upload-directly-error-container" data-cancel="@Resource.Upload_aborted" data-length="@Resource.File_name_must_be_between_1_and_150_characters_long" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again" data-errorapi="@Resource.HTML5_is_not_fully_supported_in_your_browser" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+
+                <div class="col-xs-12" id="modal-upload-directly-container-idle">
+                    <div id="modal-upload-directly-note-container">
+                        <div class="note-default" style="margin-top:15px;">
+                            @Resource.You_can_only_upload [<span style="color: #e74c3c;">1</span>] @Resource.File_at_a_time
+                            <i class="fa fa-info-circle pull-right note-icon-info"></i>
+                        </div>
+
+                        <div class="note-default" style="margin-top:10px;">
+                            @Resource.The_file_size_can_be_a_maximum_of [<span style="color: #e74c3c;">100 MB</span>].
+                            <i class="fa fa-info-circle pull-right note-icon-info"></i>
+                        </div>
+
+                        <div class="note-default" style="margin: 10px 0px 30px 0px;">
+                            @Resource.The_file_is_only_stored_in [<span style="color: #e74c3c;">24</span>] @Resource.Hours
+                            <i class="fa fa-info-circle pull-right note-icon-info"></i>
+                        </div>
+                    </div>
+
+                    <a class="file-input-wrapper btn btn-primary btn-lg btn-block modal-btn-spin" id="modal-upload-directly-file-input-wrapper">
+                        <p style="display:inline-block; margin-bottom:0px;">@Resource.Select_file</p>
+                        <input type="file" id="modal-upload-directly-file-input">
+                        <span id="modal-upload-directly-file-spin" class="spinner-modal" style="display:none;"></span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12" id="modal-upload-directly-container-working" style="display:none;">
+                    <div class="progress" style="margin-top:6px; margin-bottom:10px;">
+                        <div id="upload-directly-progressbar" class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="5" aria-valuemax="100" style="margin-bottom:5px;">
+                            <span id="#upload-directly-progressbar-information">0%</span>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <button disabled id="modal-upload-directly-cancel-upload-btn" type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                        <p style="display:inline-block; margin-bottom:0px;">@Resource.Cancel</p>
+                        <span id="modal-upload-directly-complete-file-spin" class="spinner-modal" style="display:none;"></span>
+                    </button>
+                </div>
+
+                <div class="modal-footer" id="modal-upload-directly-footer" style="border: 0px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal direct upload complete -->
+<div class="modal" id="modal-direct-upload-complete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 id="modal-direct-upload-complete-title" data-sharefile="@Resource.Share_file" class="modal-title"></h4>
+            </div>
+
+            <div class="modal-body">
+                <div id="modal-upload-directly-complete-container">
+                </div>
+            </div>
+
+            <div class="modal-footer" id="modal-upload-directly-complete-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <!-- Modal sign in -->
+    <div class="modal" id="modal-sign-in" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                    <h4 class="modal-title">@Resource.Sign_in</h4>
+                </div>
+                <div class="modal-body" style="padding-top:30px;">
+                    <div class="col-xs-12 modal-form-message-container" id="modal-sign-in-error-container" style="display:none;">
+                        <div class="alert alert-danger">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <a href="/user/ExternalAuthentication?provider=Google" class="btn btn-google btn-block modal-sign-in-google-btn">
+                            <i class="fa fa-google-plus btn-sm-icons"></i>
+                            <span class="modal-sign-in-google-sm-text sm-text">Google</span>
+                            <span id="modal-sign-in-google-spin" class="spinner-modal spinner-modal-sm" style="display:none;"></span>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <a href="/user/ExternalAuthentication?provider=Facebook" class="btn btn-facebook btn-block modal-sign-in-facebook-btn">
+                            <i class="fa fa-facebook btn-sm-icons"></i>
+                            <span class="modal-sign-in-facebook-sm-text sm-text">Facebook</span>
+                            <span id="modal-sign-in-facebook-spin" class="spinner-modal spinner-modal-sm" style="display:none;"></span>
+                        </a>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="or-container">
+                            <hr class="or-hr" />
+                            <div id="or">@Resource.Or</div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12" style="padding-top:15px;">
+                        <form id="modal-sign-in-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group form-group-container">
+                                <select id="modal-sign-in-input-select" class="form-control input-lg select modal-sign-in-input" name="UserType">
+                                    @if (HttpContext.Current.Request.Cookies["SignInUserType"] != null && HttpContext.Current.Request.Cookies["SignInUserType"].Value == "Guest")
+                                    {
+                                        <option value="2">@Resource.Guest</option>
+                                        <option value="1">@Resource.User</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="1">@Resource.User</option>
+                                        <option value="2">@Resource.Guest</option>
+                                    }
+                                </select>
+                            </div>
+                            <br />
+
+                            <div class="form-group form-group-container">
+                                <input type="text" name="Email" class="form-control input-lg modal-sign-in-input" id="modal-sign-in-email" placeholder="@Resource.Email_address">
+                            </div>
+                            <div class="form-group form-group-container last-form-group">
+                                <input type="password" name="Password" id="modal-sign-in-password" class="form-control input-lg modal-sign-in-input" placeholder="@Resource.Password">
+                            </div>
+                            <br />
+
+                            <div class="form-group form-group-container modal-links">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block modal-sign-in-input modal-btn-spin btn-w-links">
+                                    <span id="modal-sign-in-btn-text" data-redirecting="@Resource.Redirecting">@Resource.Sign_in</span>
+                                    <span id="modal-sign-in-submit-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                                <span class="pull-right modal-sign-in-register"><a style="cursor:pointer;">@Resource.Create_account</a></span><span class="modal-sign-in-reset-password"><a style="cursor:pointer;">@Resource.Forgot_password</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="modal-sign-in-footer" class="modal-footer" style="border: 0px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal sign in page load (REDIRECT) -->
+    <div class="modal" id="modal-sign-in-page-load" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                    <h4 class="modal-title">@Resource.Sign_in</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12 modal-form-message-container" id="modal-sign-in-page-load-default-error-container">
+                        <div class="alert alert-danger">
+                            @Resource.This_page_requires_you_to_be_logged_in
+                            <i class="glyphicon glyphicon-remove pull-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 modal-form-message-container" id="modal-sign-in-page-load-error-container" style="display: none;">
+                        <div class="alert alert-danger">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 modal-form-message-container" id="modal-sign-in-error-container" style="display:none;">
+                        <div class="alert alert-danger">
+                        </div>
+                    </div>
+
+                    <div style="padding-top:15px;">
+                        <div class="col-sm-6 col-xs-12">
+                            <a href="/user/ExternalAuthentication?provider=Google&returnURL=@Request.QueryString["ReturnUrl"]" class="btn btn-google btn-block modal-sign-in-google-btn">
+                                <i class="fa fa-google-plus btn-sm-icons"></i>
+                                <span class="modal-sign-in-google-sm-text sm-text">Google</span>
+                                <span id="modal-sign-in-page-load-google-spin" class="spinner-modal spinner-modal-sm" style="display:none;"></span>
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6 col-xs-12">
+                            <a href="/user/ExternalAuthentication?provider=Facebook&returnURL=@Request.QueryString["ReturnUrl"]" class="btn btn-facebook btn-block modal-sign-in-facebook-btn">
+                                <i class="fa fa-facebook btn-sm-icons"></i>
+                                <span class="modal-sign-in-facebook-sm-text sm-text">Facebook</span>
+                                <span id="modal-sign-in-page-load-facebook-spin" class="spinner-modal spinner-modal-sm" style="display:none;"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="or-container">
+                            <hr class="or-hr" />
+                            <div id="or">@Resource.Or</div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12" style="padding-top:15px;" id="modal-sign-in-page-load-form-container">
+                        <form id="modal-sign-in-page-load-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group form-group-container">
+                                <select id="modal-sign-in-page-load-input-select" class="form-control input-lg select modal-sign-in-page-load-input" name="UserType">
+                                    @if (HttpContext.Current.Request.Cookies["SignInUserType"] != null && HttpContext.Current.Request.Cookies["SignInUserType"].Value == "Guest")
+                                    {
+                                        <option value="2">@Resource.Guest</option>
+                                        <option value="1">@Resource.User</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="1">@Resource.User</option>
+                                        <option value="2">@Resource.Guest</option>
+                                    }
+                                </select>
+                            </div>
+                            <br />
+
+                            <div class="form-group form-group-container">
+                                <input type="text" name="Email" class="form-control input-lg modal-sign-in-page-load-input" id="modal-sign-in-page-load-email" placeholder="@Resource.Email_address">
+                            </div>
+                            <div class="form-group form-group-container last-form-group">
+                                <input type="password" name="Password" id="modal-sign-in-page-load-password" class="form-control input-lg modal-sign-in-page-load-input" placeholder="@Resource.Password">
+                            </div>
+                            <br />
+
+                            <input type="hidden" name="returnUrl" value="@Request.QueryString["ReturnUrl"]" />
+
+                            <div class="form-group form-group-container modal-links">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block modal-sign-in-page-load-input modal-btn-spin btn-w-links">
+                                    <span id="modal-sign-in-page-load-btn-text" data-redirecting="@Resource.Redirecting">@Resource.Sign_in</span>
+                                    <span id="modal-sign-in-page-load-submit-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                                <span class="pull-right modal-sign-in-page-load-register"><a style="cursor:pointer;">@Resource.Create_account</a></span><span class="modal-sign-in-page-load-reset-password"><a style="cursor:pointer;">@Resource.Forgot_password</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer" id="modal-sign-in-page-load-footer" style="border: 0px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal reset password -->
+    <div class="modal" id="modal-reset-password" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                    <h4 class="modal-title">@Resource.Forgot_password</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12 modal-form-message-container" id="modal-reset-password-success-container" style="display:none;">
+                        <div class="alert alert-success">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 modal-form-message-container" id="modal-reset-password-error-container" style="display:none;">
+                        <div class="alert alert-danger">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12" style="padding-top:15px;">
+                        <form id="modal-reset-password-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group form-group-container">
+                                <select id="modal-reset-password-input-select" name="UserType" class="form-control input-lg select modal-reset-password-input">
+                                    <option value="1">@Resource.User</option>
+                                    <option value="2">@Resource.Guest</option>
+                                </select>
+                            </div>
+                            <br />
+                            <div class="form-group form-group-container last-form-group">
+                                <input name="Email" type="text" class="form-control input-lg modal-reset-password-input" placeholder="@Resource.Email_address" id="modal-reset-password-email">
+                            </div>
+                            <br />
+
+                            <div class="form-group form-group-container modal-links">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block modal-reset-password-input modal-btn-spin btn-w-links">
+                                    <span>@Resource.Send</span>
+                                    <span id="modal-reset-password-submit-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                                <span><a class="modal-reset-password-sign-in" style="cursor:pointer;">@Resource.Sign_in</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer" id="modal-reset-password-footer" style="border: 0px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal register -->
+    <div class="modal" id="modal-register" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                    <h4 class="modal-title">@Resource.Create_account</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12 modal-form-message-container" id="modal-register-success-container" style="display:none;">
+                        <div class="alert alert-success">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 modal-form-message-container" id="modal-register-error-container" style="display:none;">
+                        <div class="alert alert-danger">
+                        </div>
+                    </div>
+
+                    <p class="modal-content-text" style="padding:5px 15px 0px 15px;">@Resource.When_you_register_and_use_our_services_you_agree_to_our_user_agreement</p>
+
+                    <div class="col-xs-12">
+                        <form id="modal-register-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group form-group-container" id="modals-register-form-group-checkbox" style="margin-bottom:0px;">
+                                <div class="checkbox" style="width:100%; cursor:default; padding-top:8px;">
+                                    <p class="modal-content-text noselect" id="modal-register-agreement-text-container">
+                                        <label class="modal-register-input" id="modal-register-agreement-text-innercontainer" style="padding:0px;">
+                                            <input type="checkbox" value="true" class="modal-register-input" name="AgreeUserAgreement"
+                                                   id="modal-register-checkbox" style="position:static; outline:none;" />
+                                            @Resource.I_have_read_and_agree&nbsp;
+                                        </label>
+
+                                        <div id="modal-register-agreement-container">
+                                            <a class="modal-register-input" data-toggle="modal" data-target="#modal-useragreement" id="modal-register-agreement-text">@Resource.The_user_agreement</a><span style="color:#333;">.</span>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <br />
+
+                            <div class="form-group form-group-container">
+                                <input type="text" name="Email" class="form-control input-lg modal-register-input" placeholder="@Resource.Email_address" id="modal-register-email">
+                            </div>
+                            <div class="form-group form-group-container">
+                                <input type="text" name="ConfirmEmail" class="form-control input-lg modal-register-input" placeholder="@Resource.Confirm_email_address">
+                            </div>
+                            <br />
+                            <div class="form-group form-group-container">
+                                <input type="password" name="Password" class="form-control input-lg modal-register-input" placeholder="@Resource.Password">
+                            </div>
+                            <div class="form-group form-group-container last-form-group">
+                                <input type="password" name="ConfirmPassword" class="form-control input-lg modal-register-input" placeholder="@Resource.Confirm_password">
+                            </div>
+                            <br />
+
+                            <div class="form-group form-group-container modal-links">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block modal-register-input modal-btn-spin btn-w-links">
+                                    <span>@Resource.Create_account</span>
+                                    <span id="modal-register-submit-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                                <span><a class="modal-register-sign-in" style="cursor:pointer;">@Resource.Sign_in</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer" id="modal-register-footer" style="border: 0px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal register user agreement -->
+    <div class="modal" id="modal-useragreement" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                    <h4 class="modal-title">@Resource.User_agreement</h4>
+                </div>
+                <div class="modal-body" style="padding-bottom:0px;">
+                    <div style="padding:15px 15px 0px 15px; font-size:18px;">
+                        @Html.Partial("_UserAgreement")
+
+                        <p id="modal-useragreement-back-container" class="page-content" style="margin-bottom:0px; margin-top:20px;">
+                            <a id="modal-useragreement-back">Tillbaka</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer" id="modal-useragreement-footer" style="border: 0px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal account links -->
+    <div class="modal" id="modal-sign-in-account-links" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                    <h4 class="modal-title">@Resource.Sign_in</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12 modal-form-message-container" id="modal-sign-in-account-links-success-container" style="display:none;">
+                        <div class="alert alert-success">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 modal-form-message-container" id="modal-sign-in-account-links-error-container" style="display:none;">
+                        <div class="alert alert-danger">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12" id="modal-sign-in-account-links-container">
+                    </div>
+                    <div class="modal-footer" id="modal-sign-in-account-links-footer" style="border: 0px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

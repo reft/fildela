@@ -1,0 +1,67 @@
+﻿@model Fildela.Web.Models.UserModels.InsertAccountAuthenticationProviderViewModel
+
+@section Header{
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div class="container">
+    <h2 style="margin-top:0px;">
+        @Resource.Link_your_account_with @Model.ProviderName
+    </h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="page-text" id="error-msg-container" style="display:none;">
+                <p style="margin-bottom:20px;">
+                    <i class="shared-message-icon glyphicon glyphicon-remove" style="color: #a94442;"></i> <span id="error-msg">@Html.ValidationMessage("Error")</span>
+                </p>
+            </div>
+
+            <p class="page-text" style="margin-bottom:20px;">
+                @Resource.A_user_account_with_your_email_address_is_already_registered_but_have_not_yet_been_linked_with @Model.Email
+                <br />
+                @Resource.Fill_in_your_email_address_and_password_to_link_your_existing_account_with @Model.ProviderName<text>.</text>
+                <br />
+                @Resource.When_the_linking_is_done_you_will_automatically_be_signed_in_and_redirected_to_your_account
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 col-xs-12">
+            <form id="associate-external-authentication-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                @Html.AntiForgeryToken()
+
+                <label class="form-label" for="associate-email" style="margin-top:0px;">@Resource.Type_your_email_address</label>
+                <div class="form-group form-group-container form-group-associate">
+                    <input id="associate-email" type="text" name="Email" class="form-control input-lg associate-external-authentication-input" placeholder="@Resource.Email_address">
+                </div>
+
+                <label class="form-label" for="associate-password" style="margin-top:0px;">@Resource.Type_your_password</label>
+                <div class="form-group form-group-container last-form-group form-group-associate">
+                    <input id="associate-password" type="password" name="Password" class="form-control input-lg associate-external-authentication-input" placeholder="@Resource.Password">
+                </div>
+
+                <div class="form-group form-group-container modal-links" style="margin-bottom:20px;">
+                    <button type="submit" id="associate-external-authentication-submit-btn" class="btn btn-primary associate-external-authentication-input" style="font-size:13px;">
+                        <i id="associate-external-authentication-icon" class="fa fa-check" style="line-height:inherit; min-width:14px; margin-right:3px;"></i><span id="associate-external-authentication-spin" style="display:none;" class="spinner-button-w-text"></span>@Resource.Save
+                    </button>
+                </div>
+
+                <input type="hidden" value="@Model.ProviderName" name="ProviderName" />
+                <input type="hidden" value="@Model.ProviderKey" name="ProviderKey" />
+                <input type="hidden" value="@Model.ReturnURL" name="ReturnURL" />
+            </form>
+        </div>
+    </div>
+
+    <p style="color: #428bca;">
+        <a href="/Home/Index" class="message-link-title">@Resource.Back_to_start</a>
+    </p>
+</div>
+
+@section Footer{
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}

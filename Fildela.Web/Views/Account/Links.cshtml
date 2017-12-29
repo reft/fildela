@@ -1,0 +1,127 @@
+﻿@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div id="account-links-content">
+    @Html.Partial("~/Views/Account/Partials/_LinksContentPartial.cshtml")
+</div>
+
+@section Footer{
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}
+
+@section Modals {
+    @Html.Partial("~/Views/Account/Modals/_LinksModals.cshtml")
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        onload = function () {
+            mySorted = new SortedTable();
+        };
+
+        $(function () {
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+
+            var time = year + "/" + month + "/" + day + " " + hour + ':' + minute + ':' + second;
+
+            $('#account-links-create-currenttime').val(time);
+
+            var startdate = new Date().toString();
+
+            var enddate = new Date().getFullYear() + 2
+            enddate = enddate.toString();
+
+            $('#account-links-create-startdate').datetimepicker({
+                locale: 'sv',
+                minDate: startdate,
+                maxDate: enddate,
+                ignoreReadonly: true,
+                showClose: true,
+                toolbarPlacement: 'bottom'
+            });
+
+            $('#account-links-create-enddate').datetimepicker({
+                locale: 'sv',
+                minDate: startdate,
+                maxDate: enddate,
+                ignoreReadonly: true,
+                showClose: true,
+                toolbarPlacement: 'bottom'
+            });
+        });
+
+        //Start
+        $("#account-links-create-startdate").on("dp.show", function (e) {
+            $('#account-links-create-startdate').addClass('dp-open');
+
+            $('#modal-account-links-file-create-form').formValidation('revalidateField', 'DateStart');
+        });
+
+        $("#account-links-create-startdate").on("dp.hide", function (e) {
+            $('#account-links-create-startdate').removeClass('dp-open');
+        });
+
+        //End
+        $("#account-links-create-enddate").on("dp.show", function (e) {
+            $('#account-links-create-enddate').addClass('dp-open');
+
+            $('#modal-account-links-file-create-form').formValidation('revalidateField', 'DateExpires');
+        });
+
+        $("#account-links-create-enddate").on("dp.hide", function (e) {
+            $('#account-links-create-enddate').removeClass('dp-open');
+        });
+
+        $('#account-links-create-file').select2({
+            allowClear: false,
+            placeholder: $('#account-links-create-file').data('placeholder'),
+            'locale': 'sv',
+            ajax: {
+                url: '/Account/GetFiles',
+                type: 'GET',
+                cache: false,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: function (term) {
+                    return {
+                        q: term
+                    }
+                },
+                results: function (data) {
+                    return { results: data };
+                }
+            },
+            escapeMarkup: function (m) { return m; }
+        }).on('change', function (e) {
+            var file = $(this).select2('data'),
+            jsonFile = ko.toJSON(file);
+
+            $('#account-links-create-file-json').val(jsonFile);
+
+            $('#modal-account-links-file-create-form').formValidation('revalidateField', 'File');
+        }).on('select2-open', function () {
+            //Set border color if error or success
+            var selectValidation = $('#account-links-create-form-group-container-file').find('.form-control-feedback');
+            if ($(selectValidation).hasClass('glyphicon-ok')) {
+                var selectBorder = $('.select2-drop-active');
+                $(selectBorder).css('border-left', '1px solid #3c763d');
+                $(selectBorder).css('border-right', '1px solid #3c763d');
+                $(selectBorder).css('border-bottom', '1px solid #3c763d');
+            }
+            else if ($(selectValidation).hasClass('glyphicon-remove')) {
+                var selectBorder = $('.select2-drop-active');
+                $(selectBorder).css('border-left', '1px solid #a94442');
+                $(selectBorder).css('border-right', '1px solid #a94442');
+                $(selectBorder).css('border-bottom', '1px solid #a94442');
+            }
+        });
+    </script>
+}

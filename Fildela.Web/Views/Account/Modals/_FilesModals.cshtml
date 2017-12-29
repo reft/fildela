@@ -1,0 +1,215 @@
+﻿@model Fildela.Web.Models.AccountModels.FilesViewModel
+
+<!-- Modal account, files, upload -->
+<div class="modal" id="modal-account-files-upload" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 id="modal-account-files-upload-title" data-idle="@Resource.Create_file" data-working="@Resource.Uploading" class="modal-title">@Resource.Create_file</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-files-upload-error-container" style="display: none;" data-cancel="@Resource.Upload_aborted" data-length="@Resource.File_name_must_be_between_1_and_150_characters_long" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again" data-errorapi="@Resource.HTML5_is_not_fully_supported_in_your_browser">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-files-upload-success-container" style="display: none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12" id="modal-account-files-upload-container-idle">
+                    <div id="modal-account-files-upload-pretext">
+                        <div class="note-default" style="margin-top:15px;">
+                            @Resource.You_can_only_upload [<span style="color: #e74c3c;">1</span>] @Resource.File_at_a_time
+                            <i class="fa fa-info-circle pull-right note-icon-info"></i>
+                        </div>
+
+                        @if (Model != null)
+                        {
+                            <div class="note-default" style="margin-top:10px;">
+                                @Resource.The_file_size_can_be_a_maximum_of [<span id="modal-account-files-upload-stored-bytes" style="color: #e74c3c;">@UnitConverterExtensions.SubtractAndConvertByteToASuitableUnit(Model.AllowedStoredBytes, Model.StoredBytes)</span>].
+                                <i class="fa fa-info-circle pull-right note-icon-info"></i>
+                            </div>
+                        }
+                        <div class="note-default" style="margin-top:10px;">
+                            @Resource.The_file_is_saved [<span style="color: #e74c3c;">@Resource.Permanently</span>] @Resource.In_your_account
+                            <i class="fa fa-info-circle pull-right note-icon-info"></i>
+                        </div>
+                    </div>
+
+                    <a class="file-input-wrapper btn btn-primary btn-lg btn-block modal-btn-spin" id="modal-account-files-upload-file-input-wrapper">
+                        <p style="display:inline-block; margin-bottom:0px;">@Resource.Select_file</p>
+                        <input type="file" id="modal-account-files-upload-file-input">
+                        <span id="modal-account-files-upload-file-spin" class="spinner-modal" style="display:none;"></span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12" id="modal-account-files-upload-container-working" style="display:none;">
+                    <div class="progress" style="margin-top:6px; margin-bottom:10px;">
+                        <div id="modal-account-files-upload-progressbar" class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="5" aria-valuemax="100" style="margin-bottom:5px;">
+                            <span id="#modal-account-files-upload-progressbar-information">0%</span>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <button disabled id="modal-account-files-upload-cancel-upload-btn" type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                        <p style="display:inline-block; margin-bottom:0px;">@Resource.Cancel</p>
+                        <span id="modal-account-files-upload-complete-file-spin" class="spinner-modal" style="display:none;"></span>
+                    </button>
+                </div>
+
+                <div class="modal-footer" id="modal-account-files-upload-footer" style="border: 0px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, files, create folder -->
+<div class="modal" id="modal-account-files-folder" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Create_folder</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, files, share -->
+<div class="modal modal-account-from-dropdown" id="modal-account-files-share" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Share_file</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, files, remove -->
+<div class="modal modal-account-from-dropdown" id="modal-account-files-remove" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title" id="modal-account-files-remove-title" data-text1="@Resource.Remove_file" data-text2="@Resource.Remove_files">@Resource.Remove_files</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-files-remove-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-files-remove-success-container" style="display: none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div id="modal-account-files-remove-container-before">
+                        <form id="modal-account-files-remove-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            <p class="modal-content-text" id="modal-account-files-remove-content-text" data-text1="@Resource.Are_you_sure_you_want_to_remove" data-text2="@Resource.Files2" data-text3="@Resource.And_related_links" data-text4="@Resource.Are_you_sure_you_want_to_delete_the_selected_files_and_the_associated_links" style="margin-bottom:4px;">
+                                @Resource.Are_you_sure_you_want_to_delete_the_selected_files_and_the_associated_links
+                            </p>
+
+                            <div class="form-group form-group-container">
+                                <button id="modal-account-files-remove-btn" type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                                    <p style="display:inline-block; margin-bottom:0px;">@Resource.Remove</p>
+                                    <span id="modal-account-files-remove-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="modal-account-files-remove-container-after" style="display:none; padding:0px;">
+                        <div class="form-group form-group-container" style="padding:0px;">
+                            <button type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin" data-dismiss="modal">
+                                <p style="display:inline-block; margin-bottom:0px;" id="modal-account-files-remove-closing-btn" data-message="@Resource.Closing">@Resource.Closing 5</p>
+                                <span id="modal-account-files-remove-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, files, empty -->
+<div class="modal" id="modal-account-files-empty" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Empty_files</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-files-empty-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-files-empty-success-container" style="display: none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div id="modal-account-files-empty-container-before">
+                        <form id="modal-account-files-empty-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            <p class="modal-content-text" id="modal-account-files-empty-content-text" style="padding:5px 0px 0px 0px; margin-bottom:4px;">
+                                @Resource.Are_you_sure_you_want_to_remove_all_your_files_and_the_associated_links
+                            </p>
+
+                            <div class="form-group form-group-container">
+                                <button id="modal-account-files-empty-btn" type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                                    <p style="display:inline-block; margin-bottom:0px;">@Resource.Remove</p>
+                                    <span id="modal-account-files-empty-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="modal-account-files-empty-container-after" style="display:none; padding:0px;">
+                        <div class="form-group form-group-container" style="padding:0px;">
+                            <button type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin" data-dismiss="modal">
+                                <p style="display:inline-block; margin-bottom:0px;" id="modal-account-files-empty-closing-btn" data-message="@Resource.Closing">@Resource.Closing 5</p>
+                                <span id="modal-account-files-empty-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, files, preview -->
+<div class="modal" id="modal-account-files-preview" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Preview_file</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>

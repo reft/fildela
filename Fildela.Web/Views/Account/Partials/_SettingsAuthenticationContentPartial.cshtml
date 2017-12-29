@@ -1,0 +1,43 @@
+﻿@model Fildela.Web.Models.AccountModels.SettingsViewModel
+
+<table class="noselect table table-condensed table-bordered" style="border-color: #428bca; margin:0px;">
+    <thead class="noselect">
+        <tr style="color:#fff; cursor:default;">
+            <th colspan="2" class="account-table-settings-header" style="border-left:1px; border-right:1px;">@Resource.Provider<i class="fa fa-key pull-right" style="line-height: 20px"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.UserAuthenticationProviders != null && Model.UserAuthenticationProviders.Count() > 0)
+        {
+            foreach (var item in Model.UserAuthenticationProviders)
+            {
+                <tr class="account-table-tr" style="display: table-row;">
+
+                    <td><span class="@item.IconClass" style="margin-right:10px; min-width:12px; color:@item.IconColor"></span>@item.Name</td>
+
+                    @if (item.IsLinked)
+                    {
+                        <td style="width:84px;">
+                            <button class="btn btn-sm btn-danger account-settings-remove-authentication-provider-btn" data-name="@item.Name" data-id="@item.AuthenticationProviderID" data-color="@item.IconColor">@Resource.Remove</button>
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="width:87px;">
+                            <a href="/user/ExternalAuthentication?provider=@item.Name&returnURL=/account/settings?Tab=3" class="btn btn-sm btn-success account-settings-insert-authentication-provider-btn" style="width:62px;">
+                                <span class="account-settings-insert-authentication-provider-text">@Resource.Add</span>
+                                <span class="spinner-modal spinner-button-default" style="display:none;"></span>
+                            </a>
+                        </td>
+                    }
+                </tr>
+            }
+        }
+        else
+        {
+            <tr class="account-table-tr" style="display: table-row;">
+                <td colspan="2">@Resource.No_third_party_authentication_found</td>
+            </tr>
+        }
+    </tbody>
+</table>

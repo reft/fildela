@@ -1,0 +1,97 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fildela.Web", "Fildela.Web\Fildela.Web.csproj", "{5C317796-E6D7-4A3F-8D77-09BB2996C786}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fildela.Icons", "Fildela.Icons\Fildela.Icons.csproj", "{E3F894F1-1B24-4255-8EBF-56A404894725}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fildela.InitDB", "Fildela.InitDB\Fildela.InitDB.csproj", "{544AFD53-3380-4035-A9CB-C681BFA78476}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fildela.Worker", "Fildela.Worker\Fildela.Worker.csproj", "{C64963C7-7FAE-4CF8-94D3-F77C6DC116B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fildela.Business", "Fildela.Business\Fildela.Business.csproj", "{71073196-01DF-4D4A-99FE-1E1E06383CC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fildela.Data", "Fildela.Data\Fildela.Data.csproj", "{587B7E37-CAEF-4296-9AFF-2E235E108A82}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "Fildela.Web.Azure", "Fildela.Web.Azure\Fildela.Web.Azure.ccproj", "{4DEE8015-5616-40AD-8C95-41F9204F5C83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fildela.Resources", "Fildela.Resources\Fildela.Resources.csproj", "{EFF8EADB-11A3-42A2-8D09-3FDFDA7624A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C317796-E6D7-4A3F-8D77-09BB2996C786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C317796-E6D7-4A3F-8D77-09BB2996C786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C317796-E6D7-4A3F-8D77-09BB2996C786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C317796-E6D7-4A3F-8D77-09BB2996C786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3F894F1-1B24-4255-8EBF-56A404894725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3F894F1-1B24-4255-8EBF-56A404894725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3F894F1-1B24-4255-8EBF-56A404894725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3F894F1-1B24-4255-8EBF-56A404894725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{544AFD53-3380-4035-A9CB-C681BFA78476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{544AFD53-3380-4035-A9CB-C681BFA78476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{544AFD53-3380-4035-A9CB-C681BFA78476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{544AFD53-3380-4035-A9CB-C681BFA78476}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C64963C7-7FAE-4CF8-94D3-F77C6DC116B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64963C7-7FAE-4CF8-94D3-F77C6DC116B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64963C7-7FAE-4CF8-94D3-F77C6DC116B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64963C7-7FAE-4CF8-94D3-F77C6DC116B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71073196-01DF-4D4A-99FE-1E1E06383CC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71073196-01DF-4D4A-99FE-1E1E06383CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71073196-01DF-4D4A-99FE-1E1E06383CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71073196-01DF-4D4A-99FE-1E1E06383CC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{587B7E37-CAEF-4296-9AFF-2E235E108A82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587B7E37-CAEF-4296-9AFF-2E235E108A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587B7E37-CAEF-4296-9AFF-2E235E108A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587B7E37-CAEF-4296-9AFF-2E235E108A82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DEE8015-5616-40AD-8C95-41F9204F5C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DEE8015-5616-40AD-8C95-41F9204F5C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DEE8015-5616-40AD-8C95-41F9204F5C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DEE8015-5616-40AD-8C95-41F9204F5C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFF8EADB-11A3-42A2-8D09-3FDFDA7624A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFF8EADB-11A3-42A2-8D09-3FDFDA7624A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFF8EADB-11A3-42A2-8D09-3FDFDA7624A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFF8EADB-11A3-42A2-8D09-3FDFDA7624A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1D06074-224F-4117-8645-39E6DD01FC48}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://qreftan.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Fildela.Icons\\Fildela.Icons.csproj
+		SccProjectName1 = Fildela.Icons
+		SccLocalPath1 = Fildela.Icons
+		SccProjectUniqueName2 = Fildela.Web\\Fildela.Web.csproj
+		SccProjectName2 = Fildela.Web
+		SccLocalPath2 = Fildela.Web
+		SccProjectUniqueName3 = Fildela.InitDB\\Fildela.InitDB.csproj
+		SccProjectName3 = Fildela.InitDB
+		SccLocalPath3 = Fildela.InitDB
+		SccProjectUniqueName4 = Fildela.Web.Azure\\Fildela.Web.Azure.ccproj
+		SccProjectName4 = Fildela.Web.Azure
+		SccLocalPath4 = Fildela.Web.Azure
+		SccProjectUniqueName5 = Fildela.Data\\Fildela.Data.csproj
+		SccProjectName5 = Fildela.Data
+		SccLocalPath5 = Fildela.Data
+		SccProjectUniqueName6 = Fildela.Business\\Fildela.Business.csproj
+		SccProjectName6 = Fildela.Business
+		SccLocalPath6 = Fildela.Business
+		SccProjectUniqueName7 = Fildela.Worker\\Fildela.Worker.csproj
+		SccProjectName7 = Fildela.Worker
+		SccLocalPath7 = Fildela.Worker
+		SccProjectUniqueName8 = Fildela.Resources\\Fildela.Resources.csproj
+		SccProjectName8 = Fildela.Resources
+		SccLocalPath8 = Fildela.Resources
+	EndGlobalSection
+EndGlobal

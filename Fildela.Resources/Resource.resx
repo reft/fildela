@@ -1,0 +1,1776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Access_denied" xml:space="preserve">
+    <value>Nekat tillträde</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>konto</value>
+  </data>
+  <data name="Account_deletion_complete" xml:space="preserve">
+    <value>Radering av konto avslutad</value>
+  </data>
+  <data name="Account_owner" xml:space="preserve">
+    <value>Kontoägare</value>
+  </data>
+  <data name="Activate_and_link_your_guestaccount" xml:space="preserve">
+    <value>Aktivera och länka ditt gästkonto</value>
+  </data>
+  <data name="Activate_your_guestaccount" xml:space="preserve">
+    <value>Aktivera ditt gästkonto</value>
+  </data>
+  <data name="Activate_your_useraccount" xml:space="preserve">
+    <value>Aktivera ditt användarkonto</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktiva</value>
+  </data>
+  <data name="Active_users" xml:space="preserve">
+    <value>Aktiva användare</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Lägg till</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Administration</value>
+  </data>
+  <data name="After_uploading_you_get_to_choose_how_you_want_to_share_the_file" xml:space="preserve">
+    <value>Efter uppladdning får du välja hur du vill dela filen.</value>
+  </data>
+  <data name="After_you_have_clicked_on_the_link_and_activated_your_guest_account_an_email_will_be_sent_to_you_with_new_login_information" xml:space="preserve">
+    <value>Efter att du har klickat på länken och aktiverat ditt gästkonto kommer ett e-postmeddelande skickas till dig med nya inloggningsuppgifter.</value>
+  </data>
+  <data name="All_content_on_this_account_including_linked_guestaccounts_will_be_deleted_and_you_will_no_longer_be_able_to_log_in" xml:space="preserve">
+    <value>Allt innehåll på detta konto, inklusive länkade gästkonton, kommer att tas bort och du kommer längre inte att kunna logga in.</value>
+  </data>
+  <data name="All_content_on_this_account_including_linked_guestaccounts_will_be_resetted" xml:space="preserve">
+    <value>Allt innehåll på detta konto, inklusive länkade gästkonton, kommer att återställas.</value>
+  </data>
+  <data name="All_rights_reserved" xml:space="preserve">
+    <value>All rights reserved</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>och</value>
+  </data>
+  <data name="And_related_links" xml:space="preserve">
+    <value>och tillhörande länkar?</value>
+  </data>
+  <data name="Anonymous" xml:space="preserve">
+    <value>Anonym</value>
+  </data>
+  <data name="An_activation_email_has_already_been_sent_to_your_email" xml:space="preserve">
+    <value>Ett aktiveringsmail har redan skickats till din e-postadress.</value>
+  </data>
+  <data name="An_activation_email_has_been_sent_to_the_specified_the_email_address" xml:space="preserve">
+    <value>Ett aktiveringsmail har skickats till den angivna e-postadressen.</value>
+  </data>
+  <data name="An_activation_email_has_been_sent_to_your_email" xml:space="preserve">
+    <value>Ett aktiveringsmail har skickats till din e-postadress.</value>
+  </data>
+  <data name="An_email_with_a_new_password_has_been_sent_to_your_email_address" xml:space="preserve">
+    <value>Ett e-postmeddelande med ett nytt lösenord har skickats till din e-postadress.</value>
+  </data>
+  <data name="An_unexpected_error_has_occured_Please_try_again_later" xml:space="preserve">
+    <value>Ett oväntat fel har inträffat. Vänligen försök igen.</value>
+  </data>
+  <data name="An_unexpected_error_has_occurred" xml:space="preserve">
+    <value>Ett oväntat fel har inträffat.</value>
+  </data>
+  <data name="An_unexpected_error_has_occurred_Please_try_again" xml:space="preserve">
+    <value>Ett oväntat fel har inträffat. Vänligen försök igen.</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_delete_the_selected_download_links" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort de valda nedladdningslänkarna?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_delete_the_selected_events" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort de valda händelserna?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_delete_the_selected_files_and_the_associated_links" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort de valda filerna och tillhörande länkar?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_delete_the_selected_guest_account" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort det valda gästkontot?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_delete_the_selected_guest_accounts" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort de valda gästkontona?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_delete_the_selected_links" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort de valda länkarna?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_delete_the_selected_logs" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort de valda loggarna?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_delete_your_account" xml:space="preserve">
+    <value>Är du säker på att du vill radera ditt konto?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_remove" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_remove_all_your_download_links" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort alla dina nedladdningslänkar?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_remove_all_your_events" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort alla dina händelser?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_remove_all_your_files_and_the_associated_links" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort alla dina filer och tillhörande länkar?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_remove_all_your_guest_accounts" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort alla dina gästkonton?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_remove_all_your_links" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort alla dina länkar?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_remove_all_your_logs" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort alla dina loggar?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_remove_the_inactive_guest_account" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort det inaktiva gästkontot?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_remove_the_link" xml:space="preserve">
+    <value>Är du säker på att du vill ta bort länken?</value>
+  </data>
+  <data name="Are_you_sure_you_want_to_reset_your_account" xml:space="preserve">
+    <value>Är du säker på att du vill återställa ditt konto?</value>
+  </data>
+  <data name="August" xml:space="preserve">
+    <value>Augusti</value>
+  </data>
+  <data name="Authentication" xml:space="preserve">
+    <value>Autentisering</value>
+  </data>
+  <data name="A_new_password_has_been_sent_to_your_email_address" xml:space="preserve">
+    <value>Ett nytt lösenord har skickats till din e-postadress.</value>
+  </data>
+  <data name="Back_to_start" xml:space="preserve">
+    <value>Tillbaka till start</value>
+  </data>
+  <data name="Box" xml:space="preserve">
+    <value>Box</value>
+  </data>
+  <data name="By" xml:space="preserve">
+    <value>Av</value>
+  </data>
+  <data name="Bytes" xml:space="preserve">
+    <value>Bytes</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="Choose_a_file_that_you_would_like_to_upload" xml:space="preserve">
+    <value>Välj en fil som du vill ladda upp.</value>
+  </data>
+  <data name="Click_on_the_link_below_to_active_your_access" xml:space="preserve">
+    <value>Klicka på länken nedan för att aktivera din åtkomst.</value>
+  </data>
+  <data name="Click_on_the_link_below_to_active_your_guestaccount" xml:space="preserve">
+    <value>Klicka på länken nedan för att aktivera ditt gästkonto:</value>
+  </data>
+  <data name="Click_on_the_link_below_to_active_your_useraccount" xml:space="preserve">
+    <value>Klicka på länken nedan för att aktivera ditt användarkonto:</value>
+  </data>
+  <data name="Click_on_the_link_below_to_reset_your_password" xml:space="preserve">
+    <value>Klicka på länken nedan för att återställa ditt lösenord:</value>
+  </data>
+  <data name="Click_on_the_link_below_to_sign_in_and_change_to_a_new_password" xml:space="preserve">
+    <value>Klicka på länken nedan för att logga in och ändra till ett nytt lösenord:</value>
+  </data>
+  <data name="Click_on_the_link_below_to_start_your_download" xml:space="preserve">
+    <value>Klicka på länken nedan för att starta nedladdningen:</value>
+  </data>
+  <data name="Closing" xml:space="preserve">
+    <value>Stänger..</value>
+  </data>
+  <data name="Configure" xml:space="preserve">
+    <value>Konfigurera</value>
+  </data>
+  <data name="Confirm_email_address" xml:space="preserve">
+    <value>Bekräfta e-postadress</value>
+  </data>
+  <data name="Confirm_new_email_address" xml:space="preserve">
+    <value>Bekräfta ny e-postadress</value>
+  </data>
+  <data name="Confirm_new_password" xml:space="preserve">
+    <value>Bekräfta nytt lösenord</value>
+  </data>
+  <data name="Confirm_password" xml:space="preserve">
+    <value>Bekräfta lösenord</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Anslutna</value>
+  </data>
+  <data name="Connected_users" xml:space="preserve">
+    <value>Anslutna användare</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Contact2" xml:space="preserve">
+    <value>kontakta</value>
+  </data>
+  <data name="Contact_us" xml:space="preserve">
+    <value>Kontakta oss</value>
+  </data>
+  <data name="Control_panel" xml:space="preserve">
+    <value>Kontrollpanel</value>
+  </data>
+  <data name="Cookies" xml:space="preserve">
+    <value>Cookies</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="Copy_download_link" xml:space="preserve">
+    <value>Kopiera nedladdningslänk</value>
+  </data>
+  <data name="Copy_link" xml:space="preserve">
+    <value>Kopiera länk</value>
+  </data>
+  <data name="Could_not_find_authentication_provider_Please_try_again" xml:space="preserve">
+    <value>Kunde inte hitta autentisering leverantör. Vänligen försök igen.</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Skapa</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Skapad</value>
+  </data>
+  <data name="Create_account" xml:space="preserve">
+    <value>Skapa konto</value>
+  </data>
+  <data name="Create_account2" xml:space="preserve">
+    <value>skapa konto</value>
+  </data>
+  <data name="Create_download_link" xml:space="preserve">
+    <value>Skapa nedladdningslänk</value>
+  </data>
+  <data name="Create_file" xml:space="preserve">
+    <value>Skapa fil</value>
+  </data>
+  <data name="Create_folder" xml:space="preserve">
+    <value>Skapa mapp</value>
+  </data>
+  <data name="Create_guest_account" xml:space="preserve">
+    <value>Skapa gästkonto</value>
+  </data>
+  <data name="Create_link" xml:space="preserve">
+    <value>Skapa länk</value>
+  </data>
+  <data name="Create_link_to_file" xml:space="preserve">
+    <value>Skapa länk till fil</value>
+  </data>
+  <data name="Create_link_to_folder" xml:space="preserve">
+    <value>Skapa länk till mapp</value>
+  </data>
+  <data name="Create_news" xml:space="preserve">
+    <value>Skapa nyhet</value>
+  </data>
+  <data name="Current_password" xml:space="preserve">
+    <value>Nuvarande lösenord</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Radera</value>
+  </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>Raderad</value>
+  </data>
+  <data name="Deleted2" xml:space="preserve">
+    <value>raderad.</value>
+  </data>
+  <data name="Deleted3" xml:space="preserve">
+    <value>raderade.</value>
+  </data>
+  <data name="Delete_account" xml:space="preserve">
+    <value>Radera konto</value>
+  </data>
+  <data name="Deleting_of" xml:space="preserve">
+    <value>Radering av</value>
+  </data>
+  <data name="Deleting_of_file" xml:space="preserve">
+    <value>Radering av fil</value>
+  </data>
+  <data name="Deleting_of_files" xml:space="preserve">
+    <value>Radering av filer</value>
+  </data>
+  <data name="Deleting_of_files_and_links" xml:space="preserve">
+    <value>Radering av filer och länkar</value>
+  </data>
+  <data name="Deleting_of_file_and_link" xml:space="preserve">
+    <value>Radering av fil och länk</value>
+  </data>
+  <data name="Deleting_of_guest_account" xml:space="preserve">
+    <value>Radering av gästkonto</value>
+  </data>
+  <data name="Deleting_of_guest_accounts" xml:space="preserve">
+    <value>Radering av gästkonton</value>
+  </data>
+  <data name="Deleting_of_link" xml:space="preserve">
+    <value>Radering av länk</value>
+  </data>
+  <data name="Deleting_of_links" xml:space="preserve">
+    <value>Radering av länkar</value>
+  </data>
+  <data name="Deleting_of_log" xml:space="preserve">
+    <value>Radering av logg</value>
+  </data>
+  <data name="Deleting_of_logs" xml:space="preserve">
+    <value>Radering av loggar</value>
+  </data>
+  <data name="Deletion_of_third_party_authentication" xml:space="preserve">
+    <value>Radering av  tredjepart-autentisering</value>
+  </data>
+  <data name="Depending_on_what_youre_after_there_are_several_different_ways_that_you_can_store_and_share_files" xml:space="preserve">
+    <value>Beroende på vad du är ute efter så finns det flera olika sätt som du kan spara och dela filer på.</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beskrivning</value>
+  </data>
+  <data name="Developer" xml:space="preserve">
+    <value>Utvecklare</value>
+  </data>
+  <data name="Directly" xml:space="preserve">
+    <value>Direkt</value>
+  </data>
+  <data name="Display" xml:space="preserve">
+    <value>Visning</value>
+  </data>
+  <data name="Display_format" xml:space="preserve">
+    <value>Visningsformat</value>
+  </data>
+  <data name="Downloadlink" xml:space="preserve">
+    <value>Nedladdningslänk</value>
+  </data>
+  <data name="Downloads" xml:space="preserve">
+    <value>Nedladdningar</value>
+  </data>
+  <data name="Download_links_has_been_removed" xml:space="preserve">
+    <value>Nedladdningslänkarna har blivit borttagna.</value>
+  </data>
+  <data name="Download_link_created" xml:space="preserve">
+    <value>Nedladdningslänk skapad</value>
+  </data>
+  <data name="Download_link_has_been_removed" xml:space="preserve">
+    <value>Nedladdningslänken har blivit borttagen.</value>
+  </data>
+  <data name="Download_link_received" xml:space="preserve">
+    <value>Nedladdningslänk mottagen</value>
+  </data>
+  <data name="Download_of_file" xml:space="preserve">
+    <value>Nedladdning av fil</value>
+  </data>
+  <data name="Do_you_want_to" xml:space="preserve">
+    <value>Vill du</value>
+  </data>
+  <data name="Editing_by_file" xml:space="preserve">
+    <value>Editering av fil</value>
+  </data>
+  <data name="Edit_email" xml:space="preserve">
+    <value>Redigera e-postadress</value>
+  </data>
+  <data name="Edit_expirationdate_for_download_link" xml:space="preserve">
+    <value>Redigera utgångsdatum för nedladdningslänk</value>
+  </data>
+  <data name="Edit_expirationdate_for_guest_account" xml:space="preserve">
+    <value>Redigera utgångsdatum för gästkonto</value>
+  </data>
+  <data name="Edit_expirationdate_for_link" xml:space="preserve">
+    <value>Redigera utgångsdatum för länk</value>
+  </data>
+  <data name="Edit_filename" xml:space="preserve">
+    <value>Redigera filnamn</value>
+  </data>
+  <data name="Edit_password" xml:space="preserve">
+    <value>Redigera lösenord</value>
+  </data>
+  <data name="Edit_rights_for_guestaccount" xml:space="preserve">
+    <value>Redigera rättigheter för gästkonto</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-post</value>
+  </data>
+  <data name="Emailaddress" xml:space="preserve">
+    <value>E-postadress</value>
+  </data>
+  <data name="Email_address" xml:space="preserve">
+    <value>E-postadress</value>
+  </data>
+  <data name="Email_is_already_in_use" xml:space="preserve">
+    <value>E-postadressen används redan.</value>
+  </data>
+  <data name="Email_us" xml:space="preserve">
+    <value>Maila oss</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>Töm</value>
+  </data>
+  <data name="Empty_download_links" xml:space="preserve">
+    <value>Töm nedladdningslänkar</value>
+  </data>
+  <data name="Empty_events" xml:space="preserve">
+    <value>Töm händelser</value>
+  </data>
+  <data name="Empty_files" xml:space="preserve">
+    <value>Töm filer</value>
+  </data>
+  <data name="Empty_guest_accounts" xml:space="preserve">
+    <value>Töm gästkonton</value>
+  </data>
+  <data name="Empty_links" xml:space="preserve">
+    <value>Töm länkar</value>
+  </data>
+  <data name="Empty_logs" xml:space="preserve">
+    <value>Töm loggar</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Avsluta</value>
+  </data>
+  <data name="Ends" xml:space="preserve">
+    <value>Slutar</value>
+  </data>
+  <data name="End_date" xml:space="preserve">
+    <value>Slutdatum</value>
+  </data>
+  <data name="End_date1" xml:space="preserve">
+    <value>Slutdatum</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Error_message" xml:space="preserve">
+    <value>Felmeddelande:</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Händelse</value>
+  </data>
+  <data name="Event2" xml:space="preserve">
+    <value>händelse</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>händelser</value>
+  </data>
+  <data name="Events_has_been_removed" xml:space="preserve">
+    <value>Händelserna har blivit borttagna.</value>
+  </data>
+  <data name="Event_has_been_removed" xml:space="preserve">
+    <value>Händelsen har blivit borttagen.</value>
+  </data>
+  <data name="Existing_guest_account_has_been_linked_with" xml:space="preserve">
+    <value>Befintligt gästkonto har länkats med</value>
+  </data>
+  <data name="Expiration_date" xml:space="preserve">
+    <value>Utgångsdatum</value>
+  </data>
+  <data name="Expires" xml:space="preserve">
+    <value>Utgår</value>
+  </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Fildelase_takes_no_responsability_for_the_uploading_saving_and_sharing" xml:space="preserve">
+    <value>Fildela.se tar inget ansvar för det som laddas upp, sparas och delas.</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>fil</value>
+  </data>
+  <data name="File2" xml:space="preserve">
+    <value>Fil</value>
+  </data>
+  <data name="FileEdit" xml:space="preserve">
+    <value>Fil redigering</value>
+  </data>
+  <data name="FileRead" xml:space="preserve">
+    <value>Fil läsning</value>
+  </data>
+  <data name="Files" xml:space="preserve">
+    <value>Filer</value>
+  </data>
+  <data name="Files2" xml:space="preserve">
+    <value>filer</value>
+  </data>
+  <data name="Fileshare_quick_easy_and_all_without_cost" xml:space="preserve">
+    <value>Fildela snabbt, enkelt och helt utan kostnad!</value>
+  </data>
+  <data name="Files_and_links_has_been_removed" xml:space="preserve">
+    <value>Filerna och länkarna har blivit borttagna.</value>
+  </data>
+  <data name="Files_has_been_removed" xml:space="preserve">
+    <value>Filerna har blivit borttagna.</value>
+  </data>
+  <data name="FileWrite" xml:space="preserve">
+    <value>Fil skrivning</value>
+  </data>
+  <data name="File_and_link_has_been_removed" xml:space="preserve">
+    <value>Filen och länken har blivit borttagen.</value>
+  </data>
+  <data name="File_at_a_time" xml:space="preserve">
+    <value>fil i taget.</value>
+  </data>
+  <data name="File_has_been_removed" xml:space="preserve">
+    <value>Filen har blivit borttagen.</value>
+  </data>
+  <data name="File_name" xml:space="preserve">
+    <value>Filnamn</value>
+  </data>
+  <data name="File_name_must_be_between_1_and_100_characters_long" xml:space="preserve">
+    <value>Filnamnet måste vara mellan 1 och 100 tecken långt.</value>
+  </data>
+  <data name="File_name_must_be_between_1_and_150_characters_long" xml:space="preserve">
+    <value>Filnamnet måste vara mellan 1 och 150 tecken långt.</value>
+  </data>
+  <data name="File_share" xml:space="preserve">
+    <value>Fildela</value>
+  </data>
+  <data name="File_share_now" xml:space="preserve">
+    <value>Fildela nu</value>
+  </data>
+  <data name="File_uploaded" xml:space="preserve">
+    <value>Fil uppladdad.</value>
+  </data>
+  <data name="Fill_in_your_email_address_and_password_to_link_your_existing_account_with" xml:space="preserve">
+    <value>Fyll i e-postadress och lösenord för att länka ditt existerande konto med</value>
+  </data>
+  <data name="Filter_on" xml:space="preserve">
+    <value>Filtrera på</value>
+  </data>
+  <data name="Filter_on_category" xml:space="preserve">
+    <value>Filtrera på kategori</value>
+  </data>
+  <data name="First_name" xml:space="preserve">
+    <value>Förnamn</value>
+  </data>
+  <data name="Floor" xml:space="preserve">
+    <value>vån</value>
+  </data>
+  <data name="Folder" xml:space="preserve">
+    <value>Mapp</value>
+  </data>
+  <data name="Follow_us" xml:space="preserve">
+    <value>Följ oss</value>
+  </data>
+  <data name="Forgot_password" xml:space="preserve">
+    <value>Glömt lösenord</value>
+  </data>
+  <data name="For_those_who_want_more_functionality_theres_the_option" xml:space="preserve">
+    <value>För dig som vill ha mer funktionalitet finns alternativet</value>
+  </data>
+  <data name="Function" xml:space="preserve">
+    <value>Funktioner</value>
+  </data>
+  <data name="Generally" xml:space="preserve">
+    <value>Allmänt</value>
+  </data>
+  <data name="Get" xml:space="preserve">
+    <value>Hämta</value>
+  </data>
+  <data name="Go_back" xml:space="preserve">
+    <value>Tillbaka</value>
+  </data>
+  <data name="Guest" xml:space="preserve">
+    <value>Gäst</value>
+  </data>
+  <data name="Guestaccount_created" xml:space="preserve">
+    <value>Gästkonto skapat</value>
+  </data>
+  <data name="Guest_account" xml:space="preserve">
+    <value>gästkonto</value>
+  </data>
+  <data name="Guest_accounts" xml:space="preserve">
+    <value>Gästkonton</value>
+  </data>
+  <data name="Guest_accounts2" xml:space="preserve">
+    <value>gästkonton</value>
+  </data>
+  <data name="Guest_accounts_has_been_removed" xml:space="preserve">
+    <value>Gästkonton har blivit borttagna.</value>
+  </data>
+  <data name="Guest_account_activated" xml:space="preserve">
+    <value>Gästkonto aktiverat</value>
+  </data>
+  <data name="Guest_account_has_been_activated_and_linked" xml:space="preserve">
+    <value>Gästkonto har aktiverats och länkats</value>
+  </data>
+  <data name="Guest_account_has_been_created_and_linked_with" xml:space="preserve">
+    <value>Gästkonto har skapats och länkats med</value>
+  </data>
+  <data name="Guest_account_has_been_linked" xml:space="preserve">
+    <value>Gästkonto har länkats</value>
+  </data>
+  <data name="Guest_account_has_been_removed" xml:space="preserve">
+    <value>Gästkontot har blivit borttagen.</value>
+  </data>
+  <data name="Guest_to" xml:space="preserve">
+    <value>Gäst till</value>
+  </data>
+  <data name="Has_been_deleted" xml:space="preserve">
+    <value>har raderats.</value>
+  </data>
+  <data name="Here_are_your_files_saved_in_a_permanent_and_password_protected_account" xml:space="preserve">
+    <value>Här sparas dina filer i ett permanent och lösenordsskyddat konto.</value>
+  </data>
+  <data name="Here_is_your_new_password_along_with_the_user_type_and_user_name" xml:space="preserve">
+    <value>Här kommer ditt nya lösenord tillsammans med användartyp och användarnamn.</value>
+  </data>
+  <data name="Here_is_your_new_password_to_fildelase" xml:space="preserve">
+    <value>Här är ditt nya lösenord till Fildela.se.</value>
+  </data>
+  <data name="Here_you_can_share_through_download_link_email_and_social_media" xml:space="preserve">
+    <value>Här kan du dela genom nedladdningslänk, e-post och sociala medier.</value>
+  </data>
+  <data name="Hit" xml:space="preserve">
+    <value>träff.</value>
+  </data>
+  <data name="Hit2" xml:space="preserve">
+    <value>träff</value>
+  </data>
+  <data name="Hits" xml:space="preserve">
+    <value>träffar.</value>
+  </data>
+  <data name="Hits2" xml:space="preserve">
+    <value>träffar</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>timmar.</value>
+  </data>
+  <data name="HTML5_is_not_fully_supported_in_your_browser" xml:space="preserve">
+    <value>HTML5 stöds inte fullt ut i din webbläsare.</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="If_it_is_not_you_who_has_requested_a_new_password_you_can_ignore_this_mail" xml:space="preserve">
+    <value>Om det inte är du som har begärt ett nytt lösenord kan du ignorera detta e-postmeddelande.</value>
+  </data>
+  <data name="If_the_problem_persists_Contact_system_administrator" xml:space="preserve">
+    <value>Om felet kvarstår, kontakta systemadministratören.</value>
+  </data>
+  <data name="Important" xml:space="preserve">
+    <value>Viktigt!</value>
+  </data>
+  <data name="Inactive_guest_account" xml:space="preserve">
+    <value>inaktiverat gästkonto</value>
+  </data>
+  <data name="Incorrect_key" xml:space="preserve">
+    <value>Felaktig nyckel.</value>
+  </data>
+  <data name="Incorrect_password" xml:space="preserve">
+    <value>Felaktigt lösenord.</value>
+  </data>
+  <data name="Incorrect_username_or_password" xml:space="preserve">
+    <value>Felaktigt användarnamn eller lösenord.</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Information_for_event" xml:space="preserve">
+    <value>Information för händelse</value>
+  </data>
+  <data name="Information_for_log" xml:space="preserve">
+    <value>Information för logg</value>
+  </data>
+  <data name="Instagram" xml:space="preserve">
+    <value>Instagram</value>
+  </data>
+  <data name="Instructions" xml:space="preserve">
+    <value>Instruktioner</value>
+  </data>
+  <data name="Instructions_to_reset_your_password_has_been_sent" xml:space="preserve">
+    <value>Instruktioner för att återställa ditt lösenord har skickats.</value>
+  </data>
+  <data name="Instructions_to_reset_your_password_has_been_sent_to_your_email" xml:space="preserve">
+    <value>Instruktioner för att återställa ditt lösenord har skickats till din e-postadress.</value>
+  </data>
+  <data name="In_your_account" xml:space="preserve">
+    <value>i ditt konto.</value>
+  </data>
+  <data name="Ip_address" xml:space="preserve">
+    <value>IP-adress</value>
+  </data>
+  <data name="Is_for_those_who_want_to_upload_without_having_to_register" xml:space="preserve">
+    <value>är för dig som vill ladda upp utan att behöva registrera dig.</value>
+  </data>
+  <data name="I_have_read_and_agree" xml:space="preserve">
+    <value>Jag har läst och godkänner</value>
+  </data>
+  <data name="Join" xml:space="preserve">
+    <value>Gå med</value>
+  </data>
+  <data name="Last_active" xml:space="preserve">
+    <value>Senast inloggad</value>
+  </data>
+  <data name="Last_name" xml:space="preserve">
+    <value>Efternamn</value>
+  </data>
+  <data name="Latest_news" xml:space="preserve">
+    <value>Senaste nyheterna</value>
+  </data>
+  <data name="Layout" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>länk</value>
+  </data>
+  <data name="LinkEdit" xml:space="preserve">
+    <value>Länk redigering</value>
+  </data>
+  <data name="Linking_of_file" xml:space="preserve">
+    <value>Länkning av fil</value>
+  </data>
+  <data name="Linking_of_guest_account" xml:space="preserve">
+    <value>Länkning av gästkonto</value>
+  </data>
+  <data name="Linking_of_guest_account_complete" xml:space="preserve">
+    <value>Länkning av gästkonto avslutad</value>
+  </data>
+  <data name="Linking_of_guest_account_started" xml:space="preserve">
+    <value>Länkning av gästkonto påbörjad</value>
+  </data>
+  <data name="LinkRead" xml:space="preserve">
+    <value>Länk läsning</value>
+  </data>
+  <data name="Links" xml:space="preserve">
+    <value>Länkar</value>
+  </data>
+  <data name="Links2" xml:space="preserve">
+    <value>länkar</value>
+  </data>
+  <data name="LinkWrite" xml:space="preserve">
+    <value>Länk skrivning</value>
+  </data>
+  <data name="Link_account_with" xml:space="preserve">
+    <value>Länka konto med</value>
+  </data>
+  <data name="Link_created" xml:space="preserve">
+    <value>Länk skapad.</value>
+  </data>
+  <data name="Link_created2" xml:space="preserve">
+    <value>Länk skapad</value>
+  </data>
+  <data name="Link_has_been_sent_to_the_specified_email_address" xml:space="preserve">
+    <value>Länk har skickats till den angivna e-postadressen.</value>
+  </data>
+  <data name="Link_your_guestaccount" xml:space="preserve">
+    <value>Länka ditt gästkonto</value>
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value>Logg</value>
+  </data>
+  <data name="Log2" xml:space="preserve">
+    <value>logg</value>
+  </data>
+  <data name="Login_by_guest" xml:space="preserve">
+    <value>Inloggning av gäst</value>
+  </data>
+  <data name="Login_by_owner" xml:space="preserve">
+    <value>Inloggning av ägare</value>
+  </data>
+  <data name="Login_by_user" xml:space="preserve">
+    <value>Inloggning av användare</value>
+  </data>
+  <data name="login_information" xml:space="preserve">
+    <value>Inloggningsuppgifter:</value>
+  </data>
+  <data name="Login_succeeded_Please_select_an_account_to_connect_to" xml:space="preserve">
+    <value>Inloggning lyckades. Vänligen välj ett konto att ansluta till.</value>
+  </data>
+  <data name="Logs" xml:space="preserve">
+    <value>Loggar</value>
+  </data>
+  <data name="Logs2" xml:space="preserve">
+    <value>loggar</value>
+  </data>
+  <data name="Log_edit" xml:space="preserve">
+    <value>Logg redigering</value>
+  </data>
+  <data name="Log_read" xml:space="preserve">
+    <value>Logg läsning</value>
+  </data>
+  <data name="Log_write" xml:space="preserve">
+    <value>Logg skrivning</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Medlem</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Meddelande</value>
+  </data>
+  <data name="Message2" xml:space="preserve">
+    <value>Meddelande:</value>
+  </data>
+  <data name="methodology" xml:space="preserve">
+    <value>Metodik</value>
+  </data>
+  <data name="My_account" xml:space="preserve">
+    <value>Mitt konto</value>
+  </data>
+  <data name="My_settings" xml:space="preserve">
+    <value>Mina inställningar</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Nyheter</value>
+  </data>
+  <data name="News2" xml:space="preserve">
+    <value>Nyhet</value>
+  </data>
+  <data name="News3" xml:space="preserve">
+    <value>nyheter?</value>
+  </data>
+  <data name="News_uploaded" xml:space="preserve">
+    <value>Nyhet uppladdad.</value>
+  </data>
+  <data name="New_email" xml:space="preserve">
+    <value>Ny e-postadress</value>
+  </data>
+  <data name="New_password" xml:space="preserve">
+    <value>Nytt lösenord</value>
+  </data>
+  <data name="New_password_guest" xml:space="preserve">
+    <value>Nytt lösenord (Gäst)</value>
+  </data>
+  <data name="New_password_owner" xml:space="preserve">
+    <value>Nytt lösenord (Ägare)</value>
+  </data>
+  <data name="New_password_user" xml:space="preserve">
+    <value>Nytt lösenord (Användare)</value>
+  </data>
+  <data name="New_password_user1" xml:space="preserve">
+    <value>Nytt lösenord (Användare)</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nr</value>
+  </data>
+  <data name="Not_Found" xml:space="preserve">
+    <value>Not Found</value>
+  </data>
+  <data name="Not_member" xml:space="preserve">
+    <value>Inte medlem</value>
+  </data>
+  <data name="Now2" xml:space="preserve">
+    <value>nu!</value>
+  </data>
+  <data name="Now_you_are_just_one_click_away_from_becoming_a_member_of_Swedens_fastest_file_sharing_site" xml:space="preserve">
+    <value>Nu är du bara ett klick ifrån att bli medlem i Sveriges snabbaste fildelningssajt!</value>
+  </data>
+  <data name="No_emails_was_found" xml:space="preserve">
+    <value>Inga e-postmeddelanden hittades.</value>
+  </data>
+  <data name="No_files_was_found" xml:space="preserve">
+    <value>Inga filer hittades</value>
+  </data>
+  <data name="No_guest_accounts_was_found" xml:space="preserve">
+    <value>Inga gästkonton hittades</value>
+  </data>
+  <data name="No_hit" xml:space="preserve">
+    <value>ingen träff</value>
+  </data>
+  <data name="No_links_was_found" xml:space="preserve">
+    <value>Inga länkar hittades</value>
+  </data>
+  <data name="No_logs_was_found" xml:space="preserve">
+    <value>Inga loggar hittades</value>
+  </data>
+  <data name="No_news_was_found" xml:space="preserve">
+    <value>Inga nyheter hittades.</value>
+  </data>
+  <data name="No_permissions_was_found_Please_contact_account_owner" xml:space="preserve">
+    <value>Inga rättigheter hittades. Vänligen kontakta ägaren till kontot.</value>
+  </data>
+  <data name="No_rights" xml:space="preserve">
+    <value>Inga rättigheter</value>
+  </data>
+  <data name="No_third_party_authentication_found" xml:space="preserve">
+    <value>Ingen tredjepart-autentisering hittades</value>
+  </data>
+  <data name="No_users_was_found" xml:space="preserve">
+    <value>Inga användare hittades.</value>
+  </data>
+  <data name="No_user_with_that_email_address_was_found" xml:space="preserve">
+    <value>Inget användarkonto med den e-postadressen hittades.</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>på</value>
+  </data>
+  <data name="Online" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="Oops" xml:space="preserve">
+    <value>Oops!</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+    <value>Eller</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Övrigt</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Ägare</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Lösenord</value>
+  </data>
+  <data name="Password2" xml:space="preserve">
+    <value>Lösenord:</value>
+  </data>
+  <data name="Password_recovery" xml:space="preserve">
+    <value>Återställning av lösenord</value>
+  </data>
+  <data name="Password_recovery_complete" xml:space="preserve">
+    <value>Återställning av lösenord avslutad</value>
+  </data>
+  <data name="Password_recovery_started" xml:space="preserve">
+    <value>Återställning av lösenord påbörjad</value>
+  </data>
+  <data name="Password_reset" xml:space="preserve">
+    <value>Återställning av lösenord</value>
+  </data>
+  <data name="Permanently" xml:space="preserve">
+    <value>permanent</value>
+  </data>
+  <data name="Personal_privacy" xml:space="preserve">
+    <value>Personlig integritet</value>
+  </data>
+  <data name="Planned" xml:space="preserve">
+    <value>Inplanerat</value>
+  </data>
+  <data name="Please" xml:space="preserve">
+    <value>Vänligen</value>
+  </data>
+  <data name="Please_contact_system_administrator" xml:space="preserve">
+    <value>Vänligen kontakta systemadministratören.</value>
+  </data>
+  <data name="Please_enter_correct_dates" xml:space="preserve">
+    <value>Vänligen mata in korrekta datum.</value>
+  </data>
+  <data name="Please_log_in_and_try_again" xml:space="preserve">
+    <value>Vänligen logga in och försök igen.</value>
+  </data>
+  <data name="Point_in_time" xml:space="preserve">
+    <value>Tidpunkt</value>
+  </data>
+  <data name="Post_No" xml:space="preserve">
+    <value>Inlägg nr:</value>
+  </data>
+  <data name="Premium" xml:space="preserve">
+    <value>Premium</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Förhandsvisning</value>
+  </data>
+  <data name="Preview_file" xml:space="preserve">
+    <value>Förhandsvisning av fil</value>
+  </data>
+  <data name="Provider" xml:space="preserve">
+    <value>Leverantör</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Publicerad</value>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>Publicist</value>
+  </data>
+  <data name="Read_more" xml:space="preserve">
+    <value>Läs mer</value>
+  </data>
+  <data name="Redirecting" xml:space="preserve">
+    <value>Omdirigerar..</value>
+  </data>
+  <data name="Registered" xml:space="preserve">
+    <value>Registrerad</value>
+  </data>
+  <data name="Register_account_complete" xml:space="preserve">
+    <value>Registrering av konto avslutad</value>
+  </data>
+  <data name="Register_account_started" xml:space="preserve">
+    <value>Registrering av konto påbörjad</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registrering</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="Remove_download_links" xml:space="preserve">
+    <value>Ta bort nedladdningslänkar</value>
+  </data>
+  <data name="Remove_events" xml:space="preserve">
+    <value>Ta bort händelser</value>
+  </data>
+  <data name="Remove_file" xml:space="preserve">
+    <value>Ta bort fil</value>
+  </data>
+  <data name="Remove_files" xml:space="preserve">
+    <value>Ta bort filer</value>
+  </data>
+  <data name="Remove_guest_account" xml:space="preserve">
+    <value>Ta bort gästkonto</value>
+  </data>
+  <data name="Remove_guest_accounts" xml:space="preserve">
+    <value>Ta bort gästkonon</value>
+  </data>
+  <data name="Remove_inactive_guest_account" xml:space="preserve">
+    <value>Ta bort inaktivt gästkonto</value>
+  </data>
+  <data name="Remove_link" xml:space="preserve">
+    <value>Ta bort länk</value>
+  </data>
+  <data name="Remove_links" xml:space="preserve">
+    <value>Ta bort länkar</value>
+  </data>
+  <data name="Remove_log" xml:space="preserve">
+    <value>Ta bort logg</value>
+  </data>
+  <data name="Remove_logs" xml:space="preserve">
+    <value>Ta bort loggar</value>
+  </data>
+  <data name="Remove_third_party_authentication_provider" xml:space="preserve">
+    <value>Ta bort tredjepart-autentisering</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Återställ</value>
+  </data>
+  <data name="Reset2" xml:space="preserve">
+    <value>återställa</value>
+  </data>
+  <data name="Resetting_password" xml:space="preserve">
+    <value>Återställning av lösenord</value>
+  </data>
+  <data name="Resetting_password_guest" xml:space="preserve">
+    <value>Återställning av lösenord (Gäst)</value>
+  </data>
+  <data name="Resetting_password_owner" xml:space="preserve">
+    <value>Återställning av lösenord (Ägare)</value>
+  </data>
+  <data name="Resetting_password_user" xml:space="preserve">
+    <value>Återställning av lösenord (Användare)</value>
+  </data>
+  <data name="Reset_account" xml:space="preserve">
+    <value>Återställ konto</value>
+  </data>
+  <data name="Reset_account_complete" xml:space="preserve">
+    <value>Återställning av konto</value>
+  </data>
+  <data name="Reset_filter" xml:space="preserve">
+    <value>Återställ filter</value>
+  </data>
+  <data name="Retrieving_link" xml:space="preserve">
+    <value>Hämtar länk</value>
+  </data>
+  <data name="Rights" xml:space="preserve">
+    <value>Rättigheter</value>
+  </data>
+  <data name="Rights_that_you_have_been_assigned_to_is" xml:space="preserve">
+    <value>Rättigheter som du har blivit tilldelad är:</value>
+  </data>
+  <data name="Right_click_on_the_link_below_and_choose_Copy_to_copy_this_link_to_the_clipboard" xml:space="preserve">
+    <value>Högerklicka på länken nedan och välj alternativ "Kopiera" för att kopiera länken till urklipp.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Spara</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="Search_gave" xml:space="preserve">
+    <value>Sökning gav:</value>
+  </data>
+  <data name="Search_news" xml:space="preserve">
+    <value>Sök nyhet</value>
+  </data>
+  <data name="Search_result" xml:space="preserve">
+    <value>Sökresultat</value>
+  </data>
+  <data name="Search_word" xml:space="preserve">
+    <value>Sökord</value>
+  </data>
+  <data name="Select_an_account" xml:space="preserve">
+    <value>Välj ett konto</value>
+  </data>
+  <data name="Select_a_category" xml:space="preserve">
+    <value>Välj en kategori</value>
+  </data>
+  <data name="Select_a_file" xml:space="preserve">
+    <value>Välj en fil</value>
+  </data>
+  <data name="Select_file" xml:space="preserve">
+    <value>Välj fil</value>
+  </data>
+  <data name="Select_image" xml:space="preserve">
+    <value>Välj bild</value>
+  </data>
+  <data name="Select_rights" xml:space="preserve">
+    <value>Välj rättigheter</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Skicka</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>Avsändare</value>
+  </data>
+  <data name="Send_email" xml:space="preserve">
+    <value>Skicka e-post</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="Share" xml:space="preserve">
+    <value>Dela</value>
+  </data>
+  <data name="Share_file" xml:space="preserve">
+    <value>Dela fil</value>
+  </data>
+  <data name="Show_all" xml:space="preserve">
+    <value>visa alla</value>
+  </data>
+  <data name="Show_all_news" xml:space="preserve">
+    <value>Visa alla nyheter</value>
+  </data>
+  <data name="SignIns" xml:space="preserve">
+    <value>Inloggningar</value>
+  </data>
+  <data name="Sign_in" xml:space="preserve">
+    <value>Logga in</value>
+  </data>
+  <data name="Sign_in_failed" xml:space="preserve">
+    <value>Inloggning misslyckades.</value>
+  </data>
+  <data name="Sign_in_with" xml:space="preserve">
+    <value>Inloggning med</value>
+  </data>
+  <data name="Sign_out" xml:space="preserve">
+    <value>Logga ut</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Storlek</value>
+  </data>
+  <data name="Social_media" xml:space="preserve">
+    <value>Sociala medier</value>
+  </data>
+  <data name="Software_piracy" xml:space="preserve">
+    <value>Piratkopiering</value>
+  </data>
+  <data name="Someone_has_requested_a_password_reset" xml:space="preserve">
+    <value>Någon har begärt en återställning av ditt lösenord.</value>
+  </data>
+  <data name="Sort_by" xml:space="preserve">
+    <value>Sortera efter</value>
+  </data>
+  <data name="Starts" xml:space="preserve">
+    <value>Börjar</value>
+  </data>
+  <data name="Start_date" xml:space="preserve">
+    <value>Startdatum</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistik</value>
+  </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Lagring</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Suggestion" xml:space="preserve">
+    <value>Förslag</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Support2" xml:space="preserve">
+    <value>support.</value>
+  </data>
+  <data name="Swedens_fastest_file_sharing_website" xml:space="preserve">
+    <value> Sveriges snabbaste fildelningssajt</value>
+  </data>
+  <data name="Swedens_largest_file_sharing_website_Here_you_can_file_share_fast_easy_and_all_without_cost" xml:space="preserve">
+    <value>Sveriges största fildelningssajt! Hos oss kan du spara och dela filer på flera olika sätt beroende på vad du är ute efter.</value>
+  </data>
+  <data name="Table" xml:space="preserve">
+    <value>Tabell</value>
+  </data>
+  <data name="Terms_and_Conditions" xml:space="preserve">
+    <value>Regler och villkor</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="The_fast_way" xml:space="preserve">
+    <value>Det snabba sättet,</value>
+  </data>
+  <data name="The_file_could_not_be_downloaded" xml:space="preserve">
+    <value>Filen kunde inte hämtas.</value>
+  </data>
+  <data name="The_file_could_not_be_found_Please_try_again" xml:space="preserve">
+    <value>Filen kunde inte hittas. Vänligen försök igen.</value>
+  </data>
+  <data name="The_file_is_only_stored_in" xml:space="preserve">
+    <value>Filen sparas endast i</value>
+  </data>
+  <data name="The_file_is_only_stored_in_24_hours" xml:space="preserve">
+    <value>Filen sparas endast i 24 timmar.</value>
+  </data>
+  <data name="The_file_is_saved" xml:space="preserve">
+    <value>Filen sparas</value>
+  </data>
+  <data name="The_file_is_saved_permanently" xml:space="preserve">
+    <value>Filen sparas permanent.</value>
+  </data>
+  <data name="The_file_is_saved_permanently_in_your_account" xml:space="preserve">
+    <value>Filen sparas permanent i ditt konto.</value>
+  </data>
+  <data name="The_file_size_can_be_a_maximum_of" xml:space="preserve">
+    <value>Filens storlek får max vara</value>
+  </data>
+  <data name="The_file_size_can_be_a_maximum_of_100_MB" xml:space="preserve">
+    <value>Filens storlek får max vara 100 MB.</value>
+  </data>
+  <data name="The_file_size_must_not_exceed" xml:space="preserve">
+    <value>Filens storlek får inte överskrida</value>
+  </data>
+  <data name="The_given_email_address_already_has_an_active_request" xml:space="preserve">
+    <value>Den angivna e-postadressen har redan en aktiv förfrågan.</value>
+  </data>
+  <data name="The_guest_account_is_not_linked_with_any_user" xml:space="preserve">
+    <value>Gästkontot är inte länkat med någon användare.</value>
+  </data>
+  <data name="The_key_to_activate_and_or_link_your_guest_account_was_not_found_please_contact_the_account_owner" xml:space="preserve">
+    <value>Nyckeln för att aktivera och/eller länka ditt gästkonto hittades inte. Vänligen kontakta ägaren till kontot.</value>
+  </data>
+  <data name="The_key_to_activate_your_account_has_expired_please_register_again" xml:space="preserve">
+    <value>Nyckeln för att aktivera ditt konto har gått ut. Vänligen registrera igen.</value>
+  </data>
+  <data name="The_key_to_activate_your_account_was_not_found_please_register_again" xml:space="preserve">
+    <value>Nyckeln för att aktivera ditt konto hittades inte. Vänligen registrera igen.</value>
+  </data>
+  <data name="The_key_to_activate_your_guest_account_has_expired_please_contact_the_account_owner" xml:space="preserve">
+    <value>Nyckeln för att aktivera ditt gästkonto har gått ut. Vänligen kontakta ägaren till kontot.</value>
+  </data>
+  <data name="The_key_to_reset_your_password_has_expired" xml:space="preserve">
+    <value>Nyckeln för att återställa ditt lösenord har gått ut.</value>
+  </data>
+  <data name="The_key_to_reset_your_password_was_not_found_Please_reset_again" xml:space="preserve">
+    <value>Nyckeln för att återställa ditt lösenord hittades inte. Vänligen återställ igen.</value>
+  </data>
+  <data name="The_link_could_not_be_found_Please_try_again" xml:space="preserve">
+    <value>Länken kunde inte hittas. Vänligen försök igen.</value>
+  </data>
+  <data name="The_message_has_been_sent" xml:space="preserve">
+    <value>Meddelandet har skickats.</value>
+  </data>
+  <data name="The_provided_emailaddress_is_already_in_use" xml:space="preserve">
+    <value>Den angivna e-postadressen används redan.</value>
+  </data>
+  <data name="The_selected_files_could_not_be_found_Please_try_again" xml:space="preserve">
+    <value>De valda filerna hittades inte. Vänligen försök igen.</value>
+  </data>
+  <data name="The_selected_guest_accounts_could_not_be_found_Please_try_again" xml:space="preserve">
+    <value>De valda gästkontona hittades inte. Vänligen försök igen.</value>
+  </data>
+  <data name="The_selected_links_could_not_be_found_Please_try_again" xml:space="preserve">
+    <value>De valda länkarna hittades inte. Vänligen försök igen.</value>
+  </data>
+  <data name="The_selected_logs_could_not_be_found_Please_try_again" xml:space="preserve">
+    <value>De valda loggarna hittades inte. Vänligen försök igen.</value>
+  </data>
+  <data name="The_specific_news_was_not_found" xml:space="preserve">
+    <value>Den specifica nyheten hittades inte.</value>
+  </data>
+  <data name="The_specified_email_address_is_already_linked_with_your_account" xml:space="preserve">
+    <value>Den angivna e-postadressen är redan länkad med ditt konto.</value>
+  </data>
+  <data name="The_uploaded_file_can_only_be_accessed_by_persons_who_have_access_to_the_download_link" xml:space="preserve">
+    <value>Den uppladdade filen kan endast kommas åt av personer som har tillgång till nedladdningslänken.</value>
+  </data>
+  <data name="The_user_account_is_disabled_please" xml:space="preserve">
+    <value>Användarkontot är inaktiverat. Vänligen</value>
+  </data>
+  <data name="The_user_agreement" xml:space="preserve">
+    <value>användaravtalet</value>
+  </data>
+  <data name="Third_party_authentication_has_been_removed" xml:space="preserve">
+    <value>Tredjepart-autentisering har tagits bort.</value>
+  </data>
+  <data name="This_may_be_because_the_file_could_not_be_found_or_the_expiration_date_has_passed" xml:space="preserve">
+    <value>Detta kan bero på att filen inte finns eller att utgångsdatumet har passerat.</value>
+  </data>
+  <data name="This_page_requires_you_to_be_logged_in" xml:space="preserve">
+    <value>Denna sida kräver att du är inloggad.</value>
+  </data>
+  <data name="This_site_uses_cookies" xml:space="preserve">
+    <value>Denna sida använder cookies.</value>
+  </data>
+  <data name="Thoughts" xml:space="preserve">
+    <value>Synpunkter</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Idag</value>
+  </data>
+  <data name="Tool" xml:space="preserve">
+    <value>Verktyg</value>
+  </data>
+  <data name="To_copy_the_link_you_can_either_hold_down_the_Ctrl_key_while_you_press_C_or_right_click_the_selected_text_and_click_Copy" xml:space="preserve">
+    <value>För att kopiera länken kan du antingen hålla ner Ctrl samtidigt som du trycker på C eller högerklicka på den markerade texten och klicka på kopiera.</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="Type_your_email" xml:space="preserve">
+    <value>Skriv din e-postadress</value>
+  </data>
+  <data name="Type_your_email_address" xml:space="preserve">
+    <value>Skriv din e-postadress</value>
+  </data>
+  <data name="Type_your_name" xml:space="preserve">
+    <value>Skriv ditt namn</value>
+  </data>
+  <data name="Type_your_password" xml:space="preserve">
+    <value>Skriv ditt lösenord</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Uppdatering</value>
+  </data>
+  <data name="Updates" xml:space="preserve">
+    <value>Uppdateringar</value>
+  </data>
+  <data name="Update_email_complete" xml:space="preserve">
+    <value>Uppdatering av e-postadress avslutad.</value>
+  </data>
+  <data name="Update_password" xml:space="preserve">
+    <value>Uppdatering av lösenord</value>
+  </data>
+  <data name="Upgrade" xml:space="preserve">
+    <value>Uppgradera</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Ladda upp</value>
+  </data>
+  <data name="Uploading" xml:space="preserve">
+    <value>Laddar upp..</value>
+  </data>
+  <data name="Uploading2" xml:space="preserve">
+    <value>Uppladdning</value>
+  </data>
+  <data name="Uploads" xml:space="preserve">
+    <value>Uppladdningar</value>
+  </data>
+  <data name="Upload_aborted" xml:space="preserve">
+    <value>Uppladdning avbruten.</value>
+  </data>
+  <data name="Upload_by_file" xml:space="preserve">
+    <value>Uppladdning av fil</value>
+  </data>
+  <data name="Upload_complete" xml:space="preserve">
+    <value>Uppladdning avslutad</value>
+  </data>
+  <data name="Upload_directly" xml:space="preserve">
+    <value>Ladda upp direkt</value>
+  </data>
+  <data name="Upload_directly2" xml:space="preserve">
+    <value>ladda upp direkt</value>
+  </data>
+  <data name="Upload_directly_complete" xml:space="preserve">
+    <value>Ladda upp direkt avslutad</value>
+  </data>
+  <data name="Upload_directly_started" xml:space="preserve">
+    <value>Ladda upp direkt påbörjad</value>
+  </data>
+  <data name="Upload_file" xml:space="preserve">
+    <value>Ladda upp fil</value>
+  </data>
+  <data name="Upload_started" xml:space="preserve">
+    <value>Uppladdning påbörjad</value>
+  </data>
+  <data name="Upon_activation_and_use_of_the_account_with_external_login_provider_you_automatically_accept_our" xml:space="preserve">
+    <value>Vid aktivering och användning av konto med extern inloggningsleverantör godkänner du automatiskt vårt</value>
+  </data>
+  <data name="URL" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Användning</value>
+  </data>
+  <data name="Usage_last_month" xml:space="preserve">
+    <value>Användning senaste månaden</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Användare</value>
+  </data>
+  <data name="Useraccount" xml:space="preserve">
+    <value>användarkonto.</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  <data name="Username2" xml:space="preserve">
+    <value>Användarnamn:</value>
+  </data>
+  <data name="UserRoles" xml:space="preserve">
+    <value>Användarroller</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Användare</value>
+  </data>
+  <data name="User_agreement" xml:space="preserve">
+    <value>Användaravtal</value>
+  </data>
+  <data name="User_agreement2" xml:space="preserve">
+    <value>användaravtal</value>
+  </data>
+  <data name="User_type" xml:space="preserve">
+    <value>Användartyp</value>
+  </data>
+  <data name="User_type2" xml:space="preserve">
+    <value>Användartyp:</value>
+  </data>
+  <data name="Verify_your_registration" xml:space="preserve">
+    <value>Verifiera din registrering</value>
+  </data>
+  <data name="Visiting_address" xml:space="preserve">
+    <value>Besöksadress</value>
+  </data>
+  <data name="Waiting_for_answer" xml:space="preserve">
+    <value>Väntar på svar</value>
+  </data>
+  <data name="Welcome_to" xml:space="preserve">
+    <value>Välkommen till</value>
+  </data>
+  <data name="Welcome_to_Swedens_fastest_file_sharing_site_With_us_you_can_save_and_share_files_in_a_fast_and_easy_way_for_free" xml:space="preserve">
+    <value>Välkommen till Sveriges snabbaste fildelningssajt! Hos oss kan du spara och dela filer på ett snabbt och enkelt sätt, helt utan kostnad!</value>
+  </data>
+  <data name="Welcome_to_Swedens_fastest_site_to_store_and_share_files_Depending_on_what_youre_after_there_are_multiple_ways_for_you_to_save_and_share_files" xml:space="preserve">
+    <value>Välkommen till Sveriges snabbaste sajt för att spara och dela filer. Beroende på vad du är ute efter så finns det flera olika sätt för dig att spara och dela filer.</value>
+  </data>
+  <data name="When_the_linking_is_done_you_will_automatically_be_signed_in_and_redirected_to_your_account" xml:space="preserve">
+    <value>När länkningen är klar kommer du automatiskt att loggas in och skickas vidare till ditt konto.</value>
+  </data>
+  <data name="When_you_active_your_useraccount_you_automatically_accept_our_useragreement" xml:space="preserve">
+    <value>När du aktiverar ditt användarkonto godkänner du automatiskt vårt</value>
+  </data>
+  <data name="When_you_register_and_use_our_services_you_agree_to_our_user_agreement" xml:space="preserve">
+    <value>När du registrerar dig och använder våra tjänster godkänner du vårt användaravtal.</value>
+  </data>
+  <data name="When_you_use_an_account_you_have_more_options_and_less_restrictions_to_save_and_share_filesfiler" xml:space="preserve">
+    <value>När du använder ett konto har du fler alternativ och mindre restriktioner för att spara och dela filer.</value>
+  </data>
+  <data name="When_you_visit_this_site_your_current_password_will_expire_and_the_new_will_be_sent_to_you_via_email" xml:space="preserve">
+    <value>När du besöker denna sida kommer ditt nuvarande lösenord att upphöra och det nya att skickas till dig via e-post.</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Igår</value>
+  </data>
+  <data name="Your_account_along_with_all_the_content_will_be_removed" xml:space="preserve">
+    <value>Ditt konto tillsammans med allt innehåll kommer att tas bort.</value>
+  </data>
+  <data name="Your_account_has_already_been_deleted_Log_out_to_execute" xml:space="preserve">
+    <value>Ditt konto har redan raderats. Logga ut för att verkställa ändringar.</value>
+  </data>
+  <data name="Your_account_has_been_restored" xml:space="preserve">
+    <value>Ditt konto har återställts.</value>
+  </data>
+  <data name="Your_account_will_be_removed_and_you_will_no_longer_be_able_to_use_it" xml:space="preserve">
+    <value>Ditt konto kommer att tas bort och du kommer längre inte att kunna använda det.</value>
+  </data>
+  <data name="Your_email" xml:space="preserve">
+    <value>Din e-postadress</value>
+  </data>
+  <data name="Your_emailaddress_has_been_updated" xml:space="preserve">
+    <value>Din e-postadress har uppdaterats.</value>
+  </data>
+  <data name="Your_filter" xml:space="preserve">
+    <value>ditt filter?</value>
+  </data>
+  <data name="Your_guest_account_has_been_activated_and_linked_with" xml:space="preserve">
+    <value>Ditt gästkonto har blivit aktiverat och länkat med:</value>
+  </data>
+  <data name="Your_guest_account_has_been_given_access_to" xml:space="preserve">
+    <value>Ditt gästkonto har fått åtkomst till:</value>
+  </data>
+  <data name="Your_guest_account_has_been_linked_with" xml:space="preserve">
+    <value>Ditt gästkonto har länkats med:</value>
+  </data>
+  <data name="Your_guest_account_has_linked_with" xml:space="preserve">
+    <value>Ditt gästkonto länkats med:</value>
+  </data>
+  <data name="Your_name" xml:space="preserve">
+    <value>Ditt namn</value>
+  </data>
+  <data name="Your_password_has_been_updated" xml:space="preserve">
+    <value>Ditt lösenord har uppdaterats.</value>
+  </data>
+  <data name="Your_useraccount_is_not_linked_with_this_user" xml:space="preserve">
+    <value>Ditt användarkonto är inte länkat med denna användare.</value>
+  </data>
+  <data name="Your_user_account_has_already_been_linked_to" xml:space="preserve">
+    <value>Ditt användarkonto har redan kopplats till</value>
+  </data>
+  <data name="Your_user_account_has_been_activated" xml:space="preserve">
+    <value>Ditt användarkonto har aktiverats</value>
+  </data>
+  <data name="Your_user_account_has_been_created_and_activated" xml:space="preserve">
+    <value>Ditt användarkonto har skapats och aktiverats</value>
+  </data>
+  <data name="Your_user_account_is_inactive_and_can_not_be_linked_to" xml:space="preserve">
+    <value>Ditt användarkonto är inaktiverat och kan inte kopplas till</value>
+  </data>
+  <data name="You_also_have_the_ability_to_create_a_number_of_guest_accounts_with_different_access_rights_and_time_constraints" xml:space="preserve">
+    <value>Du har också möjlighet att skapa ett flertal gästkonton med olika rättigheter och tidsbegränsningar.</value>
+  </data>
+  <data name="You_are_already_signed_in" xml:space="preserve">
+    <value>Du är redan inloggad</value>
+  </data>
+  <data name="You_can_not_link_an_guestaccount_with_the_same_email_address" xml:space="preserve">
+    <value>Du kan inte länka ett gästkonto med samma e-postadress.</value>
+  </data>
+  <data name="You_can_only_upload" xml:space="preserve">
+    <value>Det går endast att ladda upp</value>
+  </data>
+  <data name="You_can_only_upload_one_file_at_a_time" xml:space="preserve">
+    <value>Det går endast att ladda upp en fil i taget.</value>
+  </data>
+  <data name="You_dont_have_the_rights_to_perform_this_function" xml:space="preserve">
+    <value>Du har inte rättighet för att utföra denna funktion.</value>
+  </data>
+  <data name="You_do_not_have_permission_to_visit_this_page_Please_contact_the_owner_of_the_account" xml:space="preserve">
+    <value>Du har inte behörighet för att besöka denna sida. Vänligen kontakta ägaren till kontot.</value>
+  </data>
+  <data name="You_have_already_registered_an_account_try_again_later" xml:space="preserve">
+    <value>Du har redan registrerat ett konto. Försök igen senare.</value>
+  </data>
+  <data name="You_have_already_reset_a_password_please_try_again_later" xml:space="preserve">
+    <value>Du har redan återställt ett lösenord. Försök igen senare.</value>
+  </data>
+  <data name="You_have_already_reset_one_password_try_again_later" xml:space="preserve">
+    <value>Du har redan återställt ett lösenord. Försök igen senare.</value>
+  </data>
+  <data name="You_have_already_reset_your_account_try_again_later" xml:space="preserve">
+    <value>Du har redan återställt ditt konto. Försök igen senare.</value>
+  </data>
+  <data name="You_have_already_reset_your_password_try_again_later" xml:space="preserve">
+    <value>Du har redan återställt ditt lösenord. Försök igen senare.</value>
+  </data>
+  <data name="You_have_already_sent_a_link_to_the_specified_email_address" xml:space="preserve">
+    <value>Du har redan skickat en länk till den angivna e-postadressen.</value>
+  </data>
+  <data name="You_have_already_sent_a_message_try_again_later" xml:space="preserve">
+    <value>Du har redan skickat ett meddelande. Försök igen senare.</value>
+  </data>
+  <data name="You_have_already_updated_your_emailaddress_try_again_later" xml:space="preserve">
+    <value>Du har redan uppdaterat din e-postadress. Försök igen senare.</value>
+  </data>
+  <data name="You_have_already_updated_your_password_try_again_later" xml:space="preserve">
+    <value>Du har redan uppdaterat ditt lösenord. Försök igen senare.</value>
+  </data>
+  <data name="You_have_been_assigned_a_guest_account_from" xml:space="preserve">
+    <value>Du har blivit tilldelad ett gästkonto av:</value>
+  </data>
+  <data name="You_have_been_logged_out" xml:space="preserve">
+    <value>Du har loggats ut.</value>
+  </data>
+  <data name="You_have_been_logged_out_because_your_account_has_been_deleted" xml:space="preserve">
+    <value>Du har blivit utloggad eftersom ditt konto har raderats.</value>
+  </data>
+  <data name="You_have_been_logged_out_because_you_no_longer_have_any_rights" xml:space="preserve">
+    <value>Du har blivit utloggad eftersom du inte längre har några rättigheter.</value>
+  </data>
+  <data name="You_have_been_sent_a_download_link_from_an_anonymous_user" xml:space="preserve">
+    <value>Du har fått en nedladdningslänk skickad från en anonym användare.</value>
+  </data>
+  <data name="You_have_exceeded_the_allowed_number_of_files" xml:space="preserve">
+    <value>Du har överstigit antalet tillåtna filer.</value>
+  </data>
+  <data name="You_have_exceeded_the_allowed_number_of_guest_accounts" xml:space="preserve">
+    <value>Du har överstigit antalet tillåtna gästkonton.</value>
+  </data>
+  <data name="You_have_exceeded_the_allowed_number_of_links" xml:space="preserve">
+    <value>Du har överstigit antalet tillåtna länkar.</value>
+  </data>
+  <data name="You_have_exceeded_the_allowed_number_of_started_uploads" xml:space="preserve">
+    <value>Du har överstigit antalet tillåtna startade uppladdningar.</value>
+  </data>
+  <data name="You_have_exceeded_the_allowed_stored_bytes" xml:space="preserve">
+    <value>Du har överstigit antalet tillåtna bytes.</value>
+  </data>
+  <data name="You_have_exceeded_the_number_of_allowed_email_distribution" xml:space="preserve">
+    <value>Du har överstigit antalet tillåtna e-postutskick.</value>
+  </data>
+  <data name="You_have_not_yet_been_assigned_any_rights" xml:space="preserve">
+    <value>Du har ännu inte blivit tilldelad några rättigheter.</value>
+  </data>
+  <data name="You_have_no_rights_for_that_file" xml:space="preserve">
+    <value>Du har inga rättigheter för den aktuella filen.</value>
+  </data>
+  <data name="You_have_received_a_download_link_from" xml:space="preserve">
+    <value>Du har fått en nedladdningslänk skickad från</value>
+  </data>
+  <data name="You_will_no_longer_be_able_to_sign_in_with" xml:space="preserve">
+    <value>Du kommer längre inte att kunna logga in med</value>
+  </data>
+  <data name="A_random_password_has_been_created_for_regular_sign_in" xml:space="preserve">
+    <value>har ett slumpmässigt lösenord skapats för vanlig inloggning.</value>
+  </data>
+  <data name="Because_you_have_registered_and_logged_in_with" xml:space="preserve">
+    <value>Eftersom du har registrerat och loggat in med</value>
+  </data>
+  <data name="Ago" xml:space="preserve">
+    <value>sedan</value>
+  </data>
+  <data name="Just_now" xml:space="preserve">
+    <value>Alldeles nyss</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>minut</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minuter</value>
+  </data>
+  <data name="Second" xml:space="preserve">
+    <value>sekund</value>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>sekunder</value>
+  </data>
+  <data name="Coming" xml:space="preserve">
+    <value>Kommande</value>
+  </data>
+  <data name="Functionality" xml:space="preserve">
+    <value>Funktionalitet</value>
+  </data>
+  <data name="A_user_account_with_your_email_address_is_already_registered_but_have_not_yet_been_linked_with" xml:space="preserve">
+    <value>Ett användarkonto med din e-postaddress är redan registrerad men har ännu inte länkats med</value>
+  </data>
+  <data name="Link_your_account_with" xml:space="preserve">
+    <value>Länka ditt konto med</value>
+  </data>
+</root>

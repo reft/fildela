@@ -1,0 +1,350 @@
+﻿#account-files-contextmenu, #account-links-contextmenu, #account-guestaccounts-contextmenu, #account-log-contextmenu {
+    position: absolute;
+    display: none;
+}
+
+.account-files-contextmenu, .account-guestaccounts-contextmenu, .account-links-contextmenu, .account-log-contextmenu {
+    color: #333;
+    white-space: nowrap;
+}
+
+.account-search-input:-moz-placeholder {
+    padding-top: 4px;
+}
+
+.account-selected-name {
+    line-height: 34px;
+    padding-right: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/*.account-search-input::-webkit-input-placeholder, #modal-direct-upload-send-email-input::-webkit-input-placeholder {
+    padding-top: 4px;
+    font-size: 13px;
+}
+
+.account-search-input:-moz-placeholder, #modal-direct-upload-send-email-input::-webkit-input-placeholder {
+    padding-top: 4px;
+    font-size: 13px;
+}
+
+.account-search-input::-moz-placeholder, #modal-direct-upload-send-email-input::-webkit-input-placeholder {
+    padding-top: 4px;
+    font-size: 13px;
+}
+
+.account-search-input:-ms-input-placeholder, #modal-direct-upload-send-email-input::-webkit-input-placeholder {
+    padding-top: 4px;
+    font-size: 13px;
+}*/
+
+.account-files-edit-name-submit:disabled {
+    padding-bottom: 6px;
+}
+
+.alert-default {
+    border: 1px solid #eeeeee;
+    padding: 2px 6px;
+    margin-bottom: 10px;
+}
+
+    .alert-default > .account-alert {
+        color: #333;
+        font-size: 13px;
+    }
+
+@media(max-width:767px) {
+    .account-file-icon {
+        margin-right: 4px;
+    }
+}
+
+.account-dropdown-menu {
+    font-size: 14px;
+    position: absolute;
+}
+
+.account-alert {
+    font-size: 13px;
+    color: #fff;
+}
+
+.list-group-item-single {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-size: 13px;
+}
+
+.account-file-icon {
+    margin-right: 5px;
+    min-width: 16px;
+    pointer-events: none;
+    vertical-align: sub;
+}
+
+.account-usage-pbtitle {
+    font-size: 14px;
+    margin-bottom: 0px;
+    color: #555;
+}
+
+.progress-bar-account, .progress-account {
+    line-height: 18px;
+}
+
+.progress-bar-account {
+    font-size: 12px;
+}
+
+.progress-account {
+    height: 18px;
+}
+
+.label-account-usage {
+    float: left;
+    margin-right: 5px;
+    padding: 3px 5px 3px 5px;
+    font-size: 12px;
+}
+
+.progress-bar-account-sm, .progress-account-sm {
+    line-height: 17px;
+}
+
+.progress-bar-account-sm {
+    font-size: 11px;
+}
+
+.progress-account-sm {
+    height: 17px;
+}
+
+.label-account-usage-sm {
+    float: left;
+    margin-right: 5px;
+    padding: 3px 5px 3px 5px;
+    font-size: 11px;
+}
+
+.account-tab-btn {
+    font-size: 13px;
+    padding: 7px 12px;
+}
+
+html.touch .account-tab-btn.btn-primary:active {
+    background-color: #428bca !important;
+    border-color: #428bca !important;
+}
+
+html.touch .account-tab-btn.btn-primary:hover {
+    background-color: #428bca !important;
+    border-color: #428bca !important;
+}
+
+.account-badge {
+    padding: 3px 7px 4px 7px;
+    margin-top: -1px;
+}
+
+html.touch .account-tab-btn.btn-primary:focus {
+    background-color: #428bca !important;
+    border-color: #428bca !important;
+}
+
+.account-user-menu-text {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.00);
+    color: #428bca;
+}
+
+.account-user-menu {
+    cursor: pointer;
+    display: inline;
+}
+
+.account-table-header, .account-table-settings-header {
+    cursor: pointer;
+    border-top: solid 0px;
+    border-bottom: solid 1px;
+    font-weight: normal;
+    background-color: #428bca;
+    white-space: nowrap;
+    border-bottom-color: #428bca;
+    border-bottom: 0px !important;
+    padding-bottom: 11px !important;
+}
+
+.account-table-settings-header {
+    cursor: default;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .account-table-header, .account-table-settings-header {
+        border-bottom: 1px solid #428bca !important;
+        padding-bottom: 10px !important;
+    }
+
+    .account-table-header-danger {
+        border-bottom: 1px solid #e74c3c !important;
+    }
+
+    ::i-block-chrome, .account-table-header {
+        border-bottom: 0px !important;
+        padding-bottom: 11px !important;
+    }
+
+    ::i-block-chrome, .account-table-settings-header {
+        border-bottom: 0px !important;
+        padding-bottom: 11px !important;
+    }
+}
+
+
+.account-table-tr, th, thead {
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+    .account-table-tr > td {
+        white-space: nowrap !important;
+    }
+
+.account-table-header-danger {
+    cursor: default;
+    background-color: #e74c3c;
+}
+
+.account-table-tr {
+    cursor: default;
+}
+
+    .account-table-tr > td {
+        vertical-align: middle !important;
+    }
+
+.account-search-input::-ms-clear {
+    display: none;
+}
+
+.account-search-focus-border {
+    border-color: #66afe9 !important;
+}
+
+@-moz-document url-prefix() { /*FIREFOX*/
+    .account-search-remove-shadow {
+        margin-top: -8px;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    ::i-block-chrome, .account-search-remove-shadow {
+        margin-top: -8px;
+    }
+
+    @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+        .account-search-remove-shadow {
+            margin-top: -8px;
+        }
+    }
+}
+
+.account-no-permissions-found-message {
+    font-size: 14px;
+    color: #333;
+}
+
+.account-search-message {
+    font-size: 14px;
+    color: #333;
+    min-height: 20px;
+    margin: 20px 0px 0px 0px;
+}
+
+@media(min-width:992px) {
+    .account-search-space {
+        margin: 30px 0px 0px 0px;
+    }
+}
+
+
+.account-tablemenu-single, .account-tablemenu-multiple {
+    display: none;
+}
+
+.account-files-preview-link {
+    color: #333;
+    cursor: pointer;
+    margin-right: 21px;
+}
+
+    .account-files-preview-link:hover {
+        color: #333;
+    }
+
+.account-tablemenu-icon {
+    pointer-events: none;
+}
+
+.account-files-edit-name-container {
+    border: 0px;
+    outline: none;
+    color: #333 !important;
+    padding: 0px;
+    background: #f6fbfd;
+    margin-left: -2px;
+    margin-right: -2px;
+    margin-bottom: 1px;
+}
+
+.account-settings-alert {
+    padding: 8px 11px;
+}
+
+.account-settings-message-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.account-files-edit-name-input {
+    outline: none;
+    border-color: #ccc !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    min-width: 100px;
+    padding-top: 4px;
+}
+
+.account-files-edit-name-submit {
+    width: 60px;
+}
+
+.account-guestaccounts-pending-remove {
+    cursor: pointer;
+}
+
+#account-links-create-form-group-container-file > .form-control-feedback {
+    line-height: 34px !important;
+    min-height: 34px !important;
+    min-width: 34px !important;
+}
+
+.has-feedback.has-error > .select2-container > .select2-choice {
+    border: 1px solid #a94442;
+}
+
+.has-feedback.has-success > .select2-container > .select2-choice {
+    border: 1px solid #3c763d;
+}
+
+.account-settings-input-text {
+    height: 40px;
+}
+
+.form-group-account-settings > .form-control-feedback {
+    min-width: 40px !important;
+    min-height: 40px !important;
+    line-height: 40px !important;
+}

@@ -1,0 +1,236 @@
+﻿@model Fildela.Web.Models.AccountModels.LinksViewModel
+
+@using Fildela.Web.Helpers;
+
+<div class="container" style="padding:0px;">
+    @Html.Partial("~/Views/Account/Partials/_Header.cshtml")
+
+    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+        <div class="list-group">
+            @if (Model != null && Model.Links != null && Model.Links.Count > 1)
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+            else
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" disabled data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="disabled account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9 hidden-sm hidden-xs" style="overflow-x: auto;">
+
+        <span class="account-selected-name pull-left"></span>
+
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.LinkWrite))
+        {
+            <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-links-file-create" style="margin-bottom:6px; margin-right:4px;" role="button">+ @Resource.File2</a>
+            <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-links-folder-create" style="margin-bottom:6px; margin-right:4px;" role="button">+ @Resource.Folder</a>
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.LinkRead))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-single" data-toggle="modal" data-target="#modal-account-links-url" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-files-o fa-fw account-tablemenu-icon" style="margin-right:1px;"></i>@Resource.URL</a>
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.LinkEdit))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-single" data-toggle="modal" data-target="#modal-account-links-expirationdate" style="margin-bottom:6px;" role="button"><i class="fa fa-pencil fa-fw account-tablemenu-icon"></i>@Resource.Expiration_date</a>
+        }
+        @if (Model != null && Model.Links != null && Model.Links.Count > 0)
+        {
+            if (User.IsInRole("AccountOwner") || Model.LinkEdit)
+            {
+                <a class="btn btn-default noselect pull-right" data-toggle="modal" data-target="#modal-account-links-empty" style="margin-bottom:6px;" role="button"><i class="fa fa-trash-o fa-fw account-tablemenu-icon" style="margin-right: 1px;"></i>@Resource.Empty</a>
+            }
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.LinkEdit))
+        {
+            <a class="btn btn-default noselect pull-right account-tablemenu-multiple" data-toggle="modal" data-target="#modal-account-links-remove" style="margin-bottom:6px; margin-right:4px;" role="button"><i class="fa fa-times fa-fw account-tablemenu-icon" style="margin-right:-1px;"></i>@Resource.Remove</a>
+        }
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="clear:both;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+            <div class="list-group" style="margin-bottom:0px;">
+                @if (Model != null && (User.IsInRole("AccountOwner") || Model.FileEdit || Model.FileRead || Model.FileWrite))
+                {
+                    <a href="/Account/Files" class="list-group-item">
+                        <span class="fa fa-file-o fa-fw" style="margin-right: 5px;"></span>@Resource.Files<span class="badge account-badge">@Model.FileCount</span>
+                    </a>
+                }
+                @if (Model != null && (User.IsInRole("AccountOwner") || Model.LinkEdit || Model.LinkRead || Model.LinkWrite))
+                {
+                    <a href="/Account/Links" class="list-group-item active noselect">
+                        <span class="fa fa-link fa-fw" style="margin-right:5px; font-size:14px;"></span>@Resource.Links<span class="badge account-badge">@Model.LinkCount</span>
+                    </a>
+                }
+                @if (Model != null && User.IsInRole("AccountOwner"))
+                {
+                    <a href="/Account/Guestaccounts" class="list-group-item">
+                        <span class="fa fa-users fa-fw" style="margin-right: 5px;"></span>@Resource.Guest_accounts<span class="badge account-badge">@Model.GuestAccountCount</span>
+                    </a>
+                    <a href="/Account/Logs" class="list-group-item">
+                        <span class="fa fa-file-text-o fa-fw" style="margin-right: 5px;"></span>@Resource.Log<span class="badge account-badge">@Model.LogCount</span>
+                    </a>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs" style="padding:20px 0px 0px 0px;">
+            <span class="label label-default label-account-usage-sm">
+                @Resource.Links
+            </span>
+
+            <div class="progress progress-account-sm" style="margin-bottom:0px;">
+                <div class="progress-bar progress-bar-account-sm @((double)Model.LinkCount / (double)Model.AllowedLinkCount < 0.75 ? "progress-bar-success" : "progress-bar-danger")" style="width: @UnitConverterExtensions.ConvertToPercentageString(Model.LinkCount, 100);">
+                    @UnitConverterExtensions.ConvertToPercentageString(Model.LinkCount, Model.AllowedLinkCount)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-xs-12 hidden-lg hidden-md" style="margin-top:20px;">
+        <div class="list-group" style="margin-bottom:0px;">
+            @if (Model != null && Model.Links != null && Model.Links.Count > 1)
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+            else
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" disabled data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="disabled account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="hidden-lg hidden-md col-sm-12 col-xs-12" style="overflow-x: auto; margin-bottom:14px; margin-top:20px;">
+
+        <span class="account-selected-name pull-left"></span>
+
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.LinkRead))
+        {
+            <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-links-file-create" style="margin-bottom: 6px; margin-right: 4px;" role="button">+ @Resource.File2</a>
+            <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-links-folder-create" style="margin-bottom:6px; margin-right:4px;" role="button">+ @Resource.Folder</a>
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.LinkRead))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-single" data-toggle="modal" data-target="#modal-account-links-url" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-files-o fa-fw account-tablemenu-icon" style="margin-right:2px; width: 17px;"></i>@Resource.URL</a>
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.LinkEdit))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-single" data-toggle="modal" data-target="#modal-account-links-expirationdate" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-pencil fa-fw account-tablemenu-icon"></i>@Resource.Expiration_date</a>
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.LinkEdit))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-multiple" data-toggle="modal" data-target="#modal-account-links-remove" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-times fa-fw account-tablemenu-icon" style="width: 17px;"></i>@Resource.Remove</a>
+        }
+        @if (Model != null && Model.Links != null && Model.Links.Count > 0)
+        {
+            if (User.IsInRole("AccountOwner") || Model.LinkEdit)
+            {
+                <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-links-empty" style="margin-bottom: 6px;" role="button"><i class="fa fa-trash-o fa-fw account-tablemenu-icon" style="margin-right: 1px;"></i>@Resource.Empty</a>
+            }
+        }
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 account-table-container" style="overflow-x:auto; margin:0px; padding:0px;">
+            <table class="order-table sorted noselect table table-condensed table-bordered table-hover" style="border-color: #428bca; margin:0px;">
+                <thead class="noselect">
+                    <tr style="color:#fff;">
+                        @if (Model != null && Model.Links != null && Model.Links.Count > 1)
+                        {
+                            <th id="account-links-header-name" class="account-table-header sortedplus" style="border-left:1px;">@Resource.Name <i class="fa fa-caret-down"></i></th>
+                        }
+                        else
+                        {
+                            <th id="account-links-header-name" class="account-table-header sortedplus" style="border-left:1px;">@Resource.Name <i></i></th>
+                        }
+                        <th id="account-links-header-datecreated" class="account-table-header">@Resource.Created <i></i></th>
+                        <th id="account-links-header-datestart" class="account-table-header">@Resource.Starts <i></i></th>
+                        <th id="account-links-header-dateend" class="account-table-header" style="border-right:1px;">@Resource.Ends <i></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Links != null && Model.Links.Count > 0)
+                    {
+                        foreach (var item in Model.Links)
+                        {
+                            <tr class="account-table-tr" style="display: table-row;" data-rowkey=@item.RowKey data-downloadurl="@item.DownloadURL" data-name="@item.FileName" data-nameshorten="@(Fildela.Web.Helpers.StringExtensions.ShortenFileName(item.FileName + "." + item.FileExtension, 15))" data-type="@Resource.Links2">
+                                <td headers="account-links-header-name" class="account-links-contextmenu">
+                                    <span style="display:none;">@item.FileName.ToLower()</span>
+                                    <img alt="@item.FileName" class="account-file-icon" src="@item.BlobIconURL" />
+                                    @Fildela.Web.Helpers.StringExtensions.ShortenWord(item.FileName, 50)
+                                </td>
+                                <td headers="account-links-header-datecreated" class="account-links-contextmenu">@item.DateCreated.ToString("yyyy/MM/dd HH:mm tt")</td>
+                                <td headers="account-links-header-datestart" class="account-links-contextmenu">@item.DateStart.ToString("yyyy/MM/dd HH:mm tt")</td>
+                                <td headers="account-links-header-dateend" class="account-links-contextmenu">@item.DateExpires.ToString("yyyy/MM/dd HH:mm tt")</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr style="display: table-row; cursor:default;">
+                            <td style="border-right:0px;">
+                                @Resource.No_links_was_found
+                            </td>
+                            <td style="border-left:0px; border-right:0px;"></td>
+                            <td style="border-left:0px; border-right:0px;"></td>
+                            <td style="border-left:0px;"></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="account-search-message-container" style="overflow-x:auto; margin:0px; padding:0px; display:none;">
+            <p class="account-search-message"></p>
+        </div>
+    </div>
+</div>
+
+@if (Model != null && (User.IsInRole("AccountOwner") || Model.LinkRead || Model.LinkEdit))
+{
+    <div id="account-links-contextmenu" class="dropdown clearfix" style="color: #555;">
+        <ul class="dropdown-menu account-dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;margin-bottom:5px;">
+            @if (User.IsInRole("AccountOwner") || Model.LinkRead)
+            {
+                <li><a tabindex="-1" style="padding-bottom:4px;" data-toggle="modal" data-target="#modal-account-links-url"><i class="fa fa-files-o fa-fw" style="margin-right: 5px; pointer-events: none; line-height: inherit;"></i>@Resource.URL</a></li>
+            }
+            @if (User.IsInRole("AccountOwner") || Model.LinkEdit)
+            {
+                <li><a tabindex="-1" data-toggle="modal" data-target="#modal-account-links-expirationdate"><i class="fa fa-pencil fa-fw" style="margin-right: 5px; pointer-events: none; line-height: inherit;"></i>@Resource.Expiration_date</a></li>
+            }
+            @if (User.IsInRole("AccountOwner") || Model.LinkEdit)
+            {
+                if (User.IsInRole("AccountOwner") || Model.LinkRead || Model.LinkEdit)
+                {
+                    <li style="pointer-events:none;" class="divider"></li>
+                }
+                <li><a tabindex="-1" data-toggle="modal" data-target="#modal-account-links-remove"><i class="fa fa-times fa-fw" style="margin-right: 5px; pointer-events: none; line-height: inherit;"></i>@Resource.Remove</a></li>
+            }
+        </ul>
+    </div>
+}

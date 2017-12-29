@@ -1,0 +1,150 @@
+﻿@if (TempData["IndexMessage"] != null)
+{
+    <script>
+        window.onload = function () {
+            var indexPopup = $.notify({
+                message: '@Html.Raw(TempData["IndexMessage"])',
+                target: '_blank'
+            }, {
+                // settings
+                element: 'body',
+                position: null,
+                type: "popup",
+                allow_dismiss: false,
+                newest_on_top: false,
+                placement: {
+                    from: "top",
+                    align: "right"
+                },
+                offset: 20,
+                spacing: 10,
+                z_index: 1031,
+                delay: 4000,
+                timer: 1000,
+                mouse_over: null,
+                animate: {
+                    enter: 'animated fadeInRight',
+                    exit: 'animated fadeOutRight'
+                },
+                onShow: null,
+                onShown: null,
+                onClose: null,
+                onClosed: null,
+                icon_type: 'class',
+                template: '<div data-notify="container" class="alert alert-{0}" role="alert">' +
+                    '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+                    '<span data-notify="icon"></span> ' +
+                    '<span data-notify="title">{1}</span> ' +
+                    '<span data-notify="message">{2}</span>' +
+                    '<div class="progress" data-notify="progressbar">' +
+                        '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                    '</div>' +
+                    '<a href="{3}" target="{4}" data-notify="url"></a>' +
+                '</div>'
+            });
+
+            $('.alert-popup').on('click', function (e) {
+                if ($(e.target).prop("tagName") != "A") {
+                    indexPopup.close();
+                }
+            });
+        };
+    </script>
+}
+
+<nav class="navbar navbar-inverse noselect" role="navigation" style="border:0px;">
+    <div class="container" style="padding-top:0px;">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand hidden-lg hidden-md hidden-sm" href="/Home/Index"><i class="fa fa-1x fa-home" style="margin-right:5px; min-width:17px;"></i>@System.Web.Configuration.WebConfigurationManager.AppSettings["ProductName"]</a>
+            <a class="navbar-brand hidden-xs" href="/Home/Index" style="padding: 6px 16px; font-weight:400; font-size: 13px; "><i class="fa fa-1x fa-home" style="margin-right:5px; min-width:17px;"></i>@System.Web.Configuration.WebConfigurationManager.AppSettings["ProductName"]</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="navbar-container">
+            <ul class="nav navbar-nav">
+                <li class="@(ViewContext.RouteData.GetRequiredString("controller") == "News" ? "active" : "")"><a class="menu-item" href="/News/Index">@Resource.News</a></li>
+                <li class="@(ViewContext.RouteData.GetRequiredString("action") == "Information" ? "active" : "")"><a class="menu-item" href="/Home/Information">@Resource.Information</a></li>
+                <li class="@(ViewContext.RouteData.GetRequiredString("controller") == "Contact" ? "active" : "")"><a class="menu-item" href="/Contact/Index">@Resource.Contact</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="dropdown menu-item @(ViewContext.RouteData.GetRequiredString("controller") == "Account" || ViewContext.RouteData.GetRequiredString("controller") == "Administration" ? "active" : "")" id="header-dropdown-authenticated">
+                        <a class="menu-item dropdown-item" data-toggle="dropdown">@Fildela.Web.Helpers.StringExtensions.FirstCharToUpperRemoveTextAfterAtSign(User.Identity.Name)<b class="caret"></b></a>
+                        <ul class="dropdown-menu header-dropdown-menu">
+                            <li><a class="menu-item menu-item-nav" style="cursor:pointer;" data-toggle="modal" data-target="#modal-direct-upload"><i class="fa fa-cloud-upload fa-fw" style="margin-right: 5px;"></i>@Resource.Upload_directly</a></li>
+
+                            @if (User.IsInRole("AccountOwner") || User.IsInRole("Guest"))
+                            {
+                                if (User.IsInRole("AccountOwner"))
+                                {
+                                    <li class="@(ViewContext.RouteData.GetRequiredString("controller") == "Account" ? "active" : "")" id="header-dropdown-account-index"><a href="/Account/Index" class="menu-item menu-item-nav" id="header-dropdown-account-index-link" style="cursor:pointer;"><i class="fa fa-user fa-fw" style="margin-right:5px;"></i>@Resource.My_account</a></li>
+                                }
+                                else
+                                {
+                                    <li class="@(ViewContext.RouteData.GetRequiredString("controller") == "Account" ? "active" : "")" id="header-dropdown-account-index"><a href="/Account/Index" class="menu-item menu-item-nav" id="header-dropdown-account-index-link" style="cursor:pointer;"><i class="fa fa-user fa-fw" style="margin-right:5px;"></i>@Fildela.Web.Helpers.ClaimsIdentityExtensions.GetAccountOwnerEmailShort()<text>'s </text>@Resource.Account</a></li>
+                                }
+                            }
+
+                            @if (User.IsInRole("Admin") || User.IsInRole("Support") || User.IsInRole("Publisher"))
+                            {
+                                <li class="@(ViewContext.RouteData.GetRequiredString("controller") == "Administration" ? "active" : "")" id="header-dropdown-administration"><a href="/Administration/Index" class="menu-item menu-item-nav" id="header-dropdown-administration-link" style="cursor:pointer;"><i class="fa fa-wrench fa-fw" style="margin-right:5px;"></i>@Resource.Administration</a></li>
+
+                                if (!User.IsInRole("AccountOwner"))
+                                {
+                                    <li class="@(ViewContext.RouteData.GetRequiredString("controller") == "Account" ? "active" : "")" id="header-dropdown-administration"><a href="/Account/Settings" class="menu-item menu-item-nav" id="header-dropdown-administration-link" style="cursor:pointer;"><i class="fa fa-wrench fa-fw" style="margin-right:5px;"></i>@Resource.Settings</a></li>
+                                }
+                            }
+
+                            <li class="divider header-divider"></li>
+                            <li>
+                                <a class="menu-item menu-item-nav trigger-next-form" id="header-dropdown-sign-out" style="cursor:pointer;">
+                                    <form action="/User/SignOut/" method="post">
+                                        @Html.AntiForgeryToken()
+                                    </form>
+
+                                    <i class="fa fa-sign-out fa-fw" style="margin-right: 5px;"></i>@Resource.Sign_out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="dropdown menu-item">
+                        <a href="#" class="menu-item dropdown-item" data-toggle="dropdown">@Resource.Upload<b class="caret"></b></a>
+                        <ul class="dropdown-menu header-dropdown-menu">
+                            <li><a class="menu-item menu-item-nav" style="cursor:pointer;" data-toggle="modal" data-target="#modal-direct-upload"><i class="fa fa-cloud-upload fa-fw" style="margin-right: 5px;"></i>@Resource.Upload_directly</a></li>
+                            <li><a class="menu-item menu-item-nav" style="cursor:pointer;" data-toggle="modal" data-target="#modal-sign-in"><i class="fa fa-sign-in fa-fw" style="margin-right: 5px;"></i>@Resource.Sign_in</a></li>
+                            <li><a class="menu-item menu-item-nav" style="cursor:pointer;" data-toggle="modal" data-target="#modal-register"><i class="fa fa-user fa-fw" style="margin-right: 5px;"></i>@Resource.Create_account</a></li>
+                            <li><a class="menu-item menu-item-nav" style="cursor:pointer;" data-toggle="modal" data-target="#modal-reset-password"><i class="fa fa-question-circle fa-fw" style="margin-right: 5px;"></i>@Resource.Forgot_password</a></li>
+                        </ul>
+                    </li>
+
+                }
+            </ul>
+
+            <div class="pull-right hidden-xs" id="active-users-container-header" title="@Resource.Connected_users">
+                <span>@Resource.Connected</span>
+                <i class="fa fa-user fa-fw" style="margin-right:-1px; margin-left:-1px;"></i>
+                <span id="active-users-header" class="active-users-text" style="min-width:18px;"></span>
+
+                <script>
+                    var activeusers = sessionStorage.getItem("activeusers");
+
+                    if (activeusers != null) {
+                        span = document.getElementById('active-users-header');
+                        txt = document.createTextNode(activeusers);
+                        span.appendChild(document.createTextNode(txt.textContent));
+
+                        document.getElementById("active-users-container-header").style.visibility = "visible";
+                    }
+                </script>
+            </div>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>

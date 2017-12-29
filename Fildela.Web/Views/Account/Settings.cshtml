@@ -1,0 +1,326 @@
+﻿@model Fildela.Web.Models.AccountModels.SettingsViewModel
+
+@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div class="container" style="padding:0px;">
+    @Html.Partial("~/Views/Account/Partials/_Header.cshtml")
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-bottom:20px;">
+        <a href="/Account/Settings" class="list-group-item active noselect list-group-item-single">
+            <span class="fa fa-wrench fa-fw" style="margin-right: 5px;"></span>@Resource.Settings
+        </a>
+    </div>
+
+    @if (User.IsInRole("Guest"))
+    {
+        <div class="col-lg-9 col-md-9 hidden-sm hidden-xs" style="overflow-x: auto;">
+            <a href="#account-settings-password" aria-controls="account-settings-password" role="tab" data-toggle="tab" class="btn @(Model.Tab == 1 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom:6px; margin-right: 4px;"><i class="fa fa-lock fa-fw" style="margin-right: -1px;"></i>@Resource.Password</a>
+            <a href="#account-settings-email" aria-controls="account-settings-email" role="tab" data-toggle="tab" class="btn @(Model.Tab == 2 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom: 6px;"><i class="fa fa-envelope-o fa-fw" style="margin-right: 1px;"></i>@Resource.Email</a>
+            <a href="#account-settings-delete" aria-controls="account-settings-delete" role="tab" data-toggle="tab" class="btn @(Model.Tab == 5 ? "btn-primary" : "btn-default") noselect pull-right account-tab-btn" style="margin-bottom:6px;"><i class="fa fa-times fa-fw" style="margin-right:-1px;"></i>@Resource.Delete</a>
+        </div>
+    }
+    else
+    {
+        <div class="col-lg-9 col-md-9 hidden-sm hidden-xs" style="overflow-x: auto;">
+            <a href="#account-settings-password" aria-controls="account-settings-password" role="tab" data-toggle="tab" class="btn @(Model.Tab == 1 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom:6px;  margin-right: 4px;"><i class="fa fa-lock fa-fw" style="margin-right: -1px;"></i>@Resource.Password</a>
+            <a href="#account-settings-email" aria-controls="account-settings-email" role="tab" data-toggle="tab" class="btn @(Model.Tab == 2 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom: 6px; margin-right: 4px;"><i class="fa fa-envelope-o fa-fw" style="margin-right: 1px;"></i>@Resource.Email</a>
+            <a href="#account-settings-authentication" aria-controls="account-settings-authentication" role="tab" data-toggle="tab" class="btn @(Model.Tab == 3 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom:6px;"><i class="fa fa-key fa-fw" style="margin-right: 1px;"></i>@Resource.Authentication</a>
+            <a href="#account-settings-delete" aria-controls="account-settings-delete" role="tab" data-toggle="tab" class="btn @(Model.Tab == 5 ? "btn-primary" : "btn-default") noselect pull-right account-tab-btn" style="margin-bottom:6px;"><i class="fa fa-times fa-fw" style="margin-right:-1px;"></i>@Resource.Delete</a>
+            @if (User.IsInRole("AccountOwner"))
+            {
+                <a href="#account-settings-reset" aria-controls="account-settings-reset" role="tab" data-toggle="tab" class="btn @(Model.Tab == 4 ? "btn-primary" : "btn-default") noselect pull-right account-tab-btn" style="margin-bottom:6px; margin-right:4px;"><i class="fa fa fa-history fa-fw" style="margin-right:1px;"></i>@Resource.Reset</a>
+            }
+        </div>
+    }
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="clear:both;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+            <div class="list-group">
+                @if (User.IsInRole("AccountOwner") || Model.FileEdit || Model.FileRead || Model.FileWrite)
+                {
+                    <a href="/Account/Files" class="list-group-item">
+                        <span class="fa fa-file-o fa-fw" style="margin-right: 5px;"></span>@Resource.Files<span class="badge account-badge">@Model.FileCount</span>
+                    </a>
+                }
+                @if (User.IsInRole("AccountOwner") || Model.LinkEdit || Model.LinkRead || Model.LinkWrite)
+                {
+                    <a href="/Account/Links" class="list-group-item">
+                        <span class="fa fa-link fa-fw" style="margin-right:5px;"></span>@Resource.Links<span class="badge account-badge">@Model.LinkCount</span>
+                    </a>
+                }
+                @if (User.IsInRole("AccountOwner"))
+                {
+                    <a href="/Account/Guestaccounts" class="list-group-item">
+                        <span class="fa fa-users fa-fw" style="margin-right: 5px;"></span>@Resource.Guest_accounts<span class="badge account-badge">@Model.GuestAccountCount</span>
+                    </a>
+                    <a href="/Account/Logs" class="list-group-item">
+                        <span class="fa fa-file-text-o fa-fw" style="margin-right: 5px;"></span>@Resource.Log<span class="badge account-badge">@Model.LogCount</span>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+    @if (User.IsInRole("Guest"))
+    {
+        <div class="hidden-lg hidden-md col-sm-12 col-xs-12" style="overflow-x: auto; margin-bottom:14px;">
+            <a href="#account-settings-password" aria-controls="account-settings-password" role="tab" data-toggle="tab" class="btn @(Model.Tab == 1 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom: 6px; margin-right: 4px;"><i class="fa fa-lock fa-fw" style="margin-right: -1px;"></i>@Resource.Password</a>
+            <a href="#account-settings-email" aria-controls="account-settings-email" role="tab" data-toggle="tab" class="btn @(Model.Tab == 2 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom: 6px; margin-right: 4px;"><i class="fa fa-envelope-o fa-fw" style="margin-right: 1px;"></i>@Resource.Email</a>
+            <a href="#account-settings-delete" aria-controls="account-settings-delete" role="tab" data-toggle="tab" class="btn @(Model.Tab == 5 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom:6px;"><i class="fa fa-times fa-fw" style="margin-right:-1px;"></i>@Resource.Delete</a>
+        </div>
+    }
+    else
+    {
+        <div class="hidden-lg hidden-md col-sm-12 col-xs-12" style="overflow-x: auto; margin-bottom:14px;">
+            <a href="#account-settings-password" aria-controls="account-settings-password" role="tab" data-toggle="tab" class="btn @(Model.Tab == 1 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom: 6px; margin-right: 4px;"><i class="fa fa-lock fa-fw" style="margin-right: -1px;"></i>@Resource.Password</a>
+            <a href="#account-settings-email" aria-controls="account-settings-email" role="tab" data-toggle="tab" class="btn @(Model.Tab == 2 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom: 6px; margin-right: 4px;"><i class="fa fa-envelope-o fa-fw" style="margin-right: 1px;"></i>@Resource.Email</a>
+            <a href="#account-settings-authentication" aria-controls="account-settings-authentication" role="tab" data-toggle="tab" class="btn @(Model.Tab == 3 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom:6px; margin-right: 4px;"><i class="fa fa-key fa-fw" style="margin-right: 1px;"></i>@Resource.Authentication</a>
+            @if (User.IsInRole("AccountOwner"))
+            {
+                <a href="#account-settings-reset" aria-controls="account-settings-reset" role="tab" data-toggle="tab" class="btn @(Model.Tab == 4 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom: 6px; margin-right: 4px;"><i class="fa fa fa-history fa-fw" style="margin-right:1px;"></i>@Resource.Reset</a>
+            }
+            <a href="#account-settings-delete" aria-controls="account-settings-delete" role="tab" data-toggle="tab" class="btn @(Model.Tab == 5 ? "btn-primary" : "btn-default") noselect pull-left account-tab-btn" style="margin-bottom:6px;"><i class="fa fa-times fa-fw" style="margin-right:-1px;"></i>@Resource.Delete</a>
+        </div>
+    }
+
+    @if (TempData["AccountSettingsSuccess"] != null)
+    {
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 account-settings-message-container">
+            <div class="alert alert-success account-settings-alert">
+                @TempData["AccountSettingsSuccess"]
+                <i class="glyphicon glyphicon-ok pull-right"></i>
+            </div>
+        </div>
+    }
+    else if (!ViewData.ModelState.IsValid)
+    {
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 account-settings-message-container">
+            <div class="alert alert-danger account-settings-alert">
+                @Html.ValidationMessage("AccountSettingsError")
+                <i class="glyphicon glyphicon-remove pull-right"></i>
+            </div>
+        </div>
+    }
+
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 account-settings-message-container" id="account-settings-ajax-success-container" style="display:none;">
+        <div class="alert alert-success account-settings-alert">
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 account-settings-message-container" id="account-settings-ajax-error-container" style="display:none;">
+        <div class="alert alert-danger account-settings-alert">
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 pull-right">
+        @if (User.IsInRole("Guest"))
+        {
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane @(Model.Tab == 1 ? "active fade in" : "fade")" id="account-settings-password">
+                    <div class="alert alert-info" style="padding: 11px 14px 11px 14px; margin-bottom: 20px;">
+                        <p class="account-alert">
+                            @Resource.Edit_password
+                            <i class="fa fa-lock pull-right" style="line-height: 18px;"></i>
+                        </p>
+                    </div>
+
+                    <form id="account-settings-password-form" class="form-horizontal" action="/User/UpdateGuestPassword" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="password" name="CurrentPassword" class="form-control account-settings-input-text account-settings-input" placeholder="Nuvarande lösenord">
+                        </div>
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="password" name="NewPassword" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.New_password">
+                        </div>
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="password" name="ConfirmNewPassword" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.Confirm_new_password">
+                        </div>
+
+                        <div class="form-group form-group-container form-group-account-settings" style="margin-bottom:0px;">
+                            <button type="submit" class="btn btn-primary account-settings-input" style="font-size:13px;">
+                                <i id="update-password-submit-icon" class="fa fa-check" style="line-height:inherit; min-width:14px; margin-right:3px;"></i><span id="account-settings-password-spinner" style="display:none;" class="spinner-button-w-text"></span>@Resource.Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div role="tabpanel" class="tab-pane @(Model.Tab == 2 ? "active fade in" : "fade")" id="account-settings-email">
+                    <div class="alert alert-info" style="padding: 11px 7px 11px 14px; margin-bottom: 20px;">
+                        <p class="account-alert">
+                            @Resource.Edit_email
+                            <i class="fa fa-envelope-o pull-right" style="margin-right: 7px; line-height: 18px"></i>
+                        </p>
+                    </div>
+
+                    <form id="account-settings-email-form" class="form-horizontal" action="/User/UpdateGuestEmail" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="password" name="Password" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.Current_password">
+                        </div>
+
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="text" name="NewEmail" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.New_email">
+                        </div>
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="text" name="ConfirmNewEmail" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.Confirm_new_email_address">
+                        </div>
+
+                        <div class="form-group form-group-container form-group-account-settings" style="margin-bottom:0px;">
+                            <button type="submit" class="btn btn-primary account-settings-input" style="font-size:13px;"><i id="update-email-submit-icon" class="fa fa-check" style="line-height:inherit; min-width:14px; margin-right:3px;"></i><span id="account-settings-email-spinner" style="display:none;" class="spinner-button-w-text"></span>@Resource.Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div role="tabpanel" class="tab-pane @(Model.Tab == 5 ? "active fade in" : "fade")" id="account-settings-delete">
+                    <div class="alert alert-info" style="padding: 11px 14px 11px 14px; margin-bottom: 20px;">
+                        <p class="account-alert">
+                            @Resource.Delete_account
+                            <i class="fa fa-times pull-right" style="line-height: 18px;"></i>
+                        </p>
+                    </div>
+
+                    <form id="account-settings-delete-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="password" name="Password" id="account-settings-delete-password" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.Current_password">
+                        </div>
+
+                        <div class="form-group form-group-container form-group-account-settings" style="margin-bottom:0px;">
+                            <button type="submit" class="btn btn-primary account-settings-input" id="account-settings-delete-submitbtn" style="font-size:13px;">
+                                <i class="fa fa-check" style="line-height:inherit; min-width:14px; margin-right:3px;"></i>@Resource.Delete
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane @(Model.Tab == 1 ? "active fade in" : "fade")" id="account-settings-password">
+                    <div class="alert alert-info" style="padding: 11px 14px 11px 14px; margin-bottom: 20px;">
+                        <p class="account-alert">
+                            @Resource.Edit_password
+                            <i class="fa fa-lock pull-right" style="line-height: 22px;"></i>
+                        </p>
+                    </div>
+
+                    <form id="account-settings-password-form" class="form-horizontal" action="/User/UpdateUserPassword" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="password" name="CurrentPassword" class="form-control account-settings-input-text account-settings-input" placeholder="Nuvarande lösenord">
+                        </div>
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="password" name="NewPassword" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.New_password">
+                        </div>
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="password" name="ConfirmNewPassword" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.Confirm_new_password">
+                        </div>
+
+                        <div class="form-group form-group-container form-group-account-settings" style="margin-bottom:0px;">
+                            <button type="submit" class="btn btn-primary account-settings-input" style="font-size:13px;">
+                                <i id="update-password-submit-icon" class="fa fa-check" style="line-height:inherit; min-width:14px; margin-right:3px;"></i><span id="account-settings-password-spinner" style="display:none;" class="spinner-button-w-text"></span>@Resource.Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div role="tabpanel" class="tab-pane @(Model.Tab == 2 ? "active fade in" : "fade")" id="account-settings-email">
+                    <div class="alert alert-info" style="padding: 11px 7px 11px 14px; margin-bottom: 20px;">
+                        <p class="account-alert">
+                            @Resource.Edit_email
+                            <i class="fa fa-envelope-o pull-right" style="margin-right: 7px; line-height: 18px"></i>
+                        </p>
+                    </div>
+
+                    <form id="account-settings-email-form" class="form-horizontal" action="/User/UpdateUserEmail" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="password" name="Password" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.Current_password">
+                        </div>
+
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="text" name="NewEmail" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.New_email">
+                        </div>
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="text" name="ConfirmNewEmail" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.Confirm_new_email_address">
+                        </div>
+
+                        <div class="form-group form-group-container form-group-account-settings" style="margin-bottom:0px;">
+                            <button type="submit" class="btn btn-primary account-settings-input" style="font-size:13px;"><i id="update-email-submit-icon" class="fa fa-check" style="line-height:inherit; min-width:14px; margin-right:3px;"></i><span id="account-settings-email-spinner" style="display:none;" class="spinner-button-w-text"></span>@Resource.Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div role="tabpanel" class="tab-pane @(Model.Tab == 3 ? "active fade in" : "fade")" id="account-settings-authentication">
+                    <div id="account-settings-authentication-container">
+                        @Html.Partial("~/Views/Account/Partials/_SettingsAuthenticationContentPartial.cshtml")
+                    </div>
+                </div>
+
+                @if (User.IsInRole("AccountOwner"))
+                {
+                    <div role="tabpanel" class="tab-pane @(Model.Tab == 4 ? "active fade in" : "fade")" id="account-settings-reset">
+                        <div class="alert alert-info" style="padding: 11px 14px 11px 14px; margin-bottom: 20px;">
+                            <p class="account-alert">
+                                @Resource.Reset_account
+                                <i class="fa fa-history pull-right" style="line-height: 18px;"></i>
+                            </p>
+                        </div>
+
+                        <form id="account-settings-reset-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group form-group-container form-group-account-settings">
+                                <input type="password" name="Password" id="account-settings-reset-password" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.Current_password">
+                            </div>
+                            <div class="form-group form-group-container form-group-account-settings" style="margin-bottom:0px;">
+                                <button class="btn btn-primary account-settings-input" id="account-settings-reset-submitbtn" type="submit" style="font-size:13px;">
+                                    <i class="fa fa-check" style="line-height:inherit; min-width:14px; margin-right:3px;"></i>@Resource.Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                }
+
+                <div role="tabpanel" class="tab-pane @(Model.Tab == 5 ? "active fade in" : "fade")" id="account-settings-delete">
+                    <div class="alert alert-info" style="padding: 11px 14px 11px 14px; margin-bottom: 20px;">
+                        <p class="account-alert">
+                            @Resource.Delete_account
+                            <i class="fa fa-times pull-right" style="line-height: 18px;"></i>
+                        </p>
+                    </div>
+
+                    <form id="account-settings-delete-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group form-group-container form-group-account-settings">
+                            <input type="password" name="Password" id="account-settings-delete-password" class="form-control account-settings-input-text account-settings-input" placeholder="@Resource.Current_password">
+                        </div>
+
+                        <div class="form-group form-group-container form-group-account-settings" style="margin-bottom:0px;">
+                            <button type="submit" class="btn btn-primary account-settings-input" id="account-settings-delete-submitbtn" style="font-size:13px;">
+                                <i class="fa fa-check" style="line-height:inherit; min-width:14px; margin-right:3px;"></i>@Resource.Delete
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Footer {
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}
+
+@section Modals {
+    @Html.Partial("~/Views/Account/Modals/_SettingsModals.cshtml")
+}

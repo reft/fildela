@@ -1,0 +1,125 @@
+﻿.contact-input-label {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+/*default (IE)*/
+#contact-address-headline {
+    margin-top: 2px;
+    text-decoration: underline;
+}
+
+.contact-h2 {
+    margin-top: 35px;
+    text-decoration: underline;
+}
+
+.page-content-contact {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+}
+
+@media(max-width:1199px) {
+    .contact-h2 {
+        margin-bottom: 10px;
+    }
+
+    #contact-address-headline {
+        margin-top: 1px;
+    }
+}
+
+@-moz-document url-prefix() { /*FIREFOX*/
+    .contact-h2 {
+        margin-top: 38px;
+    }
+
+    #contact-address-headline {
+        margin-top: 2px;
+    }
+
+    @media(max-width:1199px) {
+        .contact-h2 {
+            margin-top: 38px;
+        }
+
+        #contact-address-headline {
+            margin-top: 1px;
+        }
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .contact-h2 { /*CHROME*/
+        margin-top: 36px;
+    }
+
+    #contact-address-headline {
+        margin-top: 1px;
+    }
+
+    ::i-block-chrome, #contact-address-headline /*SAFARI*/ {
+        margin-top: 1px;
+    }
+
+    ::i-block-chrome, .contact-h2 { /*SAFARI*/
+        margin-top: 36px;
+    }
+}
+
+@media (min-width: 768px) {
+    .contact-information-container {
+        left: 17% !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .contact-information-container {
+        left: 19% !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .contact-information-container {
+        left: 19% !important;
+    }
+}
+
+@media(max-width:767px) {
+    .contact-h2 {
+        margin-top: 10px !important;
+        margin-bottom: 5px !important;
+    }
+}
+
+#contact-mail-form > .form-group {
+    padding: 0px 15px;
+    margin-bottom: 20px;
+}
+
+@media(max-width:767px) {
+    #contact-mail-form > .form-group {
+        margin-bottom: 10px;
+    }
+}
+
+.contact-message-container {
+    padding: 0px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .contact-message-container {
+        text-align: left;
+    }
+
+    #contact-address-headline {
+        text-decoration: none;
+    }
+
+    .contact-h2 {
+        text-decoration: none;
+    }
+}

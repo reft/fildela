@@ -1,0 +1,41 @@
+﻿@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div class="container">
+    <h2 style="margin-top:0px;">
+        @if (!String.IsNullOrEmpty(ViewBag.Title))
+        {
+            <text>@ViewBag.MessageTitle</text>
+        }
+        else
+        {
+            @Resource.Message
+        }
+    </h2>
+    <hr />
+
+    <div class="col-xs-12" style="padding: 0px;">
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <p class="page-text" style="margin-bottom:20px;">
+                @if (ViewData.ModelState["Success"] != null)
+                {
+                    <i class="glyphicon glyphicon-ok shared-message-icon" style="color: #3c763d;"></i> @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessage("Success").ToHtmlString()))
+                }
+                else
+                {
+                    <i class="glyphicon glyphicon-remove shared-message-icon" style="color: #a94442;"></i> @Html.Raw(HttpUtility.HtmlDecode(Html.ValidationMessage("Error").ToHtmlString()))
+                }
+            </p>
+        }
+
+        <p style="color: #428bca;">
+            <a href="/Home/Index" class="error-link-title">@Resource.Back_to_start</a>
+        </p>
+    </div>
+</div>
+
+@section Footer {
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}

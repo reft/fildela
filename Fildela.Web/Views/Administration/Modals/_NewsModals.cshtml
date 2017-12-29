@@ -1,0 +1,65 @@
+﻿@model Fildela.Web.Models.AdministrationModels.AdministrationNewsViewModel
+
+<!-- Modal news, create -->
+<div class="modal" id="modal-administration-news-create" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Create_news</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-administration-news-create-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+
+                <div class="col-xs-12 modal-form-message-container" id="modal-administration-news-create-success-container" style="display:none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12" style="padding-top:15px;">
+                    <form id="modal-administration-news-create-form" enctype="multipart/form-data" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group form-group-container">
+                            <input type="text" name="Title" class="form-control input-lg modal-administration-news-create-input" placeholder="@Resource.Title">
+                        </div>
+
+                        <div class="form-group form-group-container">
+                            <select class="form-control input-lg modal-administration-news-create-input select select-color" id="modal-administration-news-create-select" name="CategoryID">
+                                <option disabled value="0" selected>@Resource.Select_a_category</option>
+                                @foreach (var item in Model.Categories)
+                                {
+                                    <option value="@item.CategoryID">@(Html.GetStringFromView<Resource>(item.Name))</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group form-group-container">
+                            <a class="file-input-wrapper btn btn-default btn-lg btn-block" id="modal-news-file-input-wrapper" style="background-color: #fff !important;">
+                                <p id="modal-news-file-text" style="display: inline-block; color: #999999; margin-bottom: 0px;">@Resource.Select_image</p>
+                                <input data-message="@Resource.Select_image" type="file" name="Image" id="modal-news-file-input">
+                            </a>
+                        </div>
+
+                        <div class="form-group form-group-text_area form-group-container textarea-container last-form-group">
+                            <textarea id="modal-administration-news-create-textarea" rows="8" name="Text" class="form-control modal-administration-news-create-input" placeholder="@Resource.Text"></textarea>
+                        </div>
+                        <br />
+
+                        <div class="form-group form-group-container">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block modal-administration-news-create-input modal-btn-spin" id="modal-administration-news-create-submitbtn">
+                                <span>@Resource.Create</span>
+                                <span id="modal-administration-news-create-submit-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>

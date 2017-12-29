@@ -1,0 +1,410 @@
+﻿@model Fildela.Web.Models.NewsModels.NewsViewModel
+
+@using PagedList.Mvc;
+
+@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<!-- Page Content -->
+<div class="container" style="padding:0px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h2 style="margin-top: 0px; margin-bottom: 0px; text-indent: -1px;">
+            @Resource.News
+        </h2>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+        <hr />
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right news-menu-content-container">
+        <div class="hidden-lg hidden-md hidden-sm col-xs-12" style="padding:0px;">
+            <hr />
+        </div>
+        <div style="height: 562px; width: 15px;" class="hidden-xs pull-left"></div>
+        <div class="well news-well-search">
+            <h4 style="margin-top:2px;">@Resource.Search_news</h4>
+            <form action="/News/Index" id="news-search-form">
+                <div class="input-group">
+                    <input name="newstitle" type="text" class="form-control news-input-title">
+
+                    @if (Model.CategoryID != null)
+                    {
+                        <input name="categoryID" type="hidden" value="@Model.CategoryID" />
+                    }
+
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <span id="news-search-btn-spinner" style="display:none;" class="spinner-button"></span>
+                            <span id="news-search-btn-text">@Resource.Search</span>
+                        </button>
+                    </span>
+                </div>
+            </form>
+            <div id="news-search-form-error" class="has-error">
+            </div>
+        </div>
+
+        @if (Model != null && Model.Categories != null && Model.NewsPagedListDTO != null)
+        {
+            if (Model.CategoryID != null || Model.NewsTitle != null)
+            {
+                <div class="well news-well">
+                    <h4>@Resource.Settings</h4>
+
+                    <ul class="list-unstyled news-list-menu">
+                        <li>
+                            <a href="/News/Index">@Resource.Reset_filter</a>
+
+                            @if (Model.NewsTitle != null || Model.CategoryID != null)
+                            {
+                                <span style="cursor:default;">
+                                    @if (Model.NewsTitle != null && Model.CategoryID != null)
+                                    {
+                                        <span>- <span style="color: #e74c3c;">@Resource.Category</span>, <span style="color:#2ecc71;">@Resource.Search_word</span> -</span>
+                                    }
+                                    else if (Model.NewsTitle != null)
+                                    {
+                                        <text>-<span style="color: #2ecc71;"> @Resource.Search_word </span>-</text>
+                                    }
+                                    else
+                                    {
+                                        <text>-<span style="color: #e74c3c;"> @Resource.Category </span>-</text>
+                                    }
+                                </span>
+                                <span style="cursor:default;">
+                                    @if (Model.NewsPagedListDTO.NewsDTOModel.TotalItemCount == 0)
+                                    {
+                                        <span class="news-search-text">0 @Resource.Hits2</span>
+                                    }
+                                    else if (Model.NewsPagedListDTO.NewsDTOModel.TotalItemCount == 1)
+                                    {
+                                        <span class="news-search-text"><span class="bold">@Model.NewsPagedListDTO.NewsDTOModel.TotalItemCount</span> @Resource.Hit2</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="news-search-text"><span class="bold">@Model.NewsPagedListDTO.NewsDTOModel.TotalItemCount</span> @Resource.Hits2</span>
+                                    }
+                                </span>
+                            }
+                        </li>
+                    </ul>
+                </div>
+            }
+
+            if (Model.NewsPagedListDTO.NewsDTOModel != null)
+            {
+                if (Model.NewsPagedListDTO.NewsDTOModel != null && Model.NewsPagedListDTO.NewsDTOModel.TotalItemCount == 1 && !String.IsNullOrEmpty(Model.NewsPagedListDTO.NewsDTOModel.First().Text))
+                {
+                    <div class="well news-well">
+                        <h4>@Resource.Settings</h4>
+
+                        <ul class="list-unstyled news-list-menu">
+                            <li>
+                                <a href="/News/Index">@Resource.Show_all_news</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else if (Model.NewsPagedListDTO.NewsDTOModel.FirstOrDefault() == null && Model.CategoryID == null && Model.NewsTitle == null)
+                {
+                    <div class="well news-well">
+                        <h4>@Resource.Settings</h4>
+
+                        <ul class="list-unstyled news-list-menu">
+                            <li>
+                                <a href="/News/Index">@Resource.Show_all_news</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
+            }
+
+            <div class="well news-well">
+                @if (Model.NewsPagedListDTO.NewsDTOModel != null && Model.NewsPagedListDTO.NewsDTOModel.Count > 0)
+                {
+                    <h4>@Resource.Sort_by</h4>
+
+                    if (Model.NewsPagedListDTO.NewsDTOModel.TotalItemCount == 1)
+                    {
+                        <ul class="list-unstyled news-list-menu">
+                            <li>
+                                <a class="news-sort-by-disabled noselect">@Resource.Title</a>
+                            </li>
+                            <li>
+                                <a class="news-sort-by-disabled noselect">@Resource.Category</a>
+                            </li>
+                            <li>
+                                <a class="news-sort-by-disabled noselect">@Resource.Publisher</a>
+                            </li>
+                            <li>
+                                <a class="news-sort-by-disabled noselect">@Resource.Date</a>
+                            </li>
+                        </ul>
+                    }
+                    else if (Model.NewsPagedListDTO.NewsDTOModel.TotalItemCount > 1)
+                    {
+                        <ul class="list-unstyled news-list-menu">
+                            <li>
+                                <a href="/News/Index?@(Model.CategoryID != null && Model.NewsTitle == null ? "categoryid="+Model.CategoryID : "")@(Model.NewsTitle != null && Model.CategoryID == null ? "newstitle="+Model.NewsTitle : "")&orderbytitle=@(Model.OrderByTitle == 0 ? 1 : 0)">
+                                    @Resource.Title
+                                    @if (Model.OrderByTitle != null)
+                                    {
+                                        <i class="@(Model.OrderByTitle == 0 ? "fa fa-caret-down" : "fa fa-caret-up")"></i>
+                                    }
+                                </a>
+                            <li>
+                                <a href="/News/Index?@(Model.CategoryID != null && Model.NewsTitle == null ? "categoryid="+Model.CategoryID : "")@(Model.NewsTitle != null && Model.CategoryID == null ? "newstitle="+Model.NewsTitle : "")&orderbycategory=@(Model.OrderByCategory == 0 ? 1 : 0)">
+                                    @Resource.Category
+                                    @if (Model.OrderByCategory != null)
+                                    {
+                                        <i class="@(Model.OrderByCategory == 0 ? "fa fa-caret-down" : "fa fa-caret-up")"></i>
+                                    }
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/News/Index?@(Model.CategoryID != null && Model.NewsTitle == null ? "categoryid="+Model.CategoryID : "")@(Model.NewsTitle != null && Model.CategoryID == null ? "newstitle="+Model.NewsTitle : "")&orderbypublisher=@(Model.OrderByPublisher == 0 ? 1 : 0)">
+                                    @Resource.Publisher
+                                    @if (Model.OrderByPublisher != null)
+                                    {
+                                        <i class="@(Model.OrderByPublisher == 0 ? "fa fa-caret-down" : "fa fa-caret-up")"></i>
+                                    }
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/News/Index?@(Model.CategoryID != null && Model.NewsTitle == null ? "categoryid="+Model.CategoryID : "")@(Model.NewsTitle != null && Model.CategoryID == null ? "newstitle="+Model.NewsTitle : "")&orderbydate=@(Model.OrderByDate == 0 ? 1 : 0)">
+                                    @Resource.Date
+                                    @if (Model.OrderByDate != null)
+                                    {
+                                        <i class="@(Model.OrderByDate == 0 ? "fa fa-caret-down" : "fa fa-caret-up")"></i>
+                                    }
+                                </a>
+                            </li>
+                        </ul>
+                    }
+                }
+                else
+                {
+                    <h4>@Resource.Sort_by</h4>
+
+                    <ul class="list-unstyled news-list-menu">
+                        <li>
+                            <a class="news-sort-by-disabled noselect">@Resource.Title</a>
+                        </li>
+                        <li>
+                            <a class="news-sort-by-disabled noselect">@Resource.Category</a>
+                        </li>
+                        <li>
+                            <a class="news-sort-by-disabled noselect">@Resource.Publisher</a>
+                        </li>
+                        <li>
+                            <a class="news-sort-by-disabled noselect">@Resource.Date</a>
+                        </li>
+                    </ul>
+                }
+            </div>
+
+            <div class="well news-well">
+                <h4>@Resource.Filter_on</h4>
+
+                <ul class="list-unstyled news-list-menu" style="margin-bottom:0px;">
+                    @foreach (var item in Model.Categories)
+                    {
+                        <li>
+                            @if (Model.CategoryID != null && Model.CategoryID == item.CategoryID)
+                            {
+                                <span style="opacity: 0.65; color:#333; cursor:default;">
+                                    @(Html.GetStringFromView<Resource>(item.Name))
+                                </span>
+                            }
+                            else
+                            {
+                                @Html.RouteLink(Html.GetStringFromView<Resource>(item.Name), "NewsCategory", new { categoryID = item.CategoryID })
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+
+            <div class="well news-well">
+                <h4>@Resource.Display_format</h4>
+                <ul class="list-unstyled news-list-menu">
+                    <li>
+                        <span class="noselect" style="color:#333; opacity:0.65; cursor:default;">@Resource.Default</span>
+                    </li>
+                    <li>
+                        @Html.RouteLink(Resource.Table, "NewsTable", new { Table = true })
+                    </li>
+                </ul>
+            </div>
+        }
+    </div>
+
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 news-main-content-container">
+        <div class="hidden-lg hidden-md hidden-sm col-xs-12" style="padding:0px;">
+            <hr />
+        </div>
+
+        @if (Model != null && Model.NewsPagedListDTO != null && Model.NewsPagedListDTO.NewsDTOModel != null && Model.NewsPagedListDTO.NewsDTOModel.Count > 0)
+        {
+            if (Model.NewsID != null && String.IsNullOrEmpty(Model.NewsPagedListDTO.NewsDTOModel.FirstOrDefault().PreviewText))
+            {
+                <h4 style="margin:4px 0px 0px 0px; font-size:14px;">@Resource.No_news_was_found</h4>
+
+                if (Model.CategoryID != null || Model.NewsTitle != null || Model.OrderByCategory != null ||
+                    Model.OrderByDate != null || Model.OrderByPublisher != null || Model.OrderByTitle != null)
+                {
+                    <h4 style="margin-top:20px; font-size:14px;">@Resource.Do_you_want_to <a href="/News/Index">@Resource.Reset2</a> @Resource.Your_filter</h4>
+                }
+            }
+            else
+            {
+                foreach (var item in Model.NewsPagedListDTO.NewsDTOModel)
+                {
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+                        @if (Model.NewsPagedListDTO.NewsDTOModel.TotalItemCount == 1 && !String.IsNullOrEmpty(Model.NewsPagedListDTO.NewsDTOModel.First().Text))
+                        {
+                            <h2 class="pull-left news-title" style="text-decoration:none;">
+                                <span style="color:#e74c3c;">#@item.NewsID</span> @item.Title
+                            </h2>
+                        }
+                        else
+                        {
+                            <a href="/News/@item.NewsID">
+                                <h2 class="pull-left news-title news-title-clickable">
+                                    <span style="color:#e74c3c;">#@item.NewsID</span> @item.Title
+                                </h2>
+                            </a>
+                        }
+                    </div>
+
+                    <p class="page-content news-subtitle">
+                        <i class="fa fa-user news-subtitle-icon" title="@Resource.Publisher" style="color:#393;"></i> @(item.PublishedByFullName == " " ? Resource.Anonymous : item.PublishedByFullName)<br />
+                        <i class="fa fa-clock-o news-subtitle-icon" title="@Resource.Date" style="color:#428bca;"></i>
+                        @if (TimeZoneExtensions.WithinPreviousPeriod(item.DatePublished, 1))
+                        {
+                            @Resource.Today @item.DatePublished.ToString(" HH:mm tt")
+                        }
+                        else if (TimeZoneExtensions.WithinPreviousPeriod(item.DatePublished, 2))
+                        {
+                            @Resource.Yesterday @item.DatePublished.ToString(" HH:mm tt")
+                        }
+                        else
+                        {
+                            @item.DatePublished.ToString("yyyy/MM/dd HH:mm tt")
+                        }
+                    </p>
+
+                    <hr style="margin-top:15px;">
+
+                    <div class="img-container">
+                        @if (Model.NewsPagedListDTO.NewsDTOModel.TotalItemCount == 1 && !String.IsNullOrEmpty(Model.NewsPagedListDTO.NewsDTOModel.First().Text))
+                        {
+                            <img alt="@item.Title" class="img-responsive" src="@item.ImageBlobURL">
+                        }
+                        else
+                        {
+                            <a href="/News/@item.NewsID">
+                                <img alt="@item.Title" style="cursor:pointer;" class="img-responsive" src="@item.ImageBlobURL">
+                            </a>
+                        }
+                    </div>
+
+                    <hr style="margin-bottom:10px;">
+
+                    <p class="page-content" style="margin-bottom:15px;">
+                        @if (String.IsNullOrEmpty(item.Text))
+                        {
+                            @item.PreviewText
+                            <a href="/News/@item.NewsID" style="font-size:16px; text-decoration:underline; white-space:nowrap;">@Resource.Read_more</a>
+                        }
+                        else
+                        {
+                            <span style="white-space:pre-wrap;">@item.Text</span>
+                        }
+                    </p>
+
+                    <div class="news-label-container-largescreen" style="padding:0px; height:21px; cursor:default;">
+                        <span title="@Resource.Category" class="label noselect label-danger">@(Html.GetStringFromView<Resource>(item.CategoryToString))</span>
+                        <span title="@Resource.Publisher" class="label noselect label-success">@(item.PublishedByFullName == " " ? Resource.Anonymous : item.PublishedByFullName)</span>
+                        <span title="@Resource.Date" class="label noselect label-primary">@TimeZoneExtensions.GetDateWithTodayOrYesterday(item.DatePublished)</span>
+                    </div>
+
+                    <div class="news-label-container-smallscreen" style="padding:0px; height:61px; margin-bottom:6px; cursor:default;">
+                        <div class="label-container">
+                            <span title="@Resource.Category" class="label noselect label-danger">@(Html.GetStringFromView<Resource>(item.CategoryToString))</span><br />
+                        </div>
+                        <div class="label-container">
+                            <span title="@Resource.Publisher" class="label noselect label-success">@(item.PublishedByFullName == " " ? Resource.Anonymous : item.PublishedByFullName)</span><br />
+                        </div>
+                        <div class="label-container">
+                            <span title="@Resource.Date" class="label noselect label-primary">@TimeZoneExtensions.GetDateWithTodayOrYesterday(item.DatePublished)</span>
+                        </div>
+                    </div>
+
+                    if (Model.NewsPagedListDTO.NewsDTOModel.Last() != item)
+                    {
+                        <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs" style="padding:0px;">
+                            <hr style="margin-top:17px; margin-bottom:17px; visibility:hidden;" />
+                        </div>
+
+                        <div class="hidden-lg hidden-md hidden-sm col-xs-12" style="padding:0px;">
+                            <hr />
+                        </div>
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (Model.NewsID != null && Model.NewsPagedListDTO.NewsDTOModel.FirstOrDefault() == null)
+            {
+                <h4 style="margin:4px 0px 0px 0px;">@Resource.The_specific_news_was_not_found</h4>
+
+                <h4 style="margin-top: 20px; font-size: 14px;">@Resource.Do_you_want_to <a href="/News/Index">@Resource.Show_all</a> @Resource.News3</h4>
+            }
+            else
+            {
+                <h4 style="margin:4px 0px 0px 0px; font-size:14px;">@Resource.No_news_was_found</h4>
+
+                if (Model.CategoryID != null || Model.NewsTitle != null || Model.OrderByCategory != null ||
+                    Model.OrderByDate != null || Model.OrderByPublisher != null || Model.OrderByTitle != null)
+                {
+                    <h4 style="margin-top:20px; font-size:14px;">@Resource.Do_you_want_to <a href="/News/Index">@Resource.Reset2</a> @Resource.Your_filter</h4>
+                }
+            }
+        }
+    </div>
+
+    @if (Model != null && Model.NewsPagedListDTO != null && Model.NewsPagedListDTO.NewsDTOModel != null && Model.NewsPagedListDTO.NewsDTOModel.TotalItemCount > 4)
+    {
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 news-main-content-container news-pargination-container" style="text-align:center;">
+
+            @Html.PagedListPager(Model.NewsPagedListDTO.NewsDTOModel, page => Url.Action("Index", "News", new
+       {
+           page,
+           newsTitle = Request.QueryString["NewsTitle"],
+           categoryID = Request.QueryString["categoryID"],
+           orderByTitle = Request.QueryString["orderByTitle"],
+           orderByPublisher = Request.QueryString["orderByPublisher"],
+           orderByDate = Request.QueryString["orderByDate"],
+           orderByCategory = Request.QueryString["orderByCategory"]
+       }),
+        new PagedListRenderOptions()
+        {
+            Display = PagedListDisplayMode.IfNeeded,
+            MaximumPageNumbersToDisplay = 5,
+            DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+            DisplayLinkToNextPage = PagedListDisplayMode.Never,
+            LinkToFirstPageFormat = String.Format("«"),
+            LinkToLastPageFormat = String.Format("»")
+        })
+
+        </div>
+    }
+</div>
+@section Footer {
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}

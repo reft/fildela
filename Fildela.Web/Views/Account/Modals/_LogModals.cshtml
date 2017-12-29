@@ -1,0 +1,113 @@
+﻿<!-- Modal account, log, information -->
+<div class="modal modal-account-from-dropdown" id="modal-account-log-information" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Information_for_log</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, log, remove -->
+<div class="modal modal-account-from-dropdown" id="modal-account-logs-remove" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title" id="modal-account-logs-remove-title" data-text1="@Resource.Remove_log" data-text2="@Resource.Remove_logs">@Resource.Remove_logs</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-logs-remove-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-logs-remove-success-container" style="display: none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div id="modal-account-logs-remove-container-before">
+                        <form id="modal-account-logs-remove-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            <p class="modal-content-text" id="modal-account-logs-remove-text" style="padding:5px 0px 0px 0px; margin-bottom:4px;" data-text1="@Resource.Are_you_sure_you_want_to_remove" data-text2="@Resource.Logs2" data-text3="@Resource.Are_you_sure_you_want_to_delete_the_selected_logs">
+                                @Resource.Are_you_sure_you_want_to_delete_the_selected_logs
+                            </p>
+
+                            <div class="form-group form-group-container">
+                                <button id="modal-account-logs-remove-remove-btn" type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                                    <p style="display:inline-block; margin-bottom:0px;">@Resource.Remove</p>
+                                    <span id="modal-account-logs-remove-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="modal-account-logs-remove-container-after" style="display:none; padding:0px;">
+                        <div class="form-group form-group-container" style="padding:0px;">
+                            <button type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin" data-dismiss="modal">
+                                <p style="display:inline-block; margin-bottom:0px;" id="modal-account-logs-remove-closing-btn" data-message="@Resource.Closing">@Resource.Closing 5</p>
+                                <span id="modal-account-logs-remove-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, log, empty -->
+<div class="modal" id="modal-account-logs-empty" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Empty_logs</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-logs-empty-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-logs-empty-success-container" style="display: none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div id="modal-account-logs-empty-container-before">
+                        <form id="modal-account-logs-empty-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            <p class="modal-content-text" id="modal-account-logs-empty-text" style="padding:5px 0px 0px 0px; margin-bottom:4px;">
+                                @Resource.Are_you_sure_you_want_to_remove_all_your_logs
+                            </p>
+
+                            <div class="form-group form-group-container">
+                                <button id="modal-account-logs-empty-empty-btn" type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                                    <p style="display:inline-block; margin-bottom:0px;">@Resource.Remove</p>
+                                    <span id="modal-account-logs-empty-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="modal-account-logs-empty-container-after" style="display:none; padding:0px;">
+                        <div class="form-group form-group-container" style="padding:0px;">
+                            <button type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin" data-dismiss="modal">
+                                <p style="display:inline-block; margin-bottom:0px;" id="modal-account-logs-empty-closing-btn" data-message="@Resource.Closing">@Resource.Closing 5</p>
+                                <span id="modal-account-logs-empty-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>

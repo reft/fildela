@@ -1,0 +1,261 @@
+﻿@model Fildela.Web.Models.AccountModels.UsageViewModel
+
+@using Fildela.Web.Helpers;
+
+@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div class="container" style="padding:0px;">
+    @Html.Partial("~/Views/Account/Partials/_Header.cshtml")
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="margin-bottom:20px;">
+        <a href="/Account/Usage" class="list-group-item active noselect list-group-item-single">
+            <span class="fa fa-bar-chart fa-fw" style="margin-right: 5px;"></span>@Resource.Usage
+        </a>
+    </div>
+
+    <div class="col-lg-9 col-md-9 hidden-sm hidden-xs" style="overflow-x: auto;">
+        <a href="#account-usage-consumption" aria-controls="account-usage-consumption" role="tab" data-toggle="tab" class="btn btn-primary account-tab-btn noselect pull-left" style="margin-bottom:6px; margin-right:4px;"><i class="fa fa-bar-chart fa-fw" style="margin-right: 3px;"></i>@Resource.Generally</a>
+        <a href="#account-usage-statistics" aria-controls="account-usage-statistics" role="tab" data-toggle="tab" class="btn btn-default btn-default account-tab-btn noselect pull-left" style="margin-bottom:6px;"><i class="fa fa-line-chart fa-fw" style="margin-right: 3px;"></i>@Resource.Statistics</a>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="clear:both;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+            <div class="list-group">
+                @if (Model != null)
+                {
+                    <a href="/Account/Files" class="list-group-item">
+                        <span class="fa fa-file-o fa-fw" style="margin-right: 5px;"></span>@Resource.Files<span class="badge account-badge">@Model.FileCount</span>
+                    </a>
+                    <a href="/Account/Links" class="list-group-item">
+                        <span class="fa fa-link fa-fw" style="margin-right:5px;"></span>@Resource.Links<span class="badge account-badge">@Model.LinkCount</span>
+                    </a>
+                    <a href="/Account/Guestaccounts" class="list-group-item">
+                        <span class="fa fa-users fa-fw" style="margin-right: 5px;"></span>@Resource.Guest_accounts<span class="badge account-badge">@Model.GuestAccountCount</span>
+                    </a>
+                    <a href="/Account/Logs" class="list-group-item">
+                        <span class="fa fa-file-text-o fa-fw" style="margin-right: 5px;"></span>@Resource.Log<span class="badge account-badge">@Model.LogCount</span>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-lg hidden-md col-sm-12 col-xs-12" style="overflow-x: auto; margin-bottom:14px;">
+        <a href="#account-usage-consumption" aria-controls="account-usage-consumption" role="tab" data-toggle="tab" class="btn btn-primary account-tab-btn noselect pull-left" style="margin-bottom:6px; margin-right:4px;"><i class="fa fa-bar-chart fa-fw" style="margin-right: 3px;"></i>@Resource.Generally</a>
+        <a href="#account-usage-statistics" aria-controls="account-usage-statistics" role="tab" data-toggle="tab" class="btn btn-default account-tab-btn btn-default noselect pull-left" style="margin-bottom:6px;"><i class="fa fa-line-chart fa-fw" style="margin-right: 3px;"></i>@Resource.Statistics</a>
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" id="account-usage-tab-container">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active fade in" id="account-usage-consumption">
+                <div class="alert alert-info" style="padding: 11px 7px 11px 15px; margin-bottom:25px;">
+                    <p class="account-alert">
+                        @Resource.Generally
+                        <i class="fa fa-bar-chart pull-right" style="margin-right:5px; line-height:20px;"></i>
+                    </p>
+                </div>
+
+                @if (Model != null)
+                {
+                    <div>
+                        <span class="label label-default label-account-usage">@Resource.Storage</span>
+                        <span class="pull-right label label-default label-account-usage" style="margin:0px 0px 0px 5px;">@UnitConverterExtensions.ConvertByteToASuitableUnit(Model.StoredBytes) / @UnitConverterExtensions.ConvertBytesToMegabytes(Model.AllowedStoredBytes).ToString("0.## MB", System.Globalization.CultureInfo.InvariantCulture)</span>
+
+
+                        <div class="progress progress-account" style="margin-bottom: 25px;">
+                            <div class="progress-bar progress-bar-account @((double)Model.StoredBytes / (double)Model.AllowedStoredBytes < 0.75 ? "progress-bar-success" : "progress-bar-danger")" style="width:@UnitConverterExtensions.ConvertToPercentageString(Model.StoredBytes, Model.AllowedStoredBytes);">
+                                @UnitConverterExtensions.ConvertToPercentageString(Model.StoredBytes, Model.AllowedStoredBytes)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="label label-default label-account-usage">@Resource.Files</span>
+                        <span class="pull-right label label-default label-account-usage" style="margin:0px 0px 0px 5px;">@Model.FileCount / @Model.AllowedFileCount</span>
+
+
+                        <div class="progress progress-account" style="margin-bottom: 25px;">
+                            <div class="progress-bar progress-bar-account @((double)Model.FileCount / (double)Model.AllowedFileCount < 0.75 ? "progress-bar-success" : "progress-bar-danger")" style="width: @UnitConverterExtensions.ConvertToPercentageString(Model.FileCount, 100); ">
+                                @UnitConverterExtensions.ConvertToPercentageString(Model.FileCount, Model.AllowedFileCount)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="label label-default label-account-usage">@Resource.Links</span>
+                        <span class="pull-right label label-default label-account-usage" style="margin:0px 0px 0px 5px;">@Model.LinkCount / @Model.AllowedLinkCount</span>
+
+
+                        <div class="progress progress-account" style="margin-bottom: 25px;">
+                            <div class="progress-bar progress-bar-account @((double)Model.LinkCount / (double)Model.AllowedLinkCount < 0.75 ? "progress-bar-success" : "progress-bar-danger")" style="width: @UnitConverterExtensions.ConvertToPercentageString(Model.LinkCount, 100);">
+                                @UnitConverterExtensions.ConvertToPercentageString(Model.LinkCount, Model.AllowedLinkCount)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="label label-default label-account-usage">@Resource.Guest_accounts</span>
+                        <span class="pull-right label label-default label-account-usage" style="margin:0px 0px 0px 5px;">@Model.GuestAccountCount / @Model.AllowedGuestAccountCount</span>
+
+                        <div class="progress progress-account" style="margin-bottom:0px;">
+                            <div class="progress-bar progress-bar-account @((double)Model.GuestAccountCount / (double)Model.AllowedGuestAccountCount < 0.75 ? "progress-bar-success" : "progress-bar-danger")" style="width: @UnitConverterExtensions.ConvertToPercentageString(Model.GuestAccountCount, 10);">
+                                @UnitConverterExtensions.ConvertToPercentageString(Model.GuestAccountCount, Model.AllowedGuestAccountCount)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade" id="account-usage-statistics">
+                <div class="alert alert-info" style="padding: 11px 7px 11px 15px; margin-bottom:44px;">
+                    <p class="account-alert">
+                        @Resource.Statistics
+                        <i class="fa fa-line-chart pull-right" style="margin-right:5px; line-height:20px;"></i>
+                    </p>
+                </div>
+
+                <div id="account-usage-chart-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Footer {
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}
+
+@section Scripts
+{
+    @if (Model != null && Model.StatisticsViewModel != null && Model.StatisticsViewModel.Series != null && Model.StatisticsViewModel.Series.Count > 0 && Model.StatisticsViewModel.xAxis != null && Model.StatisticsViewModel.xAxis.Count > 0)
+    {
+        <script type="text/javascript">
+            $('a[href="#account-usage-statistics"]').on('shown.bs.tab', function (e) {
+                $(window).trigger('resize');
+            })
+
+            $(function () {
+                var categories = JSON.parse('@Newtonsoft.Json.JsonConvert.SerializeObject(Model.StatisticsViewModel.xAxis)');
+                var series = [];
+
+                @foreach (var item in Model.StatisticsViewModel.Series)
+                {
+                    <text>
+                var data = JSON.parse('@Newtonsoft.Json.JsonConvert.SerializeObject(item.Data)');
+                var name = '@(Html.GetStringFromView<Resource>(item.Name))';
+
+                series.push({ name: name, data: data });
+                </text>
+                }
+
+                $('#account-usage-chart-container').highcharts({
+                    title: {
+                        text: '',
+                        style: {
+                            fontSize: '14px'
+                        }
+                    },
+                    subtitle: {
+                        text: '',
+                    },
+                    legend: {
+                        itemHoverStyle: {
+                            color: ''
+                        },
+                        itemStyle: {
+                            font: 'Source Sans Pro',
+                            fontWeight: 'initial',
+                            color: '#333'
+                        }
+                    },
+                    xAxis: {
+                        categories: categories,
+                        labels: {
+                            style: {
+                                color: '#333'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        allowDecimals: false,
+                        title: {
+                            text: ''
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 1,
+                            color: '#808080'
+                        }],
+                        labels: {
+                            style: {
+                                color: '#333'
+                            }
+                        }
+                    },
+                    chart: {
+                        style: {
+                            fontFamily: 'Source Sans Pro'
+                        }
+                    },
+                    tooltip: {
+                        //headerFormat: '<span style="font-size: 12px">{point.key}</span><br/>',
+                        headerFormat: '',
+                        pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: {point.y}<br/>',
+                        valueSuffix: '',
+                        animation: false,
+                        borderRadius: 0,
+                        shadow: false,
+                        //shared: true,
+                        style: {
+                            fontWeight: '400',
+                            fontSize: '11px'
+                        },
+                        formatter: function () {
+                            var s1 = this.series.chart.series[0].processedYData[this.point.index];
+                            var s2 = this.series.chart.series[1].processedYData[this.point.index];
+                            var s3 = this.series.chart.series[2].processedYData[this.point.index];
+
+                            var s1Point = '<span style="color:' + this.series.chart.series[0].color + '">\u25CF</span> ';
+                            var s2Point = '<span style="color:' + this.series.chart.series[1].color + '">\u25CF</span> ';
+                            var s3Point = '<span style="color:' + this.series.chart.series[2].color + '">\u25CF</span> ';
+
+                            if (s1 == s2 && s1 == s3) {
+                                return s1Point + this.series.chart.series[0].name + ' [' + s1 + ']<br/>' + s2Point + this.series.chart.series[1].name + ' [' + s2 + ']<br/>' + s3Point + this.series.chart.series[2].name + ' [' + s3 + ']';
+                            }
+                            else if (s1 == s2 && s1 == this.y) {
+                                return s1Point + this.series.chart.series[0].name + ' [' + s1 + ']<br/>' + s2Point + this.series.chart.series[1].name + ' [' + s2 + ']';
+                            }
+                            else if (s1 == s3 && s1 == this.y) {
+                                return s1Point + this.series.chart.series[0].name + ' [' + s1 + ']<br/>' + s3Point + this.series.chart.series[2].name + ' [' + s3 + ']';
+                            }
+                            else if (s2 == s3 && s2 == this.y) {
+                                return s2Point + this.series.chart.series[1].name + ' [' + s2 + ']<br/>' + s3Point + this.series.chart.series[2].name + ' [' + s3 + ']';
+                            }
+                            else {
+                                return '<span style="color:' + this.series.color + '">\u25CF</span> ' + this.series.name + ' [' + this.y + ']';
+                            }
+                        }
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        line: {
+                            animation: false
+                        },
+                        series: {
+                            states: {
+                                hover: {
+                                    enabled: false
+                                }
+                            },
+                            stickyTracking: false
+                        }
+                    },
+                    series: series
+                });
+            });
+        </script>
+    }
+}

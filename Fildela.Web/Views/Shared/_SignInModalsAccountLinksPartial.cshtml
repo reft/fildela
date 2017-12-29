@@ -1,0 +1,30 @@
+﻿@model Fildela.Web.Models.UserModels.SignInGuestAccountLinksViewModel
+           
+@if (Model != null && Model.AccountLinks.Count > 0)
+{
+    <form id="modal-sign-in-account-links-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group form-group-container last-form-group">
+            <select id="modal-sign-in-account-links-input-select" class="form-control input-lg select select-color select-first modal-sign-in-account-links-input" name="AccountOwnerID">
+                <option disabled value="0" selected>@Resource.Select_an_account</option>
+                @foreach (var item in Model.AccountLinks)
+                {
+                    <option value="@item.AccountOwnerID">@item.AccountOwnerEmail</option>
+                }
+            </select>
+
+            <input type="hidden" value="@Model.Email" name="Email" />
+            <input type="hidden" value="@Model.Password" name="Password" />
+            <input type="hidden" value="@Model.ReturnURL" name="returnURL" />
+        </div>
+        <br />
+
+        <div class="form-group form-group-container" style="margin-bottom:0px;">
+            <button type="submit" class="btn btn-primary btn-lg btn-block modal-sign-in-account-links-input modal-btn-spin">
+                <span id="modal-sign-in-account-links-btn-text" data-redirecting="@Resource.Redirecting">@Resource.Sign_in</span>
+                <span id="modal-sign-in-account-links-submit-spin" class="spinner-modal" style="display:none;"></span>
+            </button>
+        </div>
+    </form>
+}

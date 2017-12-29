@@ -1,0 +1,252 @@
+﻿<!-- Modal account, guestaccounts, create -->
+<div class="modal" id="modal-account-guestaccounts-create" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Create_guest_account</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-guestaccounts-create-success-container" style="display:none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-guestaccounts-create-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+
+                <div class="col-xs-12" style="padding-top:15px;">
+                    <form id="modal-account-guestaccounts-create-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group form-group-container">
+                            <input type="text" name="Email" class="form-control input-lg modal-account-guestaccounts-create-input" placeholder="@Resource.Email_address">
+                        </div>
+
+                        <div class="form-group form-group-container ">
+                            <input type="text" name="ConfirmEmail" class="form-control input-lg modal-account-guestaccounts-create-input" placeholder="@Resource.Confirm_email_address">
+                        </div>
+                        <br />
+
+                        <div class="form-group form-group-container form-group-date-picker">
+                            <div class='input-group date' id='account-guestaccount-create-startdate'>
+                                <input readonly type='text' name="DateStart" placeholder="@Resource.Start_date" class="form-control modal-account-guestaccounts-create-input" />
+                                <span class="input-group-addon input-group-addon-datepicker">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-container form-group-date-picker">
+                            <div class='input-group date' id='account-guestaccount-create-enddate'>
+                                <input readonly type='text' name="DateExpires" placeholder="@Resource.End_date" class="form-control modal-account-guestaccounts-create-input" />
+                                <span class="input-group-addon input-group-addon-datepicker">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-container">
+                            <input type="hidden" id="account-guestaccounts-create-permissions" class="modal-account-guestaccounts-create-input" data-placeholder="@Resource.Select_rights" style="width: 100%;">
+                            <input id="account-guestaccounts-create-permissions-json" name="Permissions" type="hidden" />
+                        </div>
+                        <br />
+
+                        <input type="hidden" id="account-guestaccounts-create-currenttime" name="CurrentTime" />
+
+                        <div class="form-group form-group-container">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block modal-account-guestaccounts-create-input modal-btn-spin" id="modal-account-guestaccounts-create-submitbtn">
+                                <span>@Resource.Create</span>
+                                <span id="modal-account-guestaccounts-create-submit-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, guestaccounts, rights -->
+<div class="modal modal-account-from-dropdown" id="modal-account-guestaccounts-rights" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Edit_rights_for_guestaccount</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, guestaccounts, expirationdate -->
+<div class="modal modal-account-from-dropdown" id="modal-account-guestaccounts-expirationdate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Edit_expirationdate_for_guest_account</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, guestaccounts, remove -->
+<div class="modal modal-account-from-dropdown" id="modal-account-guestaccounts-remove" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title" id="modal-account-guestaccounts-remove-title" data-text1="@Resource.Remove_guest_account" data-text2="@Resource.Remove_guest_accounts">@Resource.Remove_guest_account</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-guestaccounts-remove-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-guestaccounts-remove-success-container" style="display: none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div id="modal-account-guestaccounts-remove-container-before">
+                        <form id="modal-account-guestaccounts-remove-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            <p class="modal-content-text" id="modal-account-guestaccounts-remove-text" style="padding:5px 0px 0px 0px; margin-bottom:4px;" data-text1="@Resource.Are_you_sure_you_want_to_remove" data-text2="@Resource.Guest_accounts2" data-text3="@Resource.Are_you_sure_you_want_to_delete_the_selected_guest_accounts">
+                                @Resource.Are_you_sure_you_want_to_delete_the_selected_guest_accounts
+                            </p>
+
+                            <div class="form-group form-group-container">
+                                <button id="modal-account-guestaccounts-remove-btn" type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                                    <p style="display:inline-block; margin-bottom:0px;">@Resource.Remove</p>
+                                    <span id="modal-account-guestaccounts-remove-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="modal-account-guestaccounts-remove-container-after" style="display:none; padding:0px;">
+                        <div class="form-group form-group-container" style="padding:0px;">
+                            <button type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin" data-dismiss="modal">
+                                <p style="display:inline-block; margin-bottom:0px;" id="modal-account-guestaccounts-remove-closing-btn" data-message="@Resource.Closing">@Resource.Closing 5</p>
+                                <span id="modal-account-guestaccounts-remove-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, guestaccounts, empty -->
+<div class="modal" id="modal-account-guestaccounts-empty" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Empty_guest_accounts</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-guestaccounts-empty-error-container" style="display:none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-guestaccounts-empty-success-container" style="display: none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div id="modal-account-guestaccounts-empty-container-before">
+                        <form id="modal-account-guestaccounts-empty-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            <p class="modal-content-text" id="modal-account-guestaccounts-empty-text" style="padding:5px 0px 0px 0px; margin-bottom:4px;">
+                                @Resource.Are_you_sure_you_want_to_remove_all_your_guest_accounts
+                            </p>
+
+                            <div class="form-group form-group-container">
+                                <button id="modal-account-guestaccounts-empty-btn" type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                                    <p style="display:inline-block; margin-bottom:0px;">@Resource.Remove</p>
+                                    <span id="modal-account-guestaccounts-empty-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="modal-account-guestaccounts-empty-container-after" style="display:none; padding:0px;">
+                        <div class="form-group form-group-container" style="padding:0px;">
+                            <button type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin" data-dismiss="modal">
+                                <p style="display:inline-block; margin-bottom:0px;" id="modal-account-guestaccounts-empty-closing-btn" data-message="@Resource.Closing">@Resource.Closing 5</p>
+                                <span id="modal-account-guestaccounts-empty-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal account, pending guestaccounts, remove -->
+<div class="modal modal-account-from-dropdown" id="modal-account-pending-guestaccounts-remove" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Remove_guest_account</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-pending-guestaccounts-remove-error-container" style="display: none;">
+                    <div class="alert alert-danger">
+                    </div>
+                </div>
+                <div class="col-xs-12 modal-form-message-container" id="modal-account-pending-guestaccounts-remove-success-container" style="display: none;">
+                    <div class="alert alert-success">
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div id="modal-account-pending-guestaccounts-remove-container-before">
+                        <form id="modal-account-pending-guestaccounts-remove-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+                            <p class="modal-content-text" id="modal-account-pending-guestaccounts-remove-text" data-text1="@Resource.Are_you_sure_you_want_to_remove" data-text2="@Resource.Guest_accounts2" data-text3="@Resource.Are_you_sure_you_want_to_delete_the_selected_guest_account">
+                                @Resource.Are_you_sure_you_want_to_delete_the_selected_guest_account
+                            </p>
+                            <br />
+
+                            <div class="form-group form-group-container">
+                                <button id="modal-account-pending-guestaccounts-remove-btn" type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin">
+                                    <p style="display:inline-block; margin-bottom:0px;">@Resource.Remove</p>
+                                    <span id="modal-account-pending-guestaccounts-remove-spin" class="spinner-modal" style="display:none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="modal-account-pending-guestaccounts-remove-container-after" style="display:none; padding:0px;">
+                        <div class="form-group form-group-container" style="padding:0px;">
+                            <button type="button" class="btn btn-danger btn-lg btn-block modal-btn-spin" data-dismiss="modal">
+                                <p style="display:inline-block; margin-bottom:0px;" id="modal-account-pending-guestaccounts-remove-closing-btn" data-message="@Resource.Closing">@Resource.Closing 5</p>
+                                <span id="modal-account-pending-guestaccounts-remove-spin" class="spinner-modal" style="display:none;"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border: 0px;">
+            </div>
+        </div>
+    </div>
+</div>

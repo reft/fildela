@@ -1,0 +1,271 @@
+﻿@model Fildela.Web.Models.AccountModels.FilesViewModel
+
+<div class="container" style="padding:0px;">
+    @Html.Partial("~/Views/Account/Partials/_Header.cshtml")
+
+    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+        <div class="list-group">
+            @if (Model != null && Model.Files != null && Model.Files.Count > 1)
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+            else
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" disabled data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="disabled account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-imes"></i>
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-lg-9 col-md-9 hidden-sm hidden-xs">
+
+        <span class="account-selected-name pull-left"></span>
+
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.FileWrite))
+        {
+            <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-files-upload" style="margin-bottom:6px; margin-right:4px;" role="button">+ @Resource.File2</a>
+            <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-files-folder" style="margin-bottom:6px; margin-right:4px;" role="button">+ @Resource.Folder</a>
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.FileRead))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-single account-files-download" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-cloud-download fa-fw account-tablemenu-icon" style="margin-right: 2px;"></i>@Resource.Get</a>
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.FileEdit))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-single account-tablemenu-name" data-toggle="modal" data-target="#modal-account-files-name" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-pencil fa-fw account-tablemenu-icon"></i>@Resource.Name</a>
+        }
+        @if (User.IsInRole("AccountOwner"))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-single" data-toggle="modal" data-target="#modal-account-files-share" style="margin-bottom:6px;" role="button"><i class="fa fa-share fa-fw account-tablemenu-icon" style="margin-right:1px;"></i>@Resource.Share</a>
+        }
+        @if (Model != null && Model.Files != null && Model.Files.Count > 0)
+        {
+            if (User.IsInRole("AccountOwner") || Model.FileEdit)
+            {
+                <a class="btn btn-default noselect pull-right" data-toggle="modal" data-target="#modal-account-files-empty" style="margin-bottom:6px;" role="button"><i class="fa fa-trash-o fa-fw account-tablemenu-icon" style="margin-right: 1px;"></i>@Resource.Empty</a>
+            }
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.FileEdit))
+        {
+            <a class="btn btn-default noselect pull-right account-tablemenu-multiple" data-toggle="modal" data-target="#modal-account-files-remove" style="margin-bottom:6px; margin-right:4px;" role="button"><i class="fa fa-times fa-fw account-tablemenu-icon" style="margin-right:-1px;"></i>@Resource.Remove</a>
+        }
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" style="clear:both;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+            <div class="list-group" style="margin-bottom:0px;">
+                @if (Model != null && (User.IsInRole("AccountOwner") || Model.FileEdit || Model.FileRead || Model.FileWrite))
+                {
+                    <a href="/Account/Files" class="list-group-item active noselect">
+                        <span class="fa fa-file-o fa-fw" style="margin-right:5px; font-size:14px;"></span>@Resource.Files<span class="badge account-badge">@Model.FileCount</span>
+                    </a>
+                }
+                @if (Model != null && (User.IsInRole("AccountOwner") || Model.LinkEdit || Model.LinkRead || Model.LinkWrite))
+                {
+                    <a href="/Account/Links" class="list-group-item">
+                        <span class="fa fa-link fa-fw" style="margin-right:5px;"></span>@Resource.Links<span class="badge account-badge">@Model.LinkCount</span>
+                    </a>
+                }
+                @if (Model != null && User.IsInRole("AccountOwner"))
+                {
+                    <a href="/Account/Guestaccounts" class="list-group-item">
+                        <span class="fa fa-users fa-fw" style="margin-right:5px;"></span>@Resource.Guest_accounts<span class="badge account-badge">@Model.GuestAccountCount</span>
+                    </a>
+                    <a href="/Account/Logs" class="list-group-item">
+                        <span class="fa fa-file-text-o fa-fw" style="margin-right:5px;"></span>@Resource.Log<span class="badge account-badge">@Model.LogCount</span>
+                    </a>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs" style="padding:20px 0px 0px 0px;">
+            <span class="label label-default label-account-usage-sm">
+                @Resource.Storage
+            </span>
+
+            <div class="progress progress-account-sm">
+                <div class="progress-bar progress-bar-account-sm @((double)Model.StoredBytes / (double)Model.AllowedStoredBytes < 0.75 ? "progress-bar-success" : "progress-bar-danger")" style="width:@UnitConverterExtensions.ConvertToPercentageString(Model.StoredBytes, Model.AllowedStoredBytes);">
+                    @UnitConverterExtensions.ConvertToPercentageString(Model.StoredBytes, Model.AllowedStoredBytes)
+                </div>
+            </div>
+
+            <span class="label label-default label-account-usage-sm">
+                @Resource.Files
+            </span>
+
+            <div class="progress progress-account-sm" style="margin-bottom:0px;">
+                <div class="progress-bar progress-bar-account-sm @((double)Model.FileCount / (double)Model.AllowedFileCount < 0.75 ? "progress-bar-success" : "progress-bar-danger")" style="width: @UnitConverterExtensions.ConvertToPercentageString(Model.FileCount, 100); ">
+                    @UnitConverterExtensions.ConvertToPercentageString(Model.FileCount, Model.AllowedFileCount)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-xs-12 hidden-lg hidden-md" style="margin-top:20px;">
+        <div class="list-group" style="margin-bottom:0px;">
+            @if (Model != null && Model.Files != null && Model.Files.Count > 1)
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+            else
+            {
+                <div class="input-group">
+                    <span class="input-group-addon" style="background-color:#fff;"><i class="fa fa-search"></i></span>
+                    <input type="text" disabled data-table="order-table" class="light-table-filter form-control account-search-input" data-search_gave="@Resource.Search_gave" data-hits="@Resource.Hits" data-hit="@Resource.Hit" placeholder="@Resource.Search">
+                    <span class="account-search-focus-border input-group-addon account-search-input-reset" style="background-color:#fff; cursor:pointer; display:none;">
+                        <i class="fa fa-times account-search-input-times"></i>
+                    </span>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="hidden-lg hidden-md col-sm-12 col-xs-12" style="overflow-x: auto; margin-bottom:14px; margin-top:20px;">
+
+        <span class="account-selected-name pull-left"></span>
+
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.FileWrite))
+        {
+            <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-files-upload" style="margin-bottom:6px; margin-right:4px;" role="button">+ @Resource.File2</a>
+            <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-files-folder" style="margin-bottom:6px; margin-right:4px;" role="button">+ @Resource.Folder</a>
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.FileRead))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-single account-files-download" style="margin-bottom:6px; margin-right:4px;" role="button"><i class="fa fa-cloud-download fa-fw account-tablemenu-icon" style="margin-right:2px; width:17px;"></i>@Resource.Get</a>
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.FileEdit))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-single account-tablemenu-name" data-toggle="modal" data-target="#modal-account-files-name" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-pencil fa-fw account-tablemenu-icon" style="width: 17px;"></i>@Resource.Name</a>
+        }
+        @if (User.IsInRole("AccountOwner"))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-single" data-toggle="modal" data-target="#modal-account-files-share" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-share fa-fw account-tablemenu-icon" style="margin-right:1px; width: 17px;"></i>@Resource.Share</a>
+        }
+        @if (User.IsInRole("AccountOwner") || (Model != null && Model.FileEdit))
+        {
+            <a class="btn btn-default noselect pull-left account-tablemenu-multiple" data-toggle="modal" data-target="#modal-account-files-remove" style="margin-bottom: 6px; margin-right: 4px;" role="button"><i class="fa fa-times fa-fw account-tablemenu-icon" style="width: 17px;"></i>@Resource.Remove</a>
+        }
+        @if (Model != null && Model.Files != null && Model.Files.Count > 0)
+        {
+            if (User.IsInRole("AccountOwner") || Model.FileEdit)
+            {
+                <a class="btn btn-default noselect pull-left" data-toggle="modal" data-target="#modal-account-files-empty" style="margin-bottom:6px;" role="button"><i class="fa fa-trash-o fa-fw account-tablemenu-icon"></i>@Resource.Empty</a>
+            }
+        }
+    </div>
+
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 account-table-container" style="overflow-x:auto; padding:0px; margin:0px;">
+            <table class="order-table sorted noselect table table-condensed table-bordered table-hover" style="border-color: #428bca; margin:0px;">
+                <thead class="noselect">
+                    <tr style="color:#fff; cursor:default;">
+                        @if (Model != null && Model.Files != null && Model.Files.Count > 1)
+                        {
+                            <th id="account-files-header-name" class="sortedplus account-table-header" style="border-left:1px;">@Resource.Name <i class="fa fa-caret-down"></i></th>
+                        }
+                        else
+                        {
+                            <th id="account-files-header-name" class="sortedplus account-table-header" style="border-left:1px;">@Resource.Name <i></i></th>
+                        }
+                        <th id="account-files-header-type" class="account-table-header">@Resource.Type <i></i></th>
+                        <th id="account-files-header-size" class="account-table-header">@Resource.Size <i></i></th>
+                        <th id="account-files-header-created" class="account-table-header" style="border-right:1px;">@Resource.Created <i></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Files != null && Model.Files.Count > 0)
+                    {
+                        foreach (var item in Model.Files)
+                        {
+                            <tr class="account-table-tr" data-type="@Resource.Files2" data-rowkey="@item.RowKey" data-name="@(item.FileName + "." + item.FileExtension)" data-nameshorten="@(Fildela.Web.Helpers.StringExtensions.ShortenFileName(item.FileName + "." + item.FileExtension, 15))" style="display: table-row;">
+                                <td headers="account-files-header-name" class="account-files-contextmenu">
+                                    <span class="account-files-table-name-display-hidden" style="display:none;">@item.FileName.ToLower()</span>
+                                    <img alt="@item.FileName" class="account-file-icon" src="@item.BlobIconURL" />
+                                    <span class="spinner-table" style="display:none;"></span>
+
+                                    <div class="input-group account-files-edit-name-container" style="display:none;">
+                                        @Html.AntiForgeryToken()
+
+                                        <input type="text" name="FileName" class="form-control account-files-edit-name-input">
+
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default account-files-edit-name-submit" type="button" data-rowkey="@item.RowKey">
+                                                <span class="account-files-edit-name-btn-text" data-text="@Resource.Save"></span>
+                                                <span class="input-group-spinner" style="display:none; margin-right: 7px !important;"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+
+                                    <a class="account-files-preview-link account-files-table-name-display-shown" title="@Resource.Preview" data-toggle="modal" data-target="#modal-account-files-preview">@Fildela.Web.Helpers.StringExtensions.ShortenWord(item.FileName, 50)</a>
+                                </td>
+                                <td headers="account-files-header-type" class="account-files-contextmenu">@item.FileExtension.ToLower()</td>
+                                <td headers="account-files-header-size" class="account-files-contextmenu"><span style="display:none;">@(item.FileSizeBytes == 0 ? (decimal)0.00000000000000000001 : UnitConverterExtensions.ConvertBytesToMegabytes(item.FileSizeBytes))</span>@UnitConverterExtensions.ConvertByteToASuitableUnit(item.FileSizeBytes)</td>
+                                <td headers="account-files-header-created" class="account-files-contextmenu">@item.DateCreated.ToString("yyyy/MM/dd HH:mm tt")</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr style="display: table-row; cursor:default;">
+                            <td style="border-right:0px;">
+                                @Resource.No_files_was_found
+                            </td>
+                            <td style="border-left:0px; border-right:0px;"></td>
+                            <td style="border-left:0px; border-right:0px;"></td>
+                            <td style="border-left:0px;"></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="account-search-message-container" style="overflow-x:auto; margin:0px; padding:0px; display:none;">
+            <p class="account-search-message"></p>
+        </div>
+    </div>
+</div>
+
+@if (Model != null && (User.IsInRole("AccountOwner") || Model.FileRead || Model.FileEdit))
+{
+    <div id="account-files-contextmenu" class="dropdown clearfix" style="color: #555;">
+        <ul class="dropdown-menu account-dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;margin-bottom:5px;">
+            @if (User.IsInRole("AccountOwner") || Model.FileRead)
+            {
+                <li><a tabindex="-1" class="account-files-download" id="account-files-dropdown-download" style="padding-bottom:4px;"><i class="fa fa-cloud-download fa-fw" style="pointer-events:none; margin-right:5px; line-height:inherit;"></i>@Resource.Get</a></li>
+            }
+            @if (User.IsInRole("AccountOwner") || Model.FileEdit)
+            {
+                <li><a tabindex="-1" id="account-files-dropdown-name" class="account-tablemenu-name" style="padding-bottom: 4px;"><i class="fa fa-pencil fa-fw" style="pointer-events: none; margin-right: 5px; line-height: inherit;"></i>@Resource.Name</a></li>
+            }
+            @if (User.IsInRole("AccountOwner"))
+            {
+                <li><a tabindex="-1" data-toggle="modal" data-target="#modal-account-files-share"><i class="fa fa-share fa-fw" style="pointer-events: none; margin-right: 5px; line-height: inherit;"></i>@Resource.Share</a></li>
+            }
+            @if (User.IsInRole("AccountOwner") || Model.FileEdit)
+            {
+                if (User.IsInRole("AccountOwner") || Model.FileRead || Model.FileEdit)
+                {
+                    <li class="divider" style="pointer-events:none;"></li>
+                }
+                <li><a tabindex="-1" data-toggle="modal" data-target="#modal-account-files-remove"><i class="fa fa-times fa-fw" style="pointer-events: none; margin-right: 5px; line-height: inherit;"></i>@Resource.Remove</a></li>
+            }
+        </ul>
+    </div>
+}

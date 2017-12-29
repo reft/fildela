@@ -1,0 +1,189 @@
+﻿@model List<Fildela.Business.Domains.Category.Models.CategoryModel>
+
+@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div class="container">
+    <h2 style="margin-top: 0px; margin-bottom: 0px; text-indent: -1px;">
+        @Resource.Contact
+    </h2>
+
+    <hr />
+
+    @if (TempData["ContactSuccess"] != null)
+    {
+        <div class="hidden-lg hidden-md hidden-sm col-xs-12 contact-message-container">
+            <div class="alert alert-success">
+                @TempData["ContactSuccess"]
+                <i class="glyphicon glyphicon-ok pull-right"></i>
+            </div>
+        </div>
+    }
+    else if (!ViewData.ModelState.IsValid)
+    {
+        <div class="hidden-lg hidden-md hidden-sm col-xs-12 contact-message-container">
+            <div class="alert alert-danger">
+                @Html.ValidationMessage("ContactError")
+                <i class="glyphicon glyphicon-remove pull-right"></i>
+            </div>
+        </div>
+    }
+
+    <p class="page-content" style="margin:0px;">
+        Det finns många olika varianter av Lorem Ipsum, men majoriteten av dessa har ändrats på någotvis. Antingen med inslag av humor, eller med inlägg av ord som knappast ser trovärdiga ut.
+        Det finns många olika varianter av Lorem Ipsum, men majoriteten av dessa har ändrats på någotvis. Antingen med inslag av humor, eller med inlägg av ord som knappast ser trovärdiga ut.
+
+        <br />
+        <br />
+
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    </p>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-divider" style="padding:0px;">
+        @if (TempData["ContactSuccess"] != null)
+        {
+            <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs contact-message-container" style="margin-top:-15px;">
+                <div class="alert alert-success">
+                    @TempData["ContactSuccess"]
+                    <i class="glyphicon glyphicon-ok pull-right"></i>
+                </div>
+            </div>
+        }
+        else if (!ViewData.ModelState.IsValid)
+        {
+            <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs contact-message-container" style="margin-top:-15px;">
+                <div class="alert alert-danger">
+                    @Html.ValidationMessage("ContactError")
+                    <i class="glyphicon glyphicon-remove pull-right"></i>
+                </div>
+            </div>
+        }
+
+        <div class="col-xs-12" style="padding:0px;">
+            <h2 style="margin:0px;">
+                @Resource.Email_us
+            </h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:0px;">
+        <form id="contact-mail-form" class="form-horizontal" action="/Contact/Index" method="post">
+            <div class="form-group form-container">
+                <label for="contact-name" class="contact-input-label" style="margin-top:0px;">@Resource.Name</label>
+                <div class="col-xs-12" style="padding:0px;">
+                    <input type="text" id="contact-name" class="form-control input-lg contact-post-input" name="Name" placeholder="@Resource.Type_your_name">
+                </div>
+            </div>
+
+            <div class="form-group form-container">
+                <label for="contact-email" class="contact-input-label">@Resource.Emailaddress</label>
+                <div class="col-xs-12" style="padding:0px;">
+                    <input id="contact-email" type="text" class="form-control input-lg contact-post-input" name="Email" value="@(User.Identity.IsAuthenticated ? User.Identity.Name : String.Empty)" placeholder="@Resource.Type_your_email">
+                </div>
+            </div>
+
+            <div class="form-group form-container">
+                <label for="contact-category" class="contact-input-label">@Resource.Category</label>
+                <div class="col-xs-12" style="padding:0px;">
+                    <select id="contact-category" class="select select-first select-color form-control input-lg contact-post-input" name="CategoryID">
+                        <option disabled value="0" selected>@Resource.Select_a_category</option>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <option value="@item.CategoryID">@(Html.GetStringFromView<Resource>(item.Name))</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group form-container form-group-text_area" style="margin-bottom:25px;">
+                <label for="contact-msg" class="contact-input-label">@Resource.Message</label>
+                <div class="col-xs-12 textarea-container" style="padding:0px;">
+                    <textarea id="contact-msg" name="Message" class="form-control contact-post-input" rows="4" style="resize:none;"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary contact-post-input" style="font-size:13px;">
+                <i class="fa fa-check" id="contact-post-submit-icon" style="line-height:inherit; min-width:14px; margin-right:3px;"></i><span id="contact-post-spinner" style="display:none;" class="spinner-button-w-text"></span>@Resource.Send
+            </button>
+
+            <input type="hidden" name="CategoryID" id="contact-category-hidden" />
+        </form>
+    </div>
+
+    <div class="hidden-lg hidden-md hidden-sm col-xs-12" style="padding:0px;">
+        <hr />
+    </div>
+
+    <div class="col-lg-4 col-lg-push-2 col-md-4 col-md-push-2 col-sm-5 col-sm-push-2 col-xs-12 hidden-xs contact-information-container" style="margin-top:22px; padding:0px;">
+        <h2 id="contact-address-headline">@Resource.Visiting_address</h2>
+        <p class="page-content page-content-contact">
+            <a target="_blank" href="https://www.google.com/maps/preview?ie=UTF-8&q=The+Pentagon&fb=1&gl=us&hq=1400+Defense+Pentagon+Washington,+DC+20301-1400&cid=12647181945379443503&ei=qmYfU4H8LoL2oATa0IHIBg&ved=0CKwBEPwSMAo&safe=on">
+                @System.Web.Configuration.WebConfigurationManager.AppSettings["VisitingAddress1"]<br />
+                @System.Web.Configuration.WebConfigurationManager.AppSettings["VisitingAddress2"]
+            </a>
+        </p>
+    </div>
+
+    <div class="hidden-lg hidden-md hidden-sm col-xs-12" style="padding:0px;">
+        <h2 style="margin: 0px 0px 5px 0px;">@Resource.Visiting_address</h2>
+        <p class="page-content page-content-contact">
+            <a target="_blank" href="https://www.google.com/maps/preview?ie=UTF-8&q=The+Pentagon&fb=1&gl=us&hq=1400+Defense+Pentagon+Washington,+DC+20301-1400&cid=12647181945379443503&ei=qmYfU4H8LoL2oATa0IHIBg&ved=0CKwBEPwSMAo&safe=on">
+                @System.Web.Configuration.WebConfigurationManager.AppSettings["VisitingAddress1"]<br />
+                @System.Web.Configuration.WebConfigurationManager.AppSettings["VisitingAddress2"]
+            </a>
+        </p>
+    </div>
+
+    <div class="col-lg-4 col-lg-push-2 col-md-4 col-md-push-2 col-sm-5 col-sm-push-2 col-xs-12 contact-information-container" style="margin-top:2px; padding:0px;">
+        <h2 class="contact-h2">Postadress</h2>
+        <p class="page-content page-content-contact">
+            @System.Web.Configuration.WebConfigurationManager.AppSettings["PostalAddress1"] <br />
+            @System.Web.Configuration.WebConfigurationManager.AppSettings["PostalAddress2"]
+        </p>
+    </div>
+
+    <div class="col-lg-4 col-lg-push-2 col-md-4 col-md-push-2 col-sm-5 col-sm-push-2 col-xs-12 contact-information-container" style="margin-top: 2px; padding: 0px;">
+        <h2 class="contact-h2">Telefon</h2>
+        <p class="page-content page-content-contact">
+            <a href="tel:08-123 45 67">
+                @System.Web.Configuration.WebConfigurationManager.AppSettings["Phone"]
+            </a>
+        </p>
+    </div>
+
+    <div class="col-lg-4 col-lg-push-2 col-md-4 col-md-push-2 col-sm-5 col-sm-push-2 col-xs-12 contact-information-container" style="margin-top: 2px; padding: 0px;">
+        <h2 class="contact-h2">Fax</h2>
+        <p class="page-content page-content-contact" style="margin-bottom:0px;">
+            @System.Web.Configuration.WebConfigurationManager.AppSettings["Fax"]
+        </p>
+    </div>
+
+    <div class="col-xs-12" style="padding:0px;">
+        <h2 style="margin-bottom: 0px; text-indent: -1px;" class="content-divider">
+            @Resource.Social_media
+        </h2>
+        <hr>
+    </div>
+
+    <div class="col-xs-12" style="padding:0px;">
+        <p class="page-content" style="margin:0px;">
+            Det finns många olika varianter av Lorem Ipsum, men majoriteten av dessa har ändrats på någotvis. Antingen med inslag av humor, eller med inlägg av ord som knappast ser trovärdiga ut.
+            Det finns många olika varianter av Lorem Ipsum, men majoriteten av dessa har ändrats på någotvis. Antingen med inslag av humor, eller med inlägg av ord som knappast ser trovärdiga ut.
+
+            <br />
+            <br />
+
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        </p>
+    </div>
+
+</div>
+
+@section Footer {
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}

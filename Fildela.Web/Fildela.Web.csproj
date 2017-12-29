@@ -1,0 +1,942 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C317796-E6D7-4A3F-8D77-09BB2996C786}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fildela.Web</RootNamespace>
+    <AssemblyName>Fildela.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.AzureClientHelper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Caching.2.8.0.0\lib\net40-full\Microsoft.ApplicationServer.Caching.AzureClientHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.AzureCommon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Caching.2.8.0.0\lib\net40-full\Microsoft.ApplicationServer.Caching.AzureCommon.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Caching.2.8.0.0\lib\net40-full\Microsoft.ApplicationServer.Caching.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationServer.Caching.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Caching.2.8.0.0\lib\net40-full\Microsoft.ApplicationServer.Caching.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.ServiceBus, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.ServiceBus.2.2.0\lib\net45\Microsoft.AspNet.SignalR.ServiceBus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.7.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.7.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.7.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.ServiceBus.3.0.8\lib\net45-full\Microsoft.ServiceBus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.DistributedCache, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Caching.2.8.0.0\lib\net40-full\Microsoft.Web.DistributedCache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=2.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.6.1.1-preview\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Caching.2.8.0.0\lib\net40-full\Microsoft.WindowsFabric.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsFabric.Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.Caching.2.8.0.0\lib\net40-full\Microsoft.WindowsFabric.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1-beta3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.3-unstable-012\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.4-unstable-004\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleCrypto">
+      <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationInjectionModule.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\UploadDirectlyController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ClaimsIdentityExtensions.cs" />
+    <Compile Include="Helpers\ImageExtensions.cs" />
+    <Compile Include="Helpers\EndpointExtensions.cs" />
+    <Compile Include="Helpers\GuidExtensions.cs" />
+    <Compile Include="Helpers\RenderViewToStringExtensions.cs" />
+    <Compile Include="Helpers\ResourceHelpers.cs" />
+    <Compile Include="Helpers\TimeZoneExtensions.cs" />
+    <Compile Include="Helpers\UnitConverterExtensions.cs" />
+    <Compile Include="Helpers\CookieExtensions.cs" />
+    <Compile Include="Helpers\IpAddressExtensions.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Models\AccountModels\FilesViewModel.cs" />
+    <Compile Include="Models\AccountModels\DeleteAccountLinksViewModel.cs" />
+    <Compile Include="Models\UserModels\DeleteAccountViewModel.cs" />
+    <Compile Include="Models\AccountModels\DeleteFilesViewModel.cs" />
+    <Compile Include="Models\AccountModels\DeleteLinksViewModel.cs" />
+    <Compile Include="Models\AccountModels\DeleteLogsViewModel.cs" />
+    <Compile Include="Models\AccountModels\DeletePendingAccountLinkViewModel.cs" />
+    <Compile Include="Models\AccountModels\DownloadFileViewModel.cs" />
+    <Compile Include="Models\AccountModels\DownloadLinkViewModel.cs" />
+    <Compile Include="Models\AccountModels\GetUploadSASURIViewModel.cs" />
+    <Compile Include="Models\AccountModels\GuestAccountsViewModel.cs" />
+    <Compile Include="Models\AccountModels\InsertAccountLinkViewModel.cs" />
+    <Compile Include="Models\AccountModels\InsertLinkViewModel.cs" />
+    <Compile Include="Models\AccountModels\InsertLinkFileModel.cs" />
+    <Compile Include="Models\AccountModels\LinksViewModel.cs" />
+    <Compile Include="Models\AccountModels\AccountLinkVerificationViewModel.cs" />
+    <Compile Include="Models\AccountModels\LogsViewModel.cs" />
+    <Compile Include="Models\UserModels\ResetAccountViewModel.cs" />
+    <Compile Include="Models\AccountModels\SettingsViewModel.cs" />
+    <Compile Include="Models\AccountModels\StatisticSeriesModel.cs" />
+    <Compile Include="Models\AccountModels\StatisticsViewModel.cs" />
+    <Compile Include="Models\UserModels\UpdateEmailViewModel.cs" />
+    <Compile Include="Models\AccountModels\UpdateFileNameViewModel.cs" />
+    <Compile Include="Models\UserModels\UpdatePasswordViewModel.cs" />
+    <Compile Include="Models\AccountModels\InsertFileViewModel.cs" />
+    <Compile Include="Models\AccountModels\UsageViewModel.cs" />
+    <Compile Include="Models\AccountModels\AccountViewModel.cs" />
+    <Compile Include="Models\AdministrationModels\AdministrationEmailViewModel.cs" />
+    <Compile Include="Models\AdministrationModels\AdministrationLogsViewModel.cs" />
+    <Compile Include="Models\AdministrationModels\AdministrationNewsViewModel.cs" />
+    <Compile Include="Models\AdministrationModels\AdministrationAccountsViewModel.cs" />
+    <Compile Include="Models\AdministrationModels\AdministrationViewModel.cs" />
+    <Compile Include="Models\AdministrationModels\InsertNewsViewModel.cs" />
+    <Compile Include="Models\ClaimsIdentityModels\ClaimsIdentityModel.cs" />
+    <Compile Include="Models\ContactModels\ContactViewModel.cs" />
+    <Compile Include="Models\NewsModels\NewsModel.cs" />
+    <Compile Include="Models\NewsModels\NewsViewModel.cs" />
+    <Compile Include="Models\UploadDirectlyModels\UploadDirectlyDownloadLinkViewModel.cs" />
+    <Compile Include="Models\UploadDirectlyModels\UploadDirectlyCompleteViewModel.cs" />
+    <Compile Include="Models\UploadDirectlyModels\DownloadUploadDirectlyModel.cs" />
+    <Compile Include="Models\UploadDirectlyModels\UploadDirectlySASURIViewModel.cs" />
+    <Compile Include="Models\UploadDirectlyModels\InsertUploadDirectlyViewModel.cs" />
+    <Compile Include="Models\UserModels\InsertAccountAuthenticationProviderViewModel.cs" />
+    <Compile Include="Models\UserModels\AuthenticationProviderModel.cs" />
+    <Compile Include="Models\UserModels\DeleteAccountAuthenticationProviderModel.cs" />
+    <Compile Include="Models\UserModels\SignInViewModel.cs" />
+    <Compile Include="Models\UserModels\SignInGuestAccountLinksViewModel.cs" />
+    <Compile Include="Models\UserModels\RegisterViewModel.cs" />
+    <Compile Include="Models\UserModels\RegisterVerificationViewModel.cs" />
+    <Compile Include="Models\UserModels\ResetPasswordViewModel.cs" />
+    <Compile Include="Models\UserModels\ResetPasswordVerificationModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalR\ActiveUsersHub.cs" />
+    <Compile Include="Owin\Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\select2-spinner.gif" />
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\css\select2.png" />
+    <Content Include="Content\css\select2x2.png" />
+    <Content Include="Content\fildela-administration.css" />
+    <Content Include="Content\fildela-modals.css" />
+    <Content Include="Content\fildela-account.css" />
+    <Content Include="Content\fildela-contact.css" />
+    <Content Include="Content\fildela-news.css" />
+    <Content Include="Content\fildela-all.css" />
+    <Content Include="Content\fildela-spinner.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\favicon.ico" />
+    <Content Include="Content\fonts\source-sans-pro-v9-latin-regular.svg" />
+    <Content Include="Content\formValidation.css" />
+    <Content Include="Content\formValidation.min.css" />
+    <Content Include="Content\metro-bootstrap.css" />
+    <Content Include="Content\metro-bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\select2-spinner.gif" />
+    <Content Include="Content\select2.css" />
+    <Content Include="Content\select2.png" />
+    <Content Include="Content\select2x2.png" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\metro-bootstrap\variables.less" />
+    <Content Include="Content\metro-bootstrap\tiles.less" />
+    <Content Include="Content\metro-bootstrap\radio.less" />
+    <Content Include="Content\metro-bootstrap\navbar-side.less" />
+    <Content Include="Content\metro-bootstrap\modals.less" />
+    <Content Include="Content\metro-bootstrap\metro-bootstrap.less" />
+    <Content Include="Content\metro-bootstrap\labels.less" />
+    <Content Include="Content\metro-bootstrap\checkbox.less" />
+    <Content Include="Content\metro-bootstrap\alerts.less" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\wells.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\utilities.less" />
+    <Content Include="Content\bootstrap\type.less" />
+    <Content Include="Content\bootstrap\tooltip.less" />
+    <Content Include="Content\bootstrap\thumbnails.less" />
+    <Content Include="Content\bootstrap\theme.less" />
+    <Content Include="Content\bootstrap\tables.less" />
+    <Content Include="Content\bootstrap\scaffolding.less" />
+    <Content Include="Content\bootstrap\responsive-utilities.less" />
+    <Content Include="Content\bootstrap\responsive-embed.less" />
+    <Content Include="Content\bootstrap\progress-bars.less" />
+    <Content Include="Content\bootstrap\print.less" />
+    <Content Include="Content\bootstrap\popovers.less" />
+    <Content Include="Content\bootstrap\panels.less" />
+    <Content Include="Content\bootstrap\pagination.less" />
+    <Content Include="Content\bootstrap\pager.less" />
+    <Content Include="Content\bootstrap\normalize.less" />
+    <Content Include="Content\bootstrap\navs.less" />
+    <Content Include="Content\bootstrap\navbar.less" />
+    <Content Include="Content\bootstrap\modals.less" />
+    <Content Include="Content\bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="Content\bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\bootstrap\mixins\table-row.less" />
+    <Content Include="Content\bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\bootstrap\mixins\size.less" />
+    <Content Include="Content\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\bootstrap\mixins\resize.less" />
+    <Content Include="Content\bootstrap\mixins\reset-text.less" />
+    <Content Include="Content\bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\bootstrap\mixins\panels.less" />
+    <Content Include="Content\bootstrap\mixins\pagination.less" />
+    <Content Include="Content\bootstrap\mixins\opacity.less" />
+    <Content Include="Content\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\bootstrap\mixins\list-group.less" />
+    <Content Include="Content\bootstrap\mixins\labels.less" />
+    <Content Include="Content\bootstrap\mixins\image.less" />
+    <Content Include="Content\bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\bootstrap\mixins\grid.less" />
+    <Content Include="Content\bootstrap\mixins\gradients.less" />
+    <Content Include="Content\bootstrap\mixins\forms.less" />
+    <Content Include="Content\bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\bootstrap\mixins\center-block.less" />
+    <Content Include="Content\bootstrap\mixins\buttons.less" />
+    <Content Include="Content\bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\bootstrap\mixins\alerts.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
+    <Content Include="Content\bootstrap\media.less" />
+    <Content Include="Content\bootstrap\list-group.less" />
+    <Content Include="Content\bootstrap\labels.less" />
+    <Content Include="Content\bootstrap\jumbotron.less" />
+    <Content Include="Content\bootstrap\input-groups.less" />
+    <Content Include="Content\bootstrap\grid.less" />
+    <Content Include="Content\bootstrap\glyphicons.less" />
+    <Content Include="Content\bootstrap\forms.less" />
+    <Content Include="Content\bootstrap\dropdowns.less" />
+    <Content Include="Content\bootstrap\component-animations.less" />
+    <Content Include="Content\bootstrap\code.less" />
+    <Content Include="Content\bootstrap\close.less" />
+    <Content Include="Content\bootstrap\carousel.less" />
+    <Content Include="Content\bootstrap\buttons.less" />
+    <Content Include="Content\bootstrap\button-groups.less" />
+    <Content Include="Content\bootstrap\breadcrumbs.less" />
+    <Content Include="Content\bootstrap\bootstrap.less" />
+    <Content Include="Content\bootstrap\badges.less" />
+    <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\source-sans-pro-v9-latin-regular.eot" />
+    <Content Include="Content\fonts\source-sans-pro-v9-latin-regular.ttf" />
+    <Content Include="Content\fonts\source-sans-pro-v9-latin-regular.woff" />
+    <Content Include="Content\fonts\source-sans-pro-v9-latin-regular.woff2" />
+    <None Include="Microsoft.WindowsAzure.Caching\ClientPerfCountersInstaller.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Microsoft.WindowsAzure.Caching\ClientPerfCountersInstaller.exe.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\PublishProfiles\fildela %2859%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2860%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2861%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2862%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2863%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2864%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2865%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2866%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2867%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2868%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2869%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2870%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2871%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2872%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2873%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2874%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela %2875%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildela.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2810%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2811%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2812%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2813%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2814%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2815%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2816%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2817%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2818%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2819%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2820%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2821%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2822%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2823%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2824%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2825%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2826%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2827%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2828%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2829%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2830%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2831%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2832%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2833%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2834%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2835%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2836%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2837%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2838%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2839%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2840%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2841%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2842%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2843%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2844%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2845%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2846%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2847%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2848%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2849%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2850%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2851%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2852%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2853%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2854%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2855%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2856%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2857%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %2858%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %286%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %287%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %288%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest %289%29.pubxml" />
+    <None Include="Properties\PublishProfiles\fildelatest.pubxml" />
+    <None Include="Microsoft.WindowsAzure.Caching\PerformanceCounters.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-notify.js" />
+    <Content Include="Scripts\bootstrap-notify.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\fildela-account-files.js" />
+    <Content Include="Scripts\fildela-account-guestaccounts.js" />
+    <Content Include="Scripts\fildela-account-links.js" />
+    <Content Include="Scripts\fildela-account-logs.js" />
+    <Content Include="Scripts\fildela-account-settings.js" />
+    <Content Include="Scripts\fildela-account-files-upload.js" />
+    <Content Include="Scripts\fildela-administration-all.js" />
+    <Content Include="Scripts\fildela-administration-news.js" />
+    <Content Include="Scripts\fildela-contact.js" />
+    <Content Include="Scripts\fildela-external-authentication.js" />
+    <Content Include="Scripts\fildela-news.js" />
+    <Content Include="Scripts\fildela-upload-directly.js" />
+    <Content Include="Scripts\formValidation\js\formValidation.js" />
+    <Content Include="Scripts\formValidation\js\formValidation.min.js" />
+    <Content Include="Scripts\formValidation\js\framework\bootstrap.js" />
+    <Content Include="Scripts\formValidation\js\framework\bootstrap.min.js" />
+    <Content Include="Scripts\formValidation\js\framework\foundation.js" />
+    <Content Include="Scripts\formValidation\js\framework\foundation.min.js" />
+    <Content Include="Scripts\formValidation\js\framework\pure.js" />
+    <Content Include="Scripts\formValidation\js\framework\pure.min.js" />
+    <Content Include="Scripts\formValidation\js\framework\semantic.js" />
+    <Content Include="Scripts\formValidation\js\framework\semantic.min.js" />
+    <Content Include="Scripts\formValidation\js\framework\uikit.js" />
+    <Content Include="Scripts\formValidation\js\framework\uikit.min.js" />
+    <Content Include="Scripts\formValidation\js\language\ar_MA.js" />
+    <Content Include="Scripts\formValidation\js\language\be_FR.js" />
+    <Content Include="Scripts\formValidation\js\language\be_NL.js" />
+    <Content Include="Scripts\formValidation\js\language\bg_BG.js" />
+    <Content Include="Scripts\formValidation\js\language\ca_ES.js" />
+    <Content Include="Scripts\formValidation\js\language\cs_CZ.js" />
+    <Content Include="Scripts\formValidation\js\language\da_DK.js" />
+    <Content Include="Scripts\formValidation\js\language\de_DE.js" />
+    <Content Include="Scripts\formValidation\js\language\en_US.js" />
+    <Content Include="Scripts\formValidation\js\language\es_CL.js" />
+    <Content Include="Scripts\formValidation\js\language\es_ES.js" />
+    <Content Include="Scripts\formValidation\js\language\eu_ES.js" />
+    <Content Include="Scripts\formValidation\js\language\fa_IR.js" />
+    <Content Include="Scripts\formValidation\js\language\fi_FI.js" />
+    <Content Include="Scripts\formValidation\js\language\fr_FR.js" />
+    <Content Include="Scripts\formValidation\js\language\gr_EL.js" />
+    <Content Include="Scripts\formValidation\js\language\he_IL.js" />
+    <Content Include="Scripts\formValidation\js\language\hi_IN.js" />
+    <Content Include="Scripts\formValidation\js\language\hu_HU.js" />
+    <Content Include="Scripts\formValidation\js\language\id_ID.js" />
+    <Content Include="Scripts\formValidation\js\language\it_IT.js" />
+    <Content Include="Scripts\formValidation\js\language\ja_JP.js" />
+    <Content Include="Scripts\formValidation\js\language\nl_NL.js" />
+    <Content Include="Scripts\formValidation\js\language\no_NO.js" />
+    <Content Include="Scripts\formValidation\js\language\pl_PL.js" />
+    <Content Include="Scripts\formValidation\js\language\pt_BR.js" />
+    <Content Include="Scripts\formValidation\js\language\pt_PT.js" />
+    <Content Include="Scripts\formValidation\js\language\ro_RO.js" />
+    <Content Include="Scripts\formValidation\js\language\ru_RU.js" />
+    <Content Include="Scripts\formValidation\js\language\sk_SK.js" />
+    <Content Include="Scripts\formValidation\js\language\sq_AL.js" />
+    <Content Include="Scripts\formValidation\js\language\sr_RS.js" />
+    <Content Include="Scripts\formValidation\js\language\sv_SE.js" />
+    <Content Include="Scripts\formValidation\js\language\th_TH.js" />
+    <Content Include="Scripts\formValidation\js\language\tr_TR.js" />
+    <Content Include="Scripts\formValidation\js\language\ua_UA.js" />
+    <Content Include="Scripts\formValidation\js\language\vi_VN.js" />
+    <Content Include="Scripts\formValidation\js\language\zh_CN.js" />
+    <Content Include="Scripts\formValidation\js\language\zh_TW.js" />
+    <Content Include="Scripts\fildela-account-searchtable.js" />
+    <Content Include="Scripts\highcharts.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\i18n\az.js" />
+    <Content Include="Scripts\i18n\bg.js" />
+    <Content Include="Scripts\i18n\ca.js" />
+    <Content Include="Scripts\i18n\cs.js" />
+    <Content Include="Scripts\i18n\da.js" />
+    <Content Include="Scripts\i18n\de.js" />
+    <Content Include="Scripts\i18n\en.js" />
+    <Content Include="Scripts\i18n\es.js" />
+    <Content Include="Scripts\i18n\et.js" />
+    <Content Include="Scripts\i18n\eu.js" />
+    <Content Include="Scripts\i18n\fa.js" />
+    <Content Include="Scripts\i18n\fi.js" />
+    <Content Include="Scripts\i18n\fr.js" />
+    <Content Include="Scripts\i18n\gl.js" />
+    <Content Include="Scripts\i18n\he.js" />
+    <Content Include="Scripts\i18n\hi.js" />
+    <Content Include="Scripts\i18n\hr.js" />
+    <Content Include="Scripts\i18n\hu.js" />
+    <Content Include="Scripts\i18n\id.js" />
+    <Content Include="Scripts\i18n\is.js" />
+    <Content Include="Scripts\i18n\it.js" />
+    <Content Include="Scripts\i18n\ja.js" />
+    <Content Include="Scripts\i18n\ko.js" />
+    <Content Include="Scripts\i18n\lt.js" />
+    <Content Include="Scripts\i18n\lv.js" />
+    <Content Include="Scripts\i18n\mk.js" />
+    <Content Include="Scripts\i18n\nb.js" />
+    <Content Include="Scripts\i18n\nl.js" />
+    <Content Include="Scripts\i18n\pl.js" />
+    <Content Include="Scripts\i18n\pt-BR.js" />
+    <Content Include="Scripts\i18n\pt.js" />
+    <Content Include="Scripts\i18n\ro.js" />
+    <Content Include="Scripts\i18n\ru.js" />
+    <Content Include="Scripts\i18n\sk.js" />
+    <Content Include="Scripts\i18n\sr.js" />
+    <Content Include="Scripts\i18n\sv.js" />
+    <Content Include="Scripts\i18n\th.js" />
+    <Content Include="Scripts\i18n\tr.js" />
+    <Content Include="Scripts\i18n\uk.js" />
+    <Content Include="Scripts\i18n\vi.js" />
+    <Content Include="Scripts\i18n\zh-CN.js" />
+    <Content Include="Scripts\i18n\zh-TW.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.highlight.js" />
+    <Content Include="Scripts\fildela-SortedTableEvent.js" />
+    <Content Include="Scripts\fildela-account-all.js" />
+    <Content Include="Scripts\fildela-all.js" />
+    <Content Include="Scripts\fildela-input-file.js" />
+    <Content Include="Scripts\fildela-signalr-activeusers.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\knockout-3.3.0.js" />
+    <Content Include="Scripts\fildela-shared-modals.js" />
+    <Content Include="Scripts\fildela-SortedTable.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ar.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_az.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_bg.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ca.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_cs.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_da.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_de.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_el.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_es.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_et.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_eu.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_fa.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_fi.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_fr.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_gl.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_he.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_hr.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_hu.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_id.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_is.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_it.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ja.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ka.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ko.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_lt.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_lv.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_mk.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ms.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_nb.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_nl.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_pl.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_pt-BR.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_pt-PT.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ro.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_rs.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ru.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_sk.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_sv.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_th.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_tr.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ua.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_ug-CN.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_uk.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_vi.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_zh-CN.js" />
+    <Content Include="Scripts\Select2-locales\select2_locale_zh-TW.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\Information.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\News\Default.cshtml" />
+    <Content Include="Views\Shared\_Modals.cshtml" />
+    <Content Include="Views\Account\Files.cshtml" />
+    <Content Include="Views\Account\Links.cshtml" />
+    <Content Include="Views\Account\GuestAccounts.cshtml" />
+    <Content Include="Views\Account\Logs.cshtml" />
+    <Content Include="Views\Account\Settings.cshtml" />
+    <Content Include="Views\User\SignIn.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\News\Table.cshtml" />
+    <Content Include="Views\Error\Default.cshtml" />
+    <Content Include="Views\Account\Modals\_FilesModals.cshtml" />
+    <Content Include="Views\Account\Modals\_GuestAccountsModals.cshtml" />
+    <Content Include="Views\Account\Modals\_LinksModals.cshtml" />
+    <Content Include="Views\Account\Modals\_LogModals.cshtml" />
+    <Content Include="Views\Account\Usage.cshtml" />
+    <Content Include="Views\Account\Partials\_Header.cshtml" />
+    <Content Include="Views\Error\Forbidden.cshtml" />
+    <Content Include="Views\Error\HttpError.cshtml" />
+    <Content Include="Views\Account\Modals\_SettingsModals.cshtml" />
+    <Content Include="Views\Administration\Users.cshtml" />
+    <Content Include="Views\Administration\News.cshtml" />
+    <Content Include="Views\Administration\Emails.cshtml" />
+    <Content Include="Views\Administration\Modals\_NewsModals.cshtml" />
+    <Content Include="Views\Administration\Partials\_NewsContent.cshtml" />
+    <Content Include="Views\Account\NoPermissionsFound.cshtml" />
+    <Content Include="Views\Shared\_SignInModalsAccountLinksPartial.cshtml" />
+    <Content Include="Views\Shared\_UploadDirectlyCompletePartial.cshtml" />
+    <Content Include="Views\Account\AccessDenied.cshtml" />
+    <Content Include="Views\Account\Partials\_FilesContentPartial.cshtml" />
+    <Content Include="Views\Account\Partials\_LinksContentPartial.cshtml" />
+    <Content Include="Views\Account\Partials\_GuestAccountsContentPartial.cshtml" />
+    <Content Include="Views\Account\Partials\_LogsContentPartial.cshtml" />
+    <Content Include="Views\Shared\Message.cshtml" />
+    <Content Include="Views\Administration\Logs.cshtml" />
+    <Content Include="Startup.cmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\_UserAgreement.cshtml" />
+    <Content Include="Views\Home\Modals\_UserAgreementModal.cshtml" />
+    <Content Include="Views\Administration\Partials\_UsersContent.cshtml" />
+    <Content Include="Views\Administration\Partials\_LogsContent.cshtml" />
+    <Content Include="Views\Administration\Partials\_EmailsContent.cshtml" />
+    <Content Include="Views\Home\UserAgreement.cshtml" />
+    <Content Include="Views\User\InsertAccountAuthenticationProvider.cshtml" />
+    <Content Include="Views\Account\Partials\_SettingsAuthenticationContentPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\images\" />
+    <Folder Include="Content\themes\base\minified\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fildela.Business\Fildela.Business.csproj">
+      <Project>{71073196-01df-4d4a-99fe-1e1e06383cc5}</Project>
+      <Name>Fildela.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fildela.Resources\Fildela.Resources.csproj">
+      <Project>{eff8eadb-11a3-42a2-8d09-3fdfda7624a4}</Project>
+      <Name>Fildela.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58805</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58805/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,60 @@
+﻿@model Fildela.Web.Models.UploadDirectlyModels.UploadDirectlyCompleteViewModel
+
+@if (Model != null)
+{
+    <div class="col-xs-12 modal-form-message-container" id="modal-upload-directly-complete-success-container" data-length="@Resource.File_name_must_be_between_1_and_150_characters_long" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again" data-errorapi="@Resource.HTML5_is_not_fully_supported_in_your_browser" style="display:none;">
+        <div class="alert alert-success">
+        </div>
+    </div>
+    <div class="col-xs-12 modal-form-message-container" id="modal-upload-directly-complete-error-container" data-length="@Resource.File_name_must_be_between_1_and_150_characters_long" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again" data-errorapi="@Resource.HTML5_is_not_fully_supported_in_your_browser" style="display:none;">
+        <div class="alert alert-danger">
+        </div>
+    </div>
+
+    <div class="col-xs-12" style="padding:0px;">
+        <div class="form-group form-group-container">
+            <input type="text" value="@Model.DownloadLink" data-downloadurl="@Model.DownloadLink" id="modal-direct-upload-link-text" class="form-control input-lg" readonly style="margin-top:15px; background-color:#fff!important;">
+        </div>
+
+        <br />
+
+        <form id="modal-direct-upload-send-email-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again">
+            @Html.AntiForgeryToken()
+
+            <div class="form-group form-group-container" style="margin-left:0px; margin-right:0px;">
+                <div class="input-group">
+                    <input id="modal-direct-upload-send-email-input" type="text" name="Email" class="form-control" placeholder="@Resource.Email_address">
+                    <span class="input-group-btn">
+                        <button id="modal-direct-upload-send-email-btn" class="btn btn-default" type="submit" style="width: 64.3438px;">
+                            <span id="modal-direct-upload-send-email-text">@Resource.Send</span>
+                            <span id="modal-direct-upload-send-email-spin" class="spinner-modal input-group-spinner" style="display:none;"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            <input type="hidden" name="URI" value="@Model.DownloadLink" />
+            <input type="hidden" name="FileName" value="@Model.FileName" />
+            <input type="hidden" name="FileSize" value="@Model.FileSize" />
+            <input type="hidden" name="BlobName" value="@Model.BlobName" />
+            <input type="hidden" name="StartDate" value="@Model.StartDate" />
+            <input type="hidden" name="EndDate" value="@Model.EndDate" />
+        </form>
+
+        <div class="form-group form-group-container">
+            <a target="_blank" href="@string.Format("https://www.facebook.com/sharer/sharer.php?u={0}", System.Web.HttpUtility.UrlEncode(Model.DownloadLink))" class="btn noselect btn-block" style="background-color:#4862a3; color:#fff;" role="button"><i class="fa fa-facebook-square"></i><span style="margin-right:5px; margin-left:5px;">@Resource.Facebook</span></a>
+        </div>
+
+        <div class="form-group form-group-container">
+            <a target="_blank" href="@string.Format("https://twitter.com/intent/tweet?url={0}", System.Web.HttpUtility.UrlEncode(Model.DownloadLink))" class="btn noselect btn-block" style="background-color:#5ea9dd; color:#fff;" role="button"><i class="fa fa-twitter-square"></i><span style="margin-right:5px; margin-left:5px;">@Resource.Twitter</span></a>
+        </div>
+
+        <br />
+
+        <div class="form-group form-group-container" id="modal-account-files-upload-complete-last-form-group">
+            <button type="button" id="modal-upload-directly-go-back" class="btn btn-danger btn-lg btn-block">
+                <span>@Resource.Go_back</span>
+            </button>
+        </div>
+    </div>
+}

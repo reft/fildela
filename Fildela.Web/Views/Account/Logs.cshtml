@@ -1,0 +1,23 @@
+﻿@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div id="account-logs-content">
+    @Html.Partial("~/Views/Account/Partials/_LogsContentPartial.cshtml")
+</div>
+
+@section Footer{
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}
+
+@section Modals {
+    @Html.Partial("~/Views/Account/Modals/_LogModals.cshtml")
+}
+
+@section Scripts {
+    <script type="text/javascript">
+        onload = function () {
+            mySorted = new SortedTable();
+        }
+    </script>
+}

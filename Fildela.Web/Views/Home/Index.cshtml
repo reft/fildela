@@ -1,0 +1,249 @@
+﻿@model Fildela.Business.Domains.News.Models.NewsDTOModel
+
+@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div class="container">
+    @if (Model != null)
+    {
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px">
+
+            <label class="label label-info label-index-news pull-left">@Resource.News2</label>
+
+            <a href="@Url.Action("Index", "News", new { NewsID = Model.NewsID, Table = false })">
+                <h2 title="@Resource.News2" class="pull-left index-news-title">
+                    <span style="color:#e74c3c;">#@Model.NewsID</span> @Model.Title
+                </h2>
+            </a>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px">
+            <hr style="margin-top:8px;" />
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px">
+            <p class="page-content" style="margin-bottom:19px;">
+                @Model.PreviewText
+                <a href="@Url.Action("Index", "News", new { NewsID = Model.NewsID, Table = false })" style="font-size:16px; text-decoration:underline; white-space:nowrap;">@Resource.Read_more</a>
+            </p>
+        </div>
+
+        <div class="col-xs-12" style="padding:0px;">
+            <div class="news-label-container-largescreen" style="padding:0px; height:21px; cursor:default;">
+                <span title="@Resource.Category" class="label noselect label-danger">@(Html.GetStringFromView<Resource>(Model.CategoryToString))</span>
+                <span title="@Resource.Publisher" class="label noselect label-success">@(!String.IsNullOrEmpty(Model.PublishedByFullName) ? Resource.Anonymous : Model.PublishedByFullName)</span>
+                <span title="@Resource.Date" class="label noselect label-primary">@TimeZoneExtensions.GetDateWithTodayOrYesterday(Model.DatePublished)</span>
+            </div>
+
+            <div class="news-label-container-smallscreen" style="padding:0px; height:61px; margin-bottom:6px; cursor:default;">
+                <div class="label-container">
+                    <span title="@Resource.Category" class="label noselect label-danger">@(Html.GetStringFromView<Resource>(Model.CategoryToString))</span><br />
+                </div>
+                <div class="label-container">
+                    <span title="@Resource.Publisher" class="label noselect label-success">@(!String.IsNullOrEmpty(Model.PublishedByFullName) ? Resource.Anonymous : Model.PublishedByFullName)</span><br />
+                </div>
+                <div class="label-container">
+                    <span title="@Resource.Date" class="label noselect label-primary">@Model.DatePublished.ToString("yyyy/MM/dd HH:mm tt")</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+            <h1 id="index-h1" class="content-divider">
+                @Resource.Welcome_to @System.Web.Configuration.WebConfigurationManager.AppSettings["ProductNameWithDomain"]
+            </h1>
+            <hr />
+        </div>
+    }
+    else
+    {
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+            <h1 id="index-h1" style="margin:0px;">
+                @Resource.Welcome_to @System.Web.Configuration.WebConfigurationManager.AppSettings["ProductNameWithDomain"]
+            </h1>
+            <hr />
+        </div>
+    }
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:0px;">
+        <p class="page-content" style="margin-bottom:0px;">
+            @Resource.Welcome_to_Swedens_fastest_site_to_store_and_share_files_Depending_on_what_youre_after_there_are_multiple_ways_for_you_to_save_and_share_files<br /><br />
+
+            @Resource.The_fast_way
+            <a class="noselect index-link" data-toggle="modal" data-target="#modal-direct-upload">@Resource.Upload_directly2</a>,
+            @Resource.Is_for_those_who_want_to_upload_without_having_to_register<br />
+            @Resource.After_uploading_you_get_to_choose_how_you_want_to_share_the_file
+            @Resource.Here_you_can_share_through_download_link_email_and_social_media<br />
+            @Resource.The_uploaded_file_can_only_be_accessed_by_persons_who_have_access_to_the_download_link<br /><br />
+
+            @Resource.For_those_who_want_more_functionality_theres_the_option
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a class="noselect index-link" data-toggle="modal" data-target="#modal-register">@Resource.Create_account2</a><text>.<br /></text>
+            }
+            else
+            {
+                <span title="@Resource.You_are_already_signed_in" style="text-decoration:underline; cursor:default;">@Resource.Create_account2</span><text>.<br /></text>
+            }
+            @Resource.Here_are_your_files_saved_in_a_permanent_and_password_protected_account<br />
+            @Resource.When_you_use_an_account_you_have_more_options_and_less_restrictions_to_save_and_share_filesfiler<br />
+            @Resource.You_also_have_the_ability_to_create_a_number_of_guest_accounts_with_different_access_rights_and_time_constraints<br />
+        </p>
+    </div>
+
+    <div class="hidden-lg hidden-md col-sm-12 col-xs-12" style="padding:0px;">
+        <hr />
+    </div>
+
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-push-1 col-md-push-1" id="index-panel-upload_directly_container" style="padding:0px;">
+        <div class="panel index-panel index-panel-upload_directly noselect" data-toggle="modal" data-target="#modal-direct-upload">
+            <div class="panel-body">
+                <small class="index-panel-title">@Resource.Upload</small>
+                <h3 class="index-panel-h3" style="text-indent: -1px;">
+                    @Resource.Directly
+                </h3>
+                <i class="fa fa-cloud-upload index-panel-icon-pos" style="margin-top:3px;"></i>
+            </div>
+        </div>
+    </div>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-push-1 col-md-push-1" style="padding:0px;">
+            <div class="panel index-panel index-panel-sign_out noselect">
+                <div class="panel-body trigger-next-form">
+                    <form action="/User/SignOut" method="post">
+                        @Html.AntiForgeryToken()
+                    </form>
+
+                    <small class="index-panel-title" style="margin-left:2px;">@Resource.End</small>
+                    <h3 class="index-panel-h3" style="text-indent: -1px;">
+                        @Resource.Sign_out
+                    </h3>
+                    <i class="fa fa-sign-out index-panel-icon-pos"></i>
+                </div>
+            </div>
+        </div>
+
+        if (User.IsInRole("AccountOwner") || User.IsInRole("Guest"))
+        {
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-push-1 col-md-push-1" style="padding:0px;">
+                <div class="panel index-panel index-panel-my_account noselect">
+                    <div class="panel-body trigger-next-form">
+                        <form action="/Account/Index" method="get"></form>
+
+                        <small class="index-panel-title">@Resource.Upload</small>
+                        <h3 class="index-panel-h3" style="text-indent: -1px;">
+                            @Resource.My_account
+                        </h3>
+                        <i class="fa fa-user index-panel-icon-pos"></i>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-push-1 col-md-push-1" style="padding:0px;">
+            <div class="panel index-panel index-panel-settings noselect" style="margin-bottom:0px;">
+                <div class="panel-body trigger-next-form">
+                    <form action="/Account/Settings" method="get"></form>
+
+                    <small class="index-panel-title">@Resource.Configure</small>
+                    <h3 class="index-panel-h3">
+                        @Resource.Settings
+                    </h3>
+                    <i class="fa fa-wrench index-panel-icon-pos" style="margin-top:-3px;"></i>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-push-1 col-md-push-1" style="padding:0px;">
+            <div class="panel index-panel index-panel-sign_in noselect" data-toggle="modal" data-target="#modal-sign-in">
+                <div class="panel-body">
+                    <small class="index-panel-title">@Resource.Member</small>
+                    <h3 class="index-panel-h3" style="text-indent: -1px;">
+                        @Resource.Sign_in
+                    </h3>
+                    <i class="fa fa-sign-in index-panel-icon-pos"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-push-1 col-md-push-1" style="padding:0px;">
+            <div class="panel index-panel index-panel-register noselect" data-toggle="modal" data-target="#modal-register">
+                <div class="panel-body">
+                    <small class="index-panel-title">@Resource.Not_member</small>
+                    <h3 class="index-panel-h3">
+                        @Resource.Create_account
+                    </h3>
+                    <i class="fa fa-user index-panel-icon-pos"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-push-1 col-md-push-1" style="padding:0px;">
+            <div class="panel index-panel index-panel-reset_password noselect" data-toggle="modal" data-target="#modal-reset-password" style="margin-bottom:0px;">
+                <div class="panel-body">
+                    <small class="index-panel-title">@Resource.Forgot_password</small>
+                    <h3 class="index-panel-h3">
+                        @Resource.Reset
+                    </h3>
+                    <i class="fa fa-question-circle index-panel-icon-pos"></i>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="hidden-lg hidden-md hidden-sm col-xs-12 index-panel-active_users-container" style="padding:0px;">
+        <div class="panel index-panel index-panel-active_users noselect" style="margin-bottom:0px;">
+            <div class="panel-body">
+                <small class="index-panel-title">@Resource.Connected_users</small>
+                <div id="active-users-container-index" style="visibility:hidden;">
+                    <h3 id="active-users-index" class="active-users-text"></h3>
+
+                    <script>
+                        var activeusers = sessionStorage.getItem("activeusers");
+
+                        if (activeusers != null) {
+                            span = document.getElementById('active-users-index');
+                            txt = document.createTextNode(activeusers);
+                            span.innerText = txt.textContent;
+
+                            document.getElementById("active-users-container-index").style.visibility = "visible";
+                        }
+                    </script>
+                </div>
+                <i class="fa fa-user index-panel-icon-pos"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;">
+        <h2 id="index-h2" class="content-divider">
+            @Resource.Instructions
+        </h2>
+        <hr />
+    </div>
+
+    <div class="col-xs-12" style="padding:0px;">
+        <p class="page-content" style="margin-bottom:0px;">
+            Det finns många olika varianter av Lorem Ipsum, men majoriteten av dessa har ändrats på någotvis. Antingen med inslag av humor, eller med inlägg av ord som knappast ser trovärdiga ut.
+            <br />
+
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+
+            <br />
+            <br />
+
+            Det finns många olika varianter av Lorem Ipsum, men majoriteten av dessa har ändrats på någotvis. Antingen med inslag av humor, eller med inlägg av ord som knappast ser trovärdiga ut.
+            Det finns många olika varianter av Lorem Ipsum, men majoriteten av dessa har ändrats på någotvis. Antingen med inslag av humor, eller med inlägg av ord som knappast ser trovärdiga ut.
+            Det finns många olika varianter av Lorem Ipsum, men majoriteten av dessa har ändrats på någotvis. Antingen med inslag av humor, eller med inlägg av ord som knappast ser trovärdiga ut.
+        </p>
+    </div>
+</div>
+
+@section Footer {
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}

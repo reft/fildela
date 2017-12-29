@@ -1,0 +1,93 @@
+﻿<!-- Modal settings, reset account -->
+<div class="modal" id="modal-account-settings-reset" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Reset_account</h4>
+            </div>
+
+            <div class="modal-body">
+                <p class="modal-content-text" style="padding:5px 15px 0px 15px;">
+                    @Resource.All_content_on_this_account_including_linked_guestaccounts_will_be_resetted
+                </p>
+                <p class="modal-content-text" style="padding:0px 15px 0px 15px; margin:0px;">
+                    @Resource.Are_you_sure_you_want_to_reset_your_account
+                </p>
+            </div>
+
+            <div id="modal-account-settings-reset-footer" class="modal-footer" style="border: 0px;">
+                <div class="form-group form-group-container">
+                    <button type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin" id="modal-account-settings-reset-submitbtn">
+                        <span>@Resource.Reset_account</span>
+                        <span id="modal-account-settings-reset-spin" class="spinner-modal" style="display:none;"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal settings, delete account -->
+<div class="modal" id="modal-account-settings-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Delete_account</h4>
+            </div>
+
+            <div class="modal-body">
+                <p class="modal-content-text" style="padding:5px 15px 0px 15px;">
+                    @Resource.All_content_on_this_account_including_linked_guestaccounts_will_be_deleted_and_you_will_no_longer_be_able_to_log_in
+                </p>
+                <p class="modal-content-text" style="padding:0px 15px 0px 15px; margin:0px;">
+                    @Resource.Are_you_sure_you_want_to_delete_your_account
+                </p>
+            </div>
+
+            <div id="modal-account-settings-delete-footer" class="modal-footer" style="border: 0px;">
+                <div class="form-group form-group-container">
+                    <button type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin @(User.IsInRole("AccountOwner") ? "account-settings-delete-account-owner" : "account-settings-delete-guest")" id="modal-account-settings-delete-submitbtn">
+                        <span id="modal-account-settings-delete-btntext">@Resource.Delete_account</span>
+                        <span id="modal-account-settings-delete-spin" class="spinner-modal" style="display:none;"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal settings, remove authentication-provider -->
+<div class="modal" id="modal-account-settings-remove-authentication-provider" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                <h4 class="modal-title">@Resource.Remove_third_party_authentication_provider [<span id="modal-account-settings-remove-authentication-provider-name"></span>]</h4>
+            </div>
+
+            <form id="modal-account-settings-remove-authentication-provider-form" class="form-horizontal" data-error="@Resource.An_unexpected_error_has_occurred_Please_try_again" style="margin:0px;">
+                @Html.AntiForgeryToken()
+
+                <div class="modal-body">
+                    <label for="modal-account-settings-remove-authentication-provider-password" class="modal-label" style="margin-top:9px; padding:0px 15px;">@Resource.Password</label>
+                    <div class="form-group form-group-container" style="margin:0px;">
+                        <input id="modal-account-settings-remove-authentication-provider-password" type="password" name="Password" class="form-control input-lg" placeholder="@Resource.Type_your_password">
+                    </div>
+                </div>
+
+                <input type="hidden" name="AuthenticationProviderID" id="modal-account-settings-remove-authentication-provider-id" />
+
+                <div class="modal-footer" style="border: 0px;">
+                    <div class="form-group form-group-container" style="margin-left:0px; margin-right:0px;">
+                        <button type="submit" class="btn btn-danger btn-lg btn-block modal-btn-spin" id="modal-account-settings-remove-authentication-provider-submitbtn">
+                            <span id="modal-account-settings-remove-authentication-provider-text">@Resource.Remove</span>
+                            <span id="modal-account-settings-remove-authentication-provider-spin" class="spinner-modal" style="display:none;"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

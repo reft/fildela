@@ -1,0 +1,112 @@
+﻿@section Header {
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+}
+
+<div id="account-guestaccounts-content">
+    @Html.Partial("~/Views/Account/Partials/_GuestAccountsContentPartial.cshtml")
+</div>
+
+@section Footer{
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+}
+
+@section Modals {
+    @Html.Partial("~/Views/Account/Modals/_GuestAccountsModals.cshtml")
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        onload = function () {
+            mySorted = new SortedTable();
+        };
+
+        $(function () {
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+
+            var time = year + "/" + month + "/" + day + " " + hour + ':' + minute + ':' + second;
+
+            $('#account-guestaccounts-create-currenttime').val(time);
+
+            var startdate = new Date().toString();
+
+            var enddate = new Date().getFullYear() + 2;
+            enddate = enddate.toString();
+
+            $('#account-guestaccount-create-startdate').datetimepicker({
+                locale: 'sv',
+                minDate: startdate,
+                maxDate: enddate,
+                ignoreReadonly: true,
+                showClose: true,
+                toolbarPlacement: 'bottom'
+            });
+
+            $('#account-guestaccount-create-enddate').datetimepicker({
+                locale: 'sv',
+                minDate: startdate,
+                maxDate: enddate,
+                ignoreReadonly: true,
+                showClose: true,
+                toolbarPlacement: 'bottom'
+            });
+        });
+
+        //Start
+        $("#account-guestaccount-create-startdate").on("dp.show", function (e) {
+            $('#account-guestaccount-create-startdate').addClass('dp-open');
+
+            $('#modal-account-guestaccounts-create-form').formValidation('revalidateField', 'DateStart');
+        });
+
+        $("#account-guestaccount-create-startdate").on("dp.hide", function (e) {
+            $('#account-guestaccount-create-startdate').removeClass('dp-open');
+        });
+
+        //End
+        $("#account-guestaccount-create-enddate").on("dp.show", function (e) {
+            $('#account-guestaccount-create-enddate').addClass('dp-open');
+
+            $('#modal-account-guestaccounts-create-form').formValidation('revalidateField', 'DateExpires');
+        });
+
+        $("#account-guestaccount-create-enddate").on("dp.hide", function (e) {
+            $('#account-guestaccount-create-enddate').removeClass('dp-open');
+        });
+
+        $('#account-guestaccounts-create-permissions').select2({
+            allowClear: true,
+            multiple: true,
+            placeholder: $('#account-guestaccounts-create-permissions').data('placeholder'),
+            'locale': 'sv',
+            ajax: {
+                url: '/Account/GetPermissions',
+                type: 'GET',
+                cache: true,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: function (term) {
+                    return {
+                        q: term
+                    }
+                },
+                results: function (data) {
+                    return { results: data };
+                }
+            },
+            escapeMarkup: function (m) { return m; }
+        }).on('change', function (e) {
+            var permissions = $(this).select2('data'),
+            jsonPermissions = ko.toJSON(permissions);
+            $('#account-guestaccounts-create-permissions-json').val(jsonPermissions);
+        }).on('select2-clearing', function (p) {
+        });
+
+    </script>
+}
